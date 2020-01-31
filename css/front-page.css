@@ -4,5 +4,28 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-business-frontpage/blob/master/LICENSE)
  */
  body {
-    padding-top: 56px;
+    margin: 0;
   }
+
+.carousel-inner img {
+  border: black 2px 2px
+}
+
+/* For mobile */
+@media (min-width: 320px) { 
+  .header-bg {
+    background-image: url(../img/image.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+  }
+}
+/* For desktop */
+@media (min-width: 1200px) { 
+  .header-bg {
+    background-image: url(../img/image2.jpeg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 500px;
+  }
+}
