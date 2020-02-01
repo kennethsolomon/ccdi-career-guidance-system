@@ -1,3 +1,16 @@
+<?php 
+//start session
+session_start();
+
+//database connection
+include_once('./includes/connection.php');
+?>
+
+<?php
+if($_SESSION['userLevel'] == 0){
+  if(isset($_SESSION['loggedin'])){
+    ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -691,3 +704,12 @@
 </body>
 
 </html>
+
+<?php
+  } else {
+    header('location: ./login.php');
+  }
+} else {
+  header('location: ./login.php');
+}
+?>

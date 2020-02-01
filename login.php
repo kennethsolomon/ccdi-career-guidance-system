@@ -2,7 +2,7 @@
 //start session
 session_start();
 
-//crud with database connection
+//database connection
 include_once('./includes/connection.php');
 
 ?>
@@ -17,7 +17,7 @@ include_once('./includes/connection.php');
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>SB Admin 2 - Login</title>
+  <title>CCDI - Login</title>
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
