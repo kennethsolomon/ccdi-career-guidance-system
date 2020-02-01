@@ -46,16 +46,15 @@ include_once('./includes/connection.php');
                 <div class="p-5">
                   <div class="text-center">
                     <?php
-                      if(isset($_SESSION['message'])){
-                        ?>
-                          <div class="alert alert-info text-center">
-                            <?php echo $_SESSION['message']; ?>
-                          </div>
-                        <?php
+                    if (isset($_SESSION['message'])) {
+                    ?>
+                      <div class="alert alert-info text-center">
+                        <?php echo $_SESSION['message']; ?>
+                      </div>
+                    <?php
+                      unset($_SESSION['message']);
+                    }
 
-                        unset($_SESSION['message']);
-                      }
-                    
                     ?>
                     <h1 class="h4 text-gray-900 mb-4">Welcome Back!</h1>
                   </div>
