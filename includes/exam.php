@@ -7,7 +7,7 @@ if ($geteNum == 0) {
         for any custom CSS!
         </div>
         <hr>
-        <a href="exam.php?id=' . $id . '&eNum=' . $eNum . '" class="btn btn-success btn-icon-split">
+        <a href="./questions.php?id=' . $id . '&eNum=' . $eNum . '" class="btn btn-success btn-icon-split">
             <span class="icon text-white-50">
             <i class="fas fa-check"></i>
             </span>
@@ -15,16 +15,16 @@ if ($geteNum == 0) {
         </a>
         ';
 }
-if ($geteNum > 0) {
-    $sql = "SELECT * FROM examQuestion where id='$geteNum'";
-    $result = mysqli_query($conn, $sql);
+// if ($geteNum > 0) {
+//     $sql = "SELECT * FROM examQuestion where id='$geteNum'";
+//     $result = mysqli_query($conn, $sql);
 
-    if (mysqli_num_rows($result) > 0) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            echo "question: " . $row["question"] . "<br>";
-        }
-    } else {
-        echo "0 results";
-    }
-    mysqli_close($conn);
-}
+//     if (mysqli_num_rows($result) > 0) {
+//         while ($row = mysqli_fetch_assoc($result)) {
+//             echo "question: " . $row["question"] . "<br>";
+//         }
+//     } else {
+//         echo "0 results";
+//     }
+//     mysqli_close($conn);
+// }
