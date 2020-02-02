@@ -11,7 +11,7 @@ if (isset($_POST['btnLogin'])) {
    $username = stripslashes($username);
    $password = stripslashes($password);
 
-   $sql = "SELECT * FROM user WHERE username='$username' AND password=md5('$password')";
+   $sql = "SELECT * FROM user WHERE username='$username' AND password=md5('$password') AND takeExam=0";
    $result = mysqli_query($conn, $sql);
 
    if (mysqli_num_rows($result) == 1) {
@@ -24,6 +24,7 @@ if (isset($_POST['btnLogin'])) {
       $_SESSION['loggedin'] = true;
       $_SESSION['firstName'] = $firstName;
       $_SESSION['userLevel'] = $userLevel;
+      $_SESSION['takeExam'] = $takeExam;
    } else {
       $_SESSION['message'] = 'Wrong Username or Password';
    }

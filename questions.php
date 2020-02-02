@@ -11,7 +11,7 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $id = $row['id'];
+        $examId = $row['id'];
         $question = $row['question'];
         $letterA = $row['letterA'];
         $letterB = $row['letterB'];
@@ -20,13 +20,18 @@ if (mysqli_num_rows($result) > 0) {
         $correctAnswer = $row['correctAnswer'];
     }
 } else {
-    header("location: ./finished.php?id=$id");
+    $sql2 = "UPDATE user SET takeExam=1 WHERE id='$id'";
+    if ($conn->query($sql2) === TRUE) {
+        header("location: ./finished.php?id=$id");
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
 }
 mysqli_close($conn);
 ?>
 
 <?php
-if ($_SESSION['userLevel'] == 3) {
+if ($_SESSION['userLevel'] == 3 && $_SESSION['takeExam'] == 0) {
     if (isset($_SESSION['loggedin'])) {
 ?>
 
@@ -63,36 +68,8 @@ if ($_SESSION['userLevel'] == 3) {
                     <!-- Topbar -->
                     <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
-                        <!-- Sidebar Toggle (Topbar) -->
-                        <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                            <i class="fa fa-bars"></i>
-                        </button>
-
                         <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
-
-                            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-                            <li class="nav-item dropdown no-arrow d-sm-none">
-                                <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fas fa-search fa-fw"></i>
-                                </a>
-                                <!-- Dropdown - Messages -->
-                                <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                                    <form class="form-inline mr-auto w-100 navbar-search">
-                                        <div class="input-group">
-                                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                                            <div class="input-group-append">
-                                                <button class="btn btn-primary" type="button">
-                                                    <i class="fas fa-search fa-sm"></i>
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </li>
-
-                            <div class="topbar-divider d-none d-sm-block"></div>
-
                             <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -121,12 +98,11 @@ if ($_SESSION['userLevel'] == 3) {
                                 <div class="col-lg-12" align="center">
                                     <div class="card shadow mb-4">
                                         <div class="card-header py-3">
-                                            <h6 class="m-0 font-weight-bold text-primary">Question Number <?php echo $id ?></h6>
+                                            <h6 class="m-0 font-weight-bold text-primary">Question Number <?php echo $examId ?></h6>
                                         </div>
                                         <div class="card-body">
                                             <?php
                                             $eNum = $_GET['eNum'];
-                                            $id = $_GET['id'];
                                             $newENum = $eNum + 1;
                                             echo '
                                                 <form action="./checkAnswer.php" method="POST">
