@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 02, 2020 at 10:11 AM
+-- Generation Time: Feb 02, 2020 at 03:02 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -58,8 +58,27 @@ CREATE TABLE `examResult` (
   `id` int(25) NOT NULL,
   `studentId` int(25) NOT NULL,
   `examScore` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `suggestedCourse` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL
+  `suggestedCourse` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `eNum` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `examResult`
+--
+
+INSERT INTO `examResult` (`id`, `studentId`, `examScore`, `suggestedCourse`, `eNum`, `created_at`) VALUES
+(13, 22, '2', NULL, '3', '2020-02-02 14:02:32'),
+(14, 22, '2', NULL, '4', '2020-02-02 14:04:44'),
+(15, 22, '0', NULL, '0', '2020-02-02 14:17:24'),
+(16, 22, '0', NULL, '0', '2020-02-02 14:31:26'),
+(17, 22, '0', NULL, '0', '2020-02-02 14:43:28'),
+(18, 22, '0', NULL, '0', '2020-02-02 14:45:55'),
+(19, 22, '0', NULL, '0', '2020-02-02 14:49:07'),
+(20, 22, '0', NULL, '0', '2020-02-02 14:50:54'),
+(21, 22, '0', NULL, '0', '2020-02-02 14:52:47'),
+(22, 23, '0', NULL, '0', '2020-02-02 14:57:04'),
+(23, 24, '3', NULL, '4', '2020-02-02 15:00:19');
 
 -- --------------------------------------------------------
 
@@ -79,6 +98,7 @@ CREATE TABLE `user` (
   `phoneNumber` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `dateOfExamination` datetime(6) NOT NULL DEFAULT current_timestamp(6),
   `userLevel` int(12) NOT NULL,
+  `takeExam` int(25) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -86,9 +106,8 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `phoneNumber`, `dateOfExamination`, `userLevel`, `created_at`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'a', 'Admin Account', 'c', 'd', 'e', '4545454545', '2020-02-27 13:45:49.000000', 0, '2020-02-02 10:08:53'),
-(22, 'student', 'cd73502828457d15655bbd7a63fb0bc8', 'a', 'b', 'c', 'd', 'Information Technology', '45454545', '2020-02-02 18:09:31.253184', 3, '2020-02-02 10:09:31');
+INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `phoneNumber`, `dateOfExamination`, `userLevel`, `takeExam`, `created_at`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin Account', '', '', '', '', '2020-02-27 13:45:49.000000', 0, 0, '2020-02-02 15:01:29');
 
 --
 -- Indexes for dumped tables
@@ -127,13 +146,13 @@ ALTER TABLE `examQuestion`
 -- AUTO_INCREMENT for table `examResult`
 --
 ALTER TABLE `examResult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
