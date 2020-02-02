@@ -18,10 +18,10 @@ if (isset($_POST['btnLogin'])) {
       while ($row = mysqli_fetch_assoc($result)) {
          $userLevel = $row["userLevel"];
          $firstName = $row["firstName"];
+         $id = $row["id"];
       }
       session_start();
       $_SESSION['loggedin'] = true;
-      $_SESSION['username'] = $username;
       $_SESSION['firstName'] = $firstName;
       $_SESSION['userLevel'] = $userLevel;
    } else {
@@ -29,7 +29,7 @@ if (isset($_POST['btnLogin'])) {
    }
    mysqli_close($conn);
    if ($userLevel == 0) {
-      header('location: ./../home.php');
+      header("location: ./../home.php?id=$id");
    } else if ($userLevel == 1) {
    }
 }
