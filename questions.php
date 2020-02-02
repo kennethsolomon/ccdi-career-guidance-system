@@ -11,8 +11,13 @@ $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $question = $row['question'];
         $id = $row['id'];
+        $question = $row['question'];
+        $letterA = $row['letterA'];
+        $letterB = $row['letterB'];
+        $letterC = $row['letterC'];
+        $letterD = $row['letterD'];
+        $correctAnswer = $row['correctAnswer'];
     }
 } else {
     header("location: ./finished.php?id=$id");
@@ -137,27 +142,61 @@ if ($_SESSION['userLevel'] == 3) {
                                             $id = $_GET['id'];
                                             $newENum = $eNum + 1;
                                             echo '
+                                                <form action="./checkAnswer.php" method="POST">
+                                                <input type="hidden" name="correctAnswer" value="' . $correctAnswer . '">
+                                                <input type="hidden" name="id" value="' . $id . '">
+                                                <input type="hidden" name="eNum" value="' . $newENum . '">
                                                 <div class="row">
+                                                <div class="col-lg-12">
                                                 ' . $question . '
                                                 </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                <input type="radio" class="form-check-input" value="' . $letterA . '" name="answer">' . $letterA . '
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                <input type="radio" class="form-check-input" value="' . $letterB . '" name="answer">' . $letterB . '
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                <input type="radio" class="form-check-input" value="' . $letterC . '" name="answer">' . $letterC . '
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-lg-12">
+                                                        <div class="form-check">
+                                                            <label class="form-check-label">
+                                                                <input type="radio" class="form-check-input" value="' . $letterD . '" name="answer">' . $letterD . '
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                                 <hr>
-                                                <a href="./questions.php?id=' . $id . '&eNum=' . $newENum . '" class="btn btn-success btn-icon-split">
-                                                    <span class="icon text-white-50">
-                                                    <i class="fas fa-check"></i>
-                                                    </span>
-                                                    <span class="text">Save</span>
-                                                </a>
+                                                <button class="btn btn-success .btn-circle .btn-lg" type="submit" name="saveAnswer">Save Answer</button>
                                                 ';
-
                                             ?>
-
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <!-- End of Container -->
-
 
                     </div>
                 </div>
