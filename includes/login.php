@@ -31,6 +31,6 @@ if (isset($_POST['btnLogin'])) {
    if ($userLevel == 0) {
       header("location: ./../home.php?id=$id");
    } else if ($userLevel == 3) {
-      header("location: ./../exam.php?id=$id&eNum=0");
+      header("location: ./../exam.php?id=$id");
    }
 }

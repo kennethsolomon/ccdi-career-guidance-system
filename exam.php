@@ -111,17 +111,6 @@ if ($_SESSION['userLevel'] == 3) {
 
           <!-- Begin Page Content -->
           <div class="container-fluid">
-            <?php
-            if (isset($_SESSION['registerStudent'])) {
-            ?>
-              <div class="alert alert-info text-center">
-                <?php echo $_SESSION['registerStudent']; ?>
-              </div>
-            <?php
-              unset($_SESSION['registerStudent']);
-            }
-            ?>
-
             <!-- Container -->
             <div class="container">
               <div class="row">
@@ -136,7 +125,8 @@ if ($_SESSION['userLevel'] == 3) {
                       $id = $_GET['id'];
                       $eNum = $geteNum + 1;
 
-                      include_once('./includes/examWelcomePage.php')
+                      include_once('./includes/exam.php')
+
                       ?>
 
                     </div>
