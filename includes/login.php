@@ -30,6 +30,7 @@ if (isset($_POST['btnLogin'])) {
    mysqli_close($conn);
    if ($userLevel == 0) {
       header("location: ./../home.php?id=$id");
-   } else if ($userLevel == 1) {
+   } else if ($userLevel == 3) {
+      header("location: ./../exam.php?id=$id&eNum=0");
    }
 }
