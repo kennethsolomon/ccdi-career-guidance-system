@@ -13,9 +13,16 @@ if(isset($_POST['saveAnswer'])){
         $result=mysqli_query($conn, $sql);
             while($row = mysqli_fetch_assoc($result)) {
                 $examScore = $row['examScore'];
+                $examResultId = $row['id'];
+                $dbENum = $row['eNum'];
             }
 
-        $sql2 = "UPDATE examResult SET examScore=$examScore + 1 WHERE studentId='$id'";
+        if($dbENum !== $eNum){
+            $sql2 = "UPDATE examResult SET examScore=$examScore + 1, eNum=$eNum WHERE studentId='$id' AND id = '$examResultId'";
+        } else {
+            $sql2 = "UPDATE examResult SET examScore=$examScore, eNum=$eNum WHERE studentId='$id' AND id = '$examResultId'";
+        }
+        
 
         if ($conn->query($sql2) === TRUE) {
             header("location: ./questions.php?id=$id&eNum=$eNum");

@@ -117,16 +117,20 @@ if ($_SESSION['userLevel'] == 3) {
                 <div class="col-lg-12" align="center">
                   <div class="card shadow mb-4">
                     <div class="card-header py-3">
-                      <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+                      <h6 class="m-0 font-weight-bold text-primary">Hello <?php echo $_SESSION['firstName']; ?></h6>
                     </div>
                     <div class="card-body">
                       <?php
                       $id = $_GET['id'];
                       echo '
                       <div class="row">
-                      The styling for this basic card example is created by using default Bootstrap utility classes.
-                      By using utility classes, the style of the card component can be easily modified with no need
-                      for any custom CSS!
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque semper arcu tellus, 
+                      vitae congue enim commodo in. Etiam ipsum neque, maximus at orci a, porta pulvinar nunc. 
+                      Nunc vel est sed turpis iaculis pulvinar quis quis mauris. Maecenas et pulvinar risus. 
+                      Pellentesque semper facilisis libero et finibus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                      Vivamus eu eros quis risus porta viverra. Sed vitae finibus eros. Nulla nec sem vitae purus pretium sodales. 
+                      Nunc tempus, magna sit amet sodales cursus, ipsum nulla iaculis turpis, non ullamcorper ex ipsum ac arcu. 
+                      Curabitur semper urna sed eros aliquam egestas non rhoncus ex.
                       </div>
                       <hr>
                       <a href="./includes/exam.php?id=' . $id . '" class="btn btn-success btn-icon-split">

@@ -4,7 +4,7 @@ include_once('./connection.php');
 $id = $_GET['id'];
 $eNum = 1;
 
-$sql = "INSERT INTO examResult (studentId, examScore) VALUES ('$id', '0')";
+$sql = "INSERT INTO examResult (studentId, examScore, eNum) VALUES ('$id', '0', 0)";
 
 if (mysqli_query($conn, $sql)) {
     header("location: ./../questions.php?id=$id&eNum=$eNum");
