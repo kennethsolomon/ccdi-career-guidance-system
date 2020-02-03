@@ -28,11 +28,11 @@
             <i class="fas fa-fw fa-cog"></i>
             <span>Student Actions</span>
         </a>
-        <div id="studentAction" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="studentAction" class="collapse" aria-labelledby="headingTwo" data-parent="#studentAction">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Student Options:</h6>
                 <a class="collapse-item" data-toggle="modal" data-target="#registerStudentModal" href="#">Register Student</a>
-                <a class="collapse-item" data-toggle="modal" data-target="#registerStudentModal" href="#">View Info Student</a>
+                <a class="collapse-item" data-toggle="modal" data-target="#viewStudentModal" href="#">View Info Student</a>
             </div>
         </div>
     </li>
@@ -49,3 +49,4 @@
 <!-- End of Sidebar -->
 
 <?php include_once('./modals/registerStudentModal.php') ?>
+<?php include_once('./modals/viewStudentModal.php') ?>

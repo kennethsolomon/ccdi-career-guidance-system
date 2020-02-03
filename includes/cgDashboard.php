@@ -1,5 +1,5 @@
 <?php
-$sql = "SELECT * FROM user WHERE userLevel = '3'";
+$sql = "SELECT * FROM user WHERE userLevel = '3' && takeExam = 1";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
