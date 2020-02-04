@@ -1,6 +1,7 @@
 <?php
 include_once './connection.php';
 
+$id = $_POST['id'];
 $username = $_POST['username'];
 $password = $_POST['password'];
 $lastName = $_POST['lastName'];
@@ -51,7 +52,7 @@ if (isset($_POST['btnRegister'])) {
         $_SESSION['registerStudent'] = 'Registered Successfully!';
 
         if (mysqli_query($conn, $sql)) {
-            header('location: ./../home.php');
+            header("location: ./../home.php?id=$id");
         } else {
             echo "Error: " . $sql . "" . mysqli_error($conn);
         }

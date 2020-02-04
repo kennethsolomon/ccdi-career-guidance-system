@@ -98,7 +98,7 @@ if ($_SESSION['userLevel'] == 0) {
                             $username = $_GET['username'];
                             $studentID = $_GET['studentId'];
 
-                            if ($_GET['search'] == 1) {
+                            if ($_GET['search'] == 1 && $studentID != '') {
                                 $gStudentInfo = "SELECT * FROM user WHERE username='$username'";
                                 $rStudentInfo = mysqli_query($conn, $gStudentInfo);
 
@@ -114,7 +114,7 @@ if ($_SESSION['userLevel'] == 0) {
                                         // $lastName = $rowStudentInfo["lastName"];
                                     }
                                 } else {
-                                    echo "0 results";
+                                    $firstName = 'No Result';
                                 }
                                 mysqli_close($conn);
 
@@ -133,7 +133,42 @@ if ($_SESSION['userLevel'] == 0) {
                                 </form>
                                 ';
                             }
+
+                            // SELECT ALL
+                            else if ($_GET['studentId'] == '') {
+                                $gStudentInfo = "SELECT * FROM user order by id desc";
+                                $rStudentInfo = mysqli_query($conn, $gStudentInfo);
+
+                                if (mysqli_num_rows($rStudentInfo) > 0) {
+                                    while ($rowStudentInfo = mysqli_fetch_assoc($rStudentInfo)) {
+
+                                        $firstName = $rowStudentInfo["firstName"];
+                                        $lastName = $rowStudentInfo["lastName"];
+
+                                        echo '
+                                        <form action="">
+                                            <div class="row">
+                                                <div class="card shadow mb-4">
+                                                    <div class="card-header py-3">
+                                                        <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+                                                    </div>
+                                                <div class="card-body">
+                                                    ' .  $firstName  . ' <br>
+                                                    ' . $lastName . '
+                                                </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                        ';
+                                    }
+                                } else {
+                                    $firstName = 'No Result';
+                                }
+                                mysqli_close($conn);
+                            }
+                            // END OF SELECT ALL
                             ?>
+
                             <div class="container studentInfoContainer">
                                 <div class="row">
                                     <div class="card shadow mb-4">
@@ -155,7 +190,7 @@ if ($_SESSION['userLevel'] == 0) {
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-3">
-                                                    <label for="usr">Course:</label>
+                                                    <label for="usr">Suggested Course:</label>
                                                     <select id="usr" class="browser-default custom-select">
                                                         <option selected></option>
                                                         <option value="Computer Science">CS</option>
@@ -165,12 +200,10 @@ if ($_SESSION['userLevel'] == 0) {
                                                     </select>
                                                 </div>
                                                 <div class="col-lg-3">
-                                                    <label for="usr">Status:</label>
-                                                    <select id="usr" class="browser-default custom-select">
-                                                        <option selected></option>
-                                                        <option value="Enrolled">Enrolled</option>
-                                                        <option value="Undecided">Undecided</option>
-                                                    </select>
+                                                    <div class="form-group">
+                                                        <label for="usr">Score:</label>
+                                                        <input disabled type="text" class="form-control" id="usr">
+                                                    </div>
                                                 </div>
                                             </div>
                                             <!-- End of Row -->
@@ -195,6 +228,30 @@ if ($_SESSION['userLevel'] == 0) {
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <div class="form-group">
+                                                        <label for="usr">Phone Number:</label>
+                                                        <input type="number" class="form-control" id="usr">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End of Row -->
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <div class="form-group">
+                                                        <label for="usr">Address:</label>
+                                                        <input type="text" class="form-control" id="usr">
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <label for="usr">Status:</label>
+                                                    <select id="usr" class="browser-default custom-select">
+                                                        <option selected></option>
+                                                        <option value="Enrolled">Taked Exam</option>
+                                                        <option value="Enrolled">Enrolled</option>
+                                                        <option value="Undecided">Undecided</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-3">
+                                                    <div class="form-group">
                                                         <label for="usr">Date of Examination:</label>
                                                         <input type="text" class="form-control" id="usr">
                                                     </div>
@@ -203,16 +260,27 @@ if ($_SESSION['userLevel'] == 0) {
                                             <!-- End of Row -->
                                             <div class="row">
                                                 <div class="col-lg-3">
-                                                    <div class="form-group">
-                                                        <label for="usr">Address:</label>
-                                                        <input type="text" class="form-control" id="usr">
-                                                    </div>
+                                                    <label for="usr">Last School Attended:</label>
+                                                    <select id="usr" class="browser-default custom-select">
+                                                        <option></option>
+                                                        <option>SNHS</option>
+                                                        <option>Aemillianum College Inc.</option>
+                                                        <option>TLC</option>
+                                                        <option>SMLCS</option>
+                                                        <option>SSU</option>
+                                                        <option>Annunciation College</option>
+                                                        <option>Others</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-lg-3">
-                                                    <div class="form-group">
-                                                        <label for="usr">Phone Number:</label>
-                                                        <input type="number" class="form-control" id="usr">
-                                                    </div>
+                                                    <label for="usr">Course:</label>
+                                                    <select id="usr" class="browser-default custom-select">
+                                                        <option></option>
+                                                        <option>Information Technology</option>
+                                                        <option>Computer Science</option>
+                                                        <option>ACT</option>
+                                                        <option>IS</option>
+                                                    </select>
                                                 </div>
                                                 <div class="col-lg-3">
                                                     <button name="studentInfoUpdate" class="btn btn-success cgStudentUpdate" type="submit">Update</button>
