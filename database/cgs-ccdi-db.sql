@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 04, 2020 at 04:06 AM
+-- Host: localhost
+-- Generation Time: Feb 04, 2020 at 03:58 PM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examquestion`
+-- Table structure for table `examQuestion`
 --
 
-CREATE TABLE `examquestion` (
+CREATE TABLE `examQuestion` (
   `id` int(12) NOT NULL,
   `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -40,10 +40,10 @@ CREATE TABLE `examquestion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `examquestion`
+-- Dumping data for table `examQuestion`
 --
 
-INSERT INTO `examquestion` (`id`, `category`, `question`, `letterA`, `letterB`, `letterC`, `letterD`, `correctAnswer`) VALUES
+INSERT INTO `examQuestion` (`id`, `category`, `question`, `letterA`, `letterB`, `letterC`, `letterD`, `correctAnswer`) VALUES
 (1, 'IT', 'Question 1', 'A', 'B', 'C', 'D', 'A'),
 (2, 'IT', 'Question 2', 'AA', 'BB', 'CC', 'DD', 'BB'),
 (3, 'IT', 'Question 3', 'AAA', 'BBB', 'CCC', 'DDD', 'CCC');
@@ -51,36 +51,29 @@ INSERT INTO `examquestion` (`id`, `category`, `question`, `letterA`, `letterB`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examresult`
+-- Table structure for table `examResult`
 --
 
-CREATE TABLE `examresult` (
+CREATE TABLE `examResult` (
   `id` int(25) NOT NULL,
   `studentId` int(25) NOT NULL,
   `examScore` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `suggestedCourse` varchar(25) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `eNum` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `examresult`
+-- Dumping data for table `examResult`
 --
 
-INSERT INTO `examresult` (`id`, `studentId`, `examScore`, `suggestedCourse`, `eNum`, `created_at`) VALUES
-(13, 22, '2', NULL, '3', '2020-02-02 14:02:32'),
-(14, 22, '2', NULL, '4', '2020-02-02 14:04:44'),
-(15, 22, '0', NULL, '0', '2020-02-02 14:17:24'),
-(16, 22, '0', NULL, '0', '2020-02-02 14:31:26'),
-(17, 22, '0', NULL, '0', '2020-02-02 14:43:28'),
-(18, 22, '0', NULL, '0', '2020-02-02 14:45:55'),
-(19, 22, '0', NULL, '0', '2020-02-02 14:49:07'),
-(20, 22, '0', NULL, '0', '2020-02-02 14:50:54'),
-(21, 22, '0', NULL, '0', '2020-02-02 14:52:47'),
-(22, 23, '0', NULL, '0', '2020-02-02 14:57:04'),
-(23, 24, '3', NULL, '4', '2020-02-02 15:00:19'),
-(24, 25, '1', NULL, '2', '2020-02-03 01:48:30'),
-(25, 26, '0', NULL, '0', '2020-02-03 01:49:57');
+INSERT INTO `examResult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
+(30, 33, '0', '0', '2020-02-04 13:27:13'),
+(41, 34, '3', '4', '2020-02-04 14:47:05'),
+(42, 34, '1', '2', '2020-02-04 14:48:29'),
+(43, 35, '1', '2', '2020-02-04 14:56:20'),
+(44, 36, '2', '3', '2020-02-04 14:57:46'),
+(45, 37, '3', '4', '2020-02-04 14:59:15'),
+(46, 38, '20', '3', '2020-02-04 15:03:35');
 
 -- --------------------------------------------------------
 
@@ -100,7 +93,9 @@ CREATE TABLE `user` (
   `lastSchoolAttended` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phoneNumber` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `dateOfExamination` datetime(6) NOT NULL DEFAULT current_timestamp(6),
+  `dateOfExamination` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `score` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
+  `suggestedCourse` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `userLevel` int(12) NOT NULL,
   `takeExam` int(25) NOT NULL DEFAULT 0,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
@@ -110,23 +105,28 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `userLevel`, `takeExam`, `created_at`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin Account', '', '', '', '', '', '0', '2020-02-27 13:45:49.000000', 0, 0, '2020-02-02 15:01:29');
+INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin Account', '', '', '', '', '', '', '2020-02-27 13:45:49.000000', '', '', 0, 0, '2020-02-04 11:58:35'),
+(35, 'q', '7694f4a66316e53c8cdd9d9954bd611d', 'q', 'q', 'q', 'q', 'Information Technology', 'Aemillianum College Inc.', '9301787782', 'Taked Exam', '2020/02/04-10:56:34pm', '', 'ACT', 3, 1, '2020-02-04 14:56:34'),
+(36, 'w', 'f1290186a5d0b1ceab27f4e77c0c5d68', 'w', 'w', 'w', 'w', 'Information Technology', 'Aemillianum College Inc.', '9301787782', 'Enrolled', '2020/02/04-10:57:53pm', '', 'ACT', 3, 0, '2020-02-04 15:51:23'),
+(37, 'e', 'e1671797c52e15f763380b45e841ec32', 'e', 'e', 'e', 'e', 'Information Technology', 'SNHS', '9301787782', 'Taked Exam', '2020/02/04-11:02:36pm', '3', 'ACT', 3, 1, '2020-02-04 15:02:36'),
+(38, 'r', '4b43b0aee35624cd95b910189b3dc231', 'r', 'r', 'r', 'r', 'Information Technology', 'SNHS', '23', 'Taked Exam', '2020/02/04-11:03:51pm', '20', 'Computer Science', 3, 1, '2020-02-04 15:03:51'),
+(39, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '123', 'Undecided', NULL, '0', NULL, 3, 0, '2020-02-04 15:48:28');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `examquestion`
+-- Indexes for table `examQuestion`
 --
-ALTER TABLE `examquestion`
+ALTER TABLE `examQuestion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `examresult`
+-- Indexes for table `examResult`
 --
-ALTER TABLE `examresult`
+ALTER TABLE `examResult`
   ADD PRIMARY KEY (`id`),
   ADD KEY `studentId` (`studentId`);
 
@@ -141,22 +141,22 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `examquestion`
+-- AUTO_INCREMENT for table `examQuestion`
 --
-ALTER TABLE `examquestion`
+ALTER TABLE `examQuestion`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `examresult`
+-- AUTO_INCREMENT for table `examResult`
 --
-ALTER TABLE `examresult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+ALTER TABLE `examResult`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
