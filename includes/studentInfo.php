@@ -17,5 +17,8 @@ if (isset($_POST['btnViewStudent'])) {
     }
 
     mysqli_close($conn);
-    header("location: ./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=1");
+    
+    $url="./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=1";
+    $url=str_replace(PHP_EOL, '', $url);
+    header("Location: $url");
 }

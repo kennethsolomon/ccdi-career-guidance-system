@@ -69,11 +69,42 @@
                                     <option></option>
                                     <option>Information Technology</option>
                                     <option>Computer Science</option>
+                                    <option>ACT</option>
+                                    <option>IS</option>
                                 </select>
                             </div>
                         </div>
                     </div>
                     <!-- End of Row 4 -->
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="dropDownSchool">Last School Attended:</label>
+                                <select required name="selectedSchool" class="form-control" id="dropDownSchool">
+                                    <option></option>
+                                    <option>SNHS</option>
+                                    <option>Aemillianum College Inc.</option>
+                                    <option>TLC</option>
+                                    <option>SMLCS</option>
+                                    <option>SSU</option>
+                                    <option>Annunciation College</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="dropDownStatus">Status:</label>
+                                <select required name="selectedStatus" class="form-control" id="dropDownStatus">
+                                    <option></option>
+                                    <option>Take Exam</option>
+                                    <option>Enroll</option>
+                                    <option>Undecided</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End of Row 5 -->
                     <div class="modal-footer">
                         <button type="submit" name="btnRegister" class="btn btn-primary">Register</button>
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>

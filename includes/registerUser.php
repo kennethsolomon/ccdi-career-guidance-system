@@ -9,6 +9,8 @@ $middleName = $_POST['middleName'];
 $address = $_POST['address'];
 $phoneNumber = $_POST['phoneNumber'];
 $selectedCourse = $_POST['selectedCourse'];
+$lastSchoolAttended = $_POST['selectedSchool'];
+$status = $_POST['selectedStatus'];
 
 
 if (isset($_POST['btnRegister'])) {
@@ -28,7 +30,9 @@ if (isset($_POST['btnRegister'])) {
         middleName, 
         address, 
         phoneNumber, 
+        lastSchoolAttended,
         course,
+        status,
         userLevel
         ) VALUES (
         '$username',
@@ -38,7 +42,9 @@ if (isset($_POST['btnRegister'])) {
         '$middleName',
         '$address',
         '$phoneNumber',
+        '$lastSchoolAttended',
         '$selectedCourse',
+        '$status',
         '3'
         )";
 
