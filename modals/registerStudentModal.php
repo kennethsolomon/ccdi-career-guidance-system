@@ -11,7 +11,7 @@
             <div class="modal-body">
                 <form action="./includes/registerUser.php" method="POST">
                     <div class="row">
-                    <input required type="hidden" class="form-control form-control-user" id="id" name="id" value=<?php echo $_GET['id']; ?>>
+                        <input required type="hidden" class="form-control form-control-user" id="id" name="id" value=<?php echo $_GET['id']; ?>>
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="username">Username:</label>
@@ -96,7 +96,7 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="dropDownStatus">Status:</label>
-                                <select required name="selectedStatus" class="form-control" id="dropDownStatus">
+                                <select name="selectedStatus" class="form-control" id="dropDownStatus">
                                     <option></option>
                                     <option>Take Exam</option>
                                     <option>Enroll</option>

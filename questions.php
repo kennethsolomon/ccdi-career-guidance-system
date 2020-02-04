@@ -6,12 +6,22 @@ include_once './includes/connection.php';
 $id = $_GET['id'];
 $eNum = $_GET['eNum'];
 
+$getExamId = "SELECT * FROM examResult WHERE studentId='$id'";
+$examIdResult = mysqli_query($conn, $getExamId);
+if (mysqli_num_rows($examIdResult) > 0) {
+    while ($examIdRow = mysqli_fetch_assoc($examIdResult)) {
+        $getExamId = $examIdRow['id'];
+    }
+} else {
+    echo "0 results";
+}
+
 $sql = "SELECT * FROM examQuestion WHERE id='$eNum'";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
-        $examId = $row['id'];
+        // $examId = $row['id'];
         $question = $row['question'];
         $letterA = $row['letterA'];
         $letterB = $row['letterB'];
@@ -22,7 +32,7 @@ if (mysqli_num_rows($result) > 0) {
 } else {
     $sql2 = "UPDATE user SET takeExam=1 WHERE id='$id'";
     if ($conn->query($sql2) === TRUE) {
-        header("location: ./finished.php?id=$id");
+        header("location: ./finished.php?id=$id&examId=$getExamId");
     } else {
         echo "Error updating record: " . $conn->error;
     }
@@ -108,6 +118,7 @@ if ($_SESSION['userLevel'] == 3 && $_SESSION['takeExam'] == 0) {
                                                 <form action="./checkAnswer.php" method="POST">
                                                 <input type="hidden" name="correctAnswer" value="' . $correctAnswer . '">
                                                 <input type="hidden" name="id" value="' . $id . '">
+                                                <input type="hidden" name="examId" value="' . $getExamId . '">
                                                 <input type="hidden" name="eNum" value="' . $newENum . '">
                                                 <div class="row">
                                                 <div class="col-lg-12">

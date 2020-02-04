@@ -4,6 +4,7 @@ session_start();
 include_once './includes/connection.php';
 
 $id = $_GET['id'];
+$examId = $_GET['examId'];
 ?>
 
 <?php
@@ -59,7 +60,7 @@ if ($_SESSION['userLevel'] == 3) {
                                                 Curabitur semper urna sed eros aliquam egestas non rhoncus ex.
                                             </h5>
                                             <hr>
-                                            <a href="./includes/logout.php" class="btn btn-danger btn-icon-split btn-lg">
+                                            <a href='./includes/examResult.php?id=<?php echo $id ?>&examId=<?php echo $examId ?>' class="btn btn-danger btn-icon-split btn-lg">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-info-circle"></i>
                                                 </span>
