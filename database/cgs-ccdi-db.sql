@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 05, 2020 at 03:29 PM
+-- Generation Time: Feb 05, 2020 at 03:39 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -107,8 +107,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin Account', '', '', '', '', '', '', '2020-02-27 13:45:49.000000', '', '', 0, '0', '2020-02-04 11:58:35'),
-(40, 'synecders', 'bd7668ceb8e9c2abf624fb30b48a13b0', 'Solomon', 'Kenneth', 'Lim', 'Seabreeze', 'Information Technology', 'SNHS', '09301787782', 'Taked Exam', '2020/02/05-11:23:57pm', '2', 'Accosiciate in Computer Technology', 3, '0', '2020-02-05 15:26:02');
+(1, 'cgadmin', 'ee39dd49b6477fd99d9f356dcba3ad12', '', 'CG Admin', '', '', '', '', '', '', NULL, '', '', 0, '0', '2020-02-05 15:39:08'),
+(40, 'synecders', 'f7563373a7a8f4c2cf158a02cccccc57', 'Solomon', 'Kenneth', 'Lim', 'Seabreeze', 'Information Technology', 'SNHS', '09301787782', 'Enrolled', '2020/02/05-11:23:57pm', '2', 'Accosiciate in Computer Technology', 3, '0', '2020-02-05 15:30:27');
 
 --
 -- Indexes for dumped tables
