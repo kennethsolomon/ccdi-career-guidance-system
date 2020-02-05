@@ -1,0 +1,25 @@
+.printMargin {
+  margin-top: 200px;
+}
+
+@media print {
+  header,
+  footer,
+  #cons {
+    display: none;
+  }
+  .container {
+    width: 90%;
+    margin-top: 200px;
+    padding: 0px;
+    border-radius: 20px;
+  }
+
+  * {
+    color: #000;
+    background-color: #fff;
+  }
+  a:after {
+    content: "( " attr(href) " )";
+  }
+}
