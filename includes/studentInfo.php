@@ -71,3 +71,10 @@ if (isset($_POST['btnStudentInfoUpdate'])) {
         }
 
 }
+
+if (isset($_POST['btnStudentInfoPrint'])) {
+    $id = $_POST["id"];
+    $studentId = $_POST['studentId'];
+    $username = $_POST['username'];
+    header("location: ./../printStudentInfo.php?id=$id&studentId=$studentId&username=$username");
+}
