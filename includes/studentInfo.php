@@ -63,9 +63,8 @@ if (isset($_POST['btnStudentInfoUpdate'])) {
         WHERE 
         id='$studentId'";
     if ($conn->query($sql) === TRUE) {
-        $_SESSION['updateMessage'] = 'Student Update Successfully!';
+        $_SESSION['message'] = 'Student Update Successfully!';
         header("location: ./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=$search");
-        // header("location: ./../home.php?id=$id");
     } else {
         echo "Error updating record: " . $conn->error;
     }
@@ -76,4 +75,22 @@ if (isset($_POST['btnStudentInfoPrint'])) {
     $studentId = $_POST['studentId'];
     $username = $_POST['username'];
     header("location: ./../printStudentInfo.php?id=$id&studentId=$studentId&username=$username");
+}
+
+if (isset($_POST['btnStudentInfoDelete'])) {
+    $id = $_POST["id"];
+    $studentId = $_POST['studentId'];
+    $search = $_POST['search'];
+    $username = $_POST['username'];
+
+    $sql = "DELETE FROM user WHERE id=$studentId";
+
+    if ($conn->query($sql) === TRUE) {
+        $_SESSION['message'] = 'Student Deleted Successfully!';
+        header("location: ./../viewStudentInfo.php?id=$id&studentId=&username=$username&search=$search");
+    } else {
+        echo "Error deleting record: " . $conn->error;
+    }
+
+    $conn->close();
 }

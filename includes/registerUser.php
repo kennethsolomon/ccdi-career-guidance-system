@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once './connection.php';
 
 $id = $_POST['id'];
@@ -20,7 +21,7 @@ if (isset($_POST['btnRegister'])) {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        $_SESSION['registerStudent'] = 'Username Already Exist!';
+        $_SESSION['registerStudent1'] = 'Username Already Exist!';
         header('location: ./../home.php');
     } else {
         $sql = "INSERT INTO user (
@@ -49,9 +50,8 @@ if (isset($_POST['btnRegister'])) {
         '3'
         )";
 
-        $_SESSION['registerStudent'] = 'Registered Successfully!';
-
         if (mysqli_query($conn, $sql)) {
+            $_SESSION['registerStudent'] = 'Registered Successfully!';
             header("location: ./../home.php?id=$id");
         } else {
             echo "Error: " . $sql . "" . mysqli_error($conn);

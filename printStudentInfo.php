@@ -64,6 +64,13 @@ mysqli_close($conn);
         <span class="text">Back</span>
     </a>
 
+    <a onclick="print()" class="btn btn-info btn-icon-split back">
+        <span class="icon text-white-50 back">
+            <i class="fas fa-info-circle back"></i>
+        </span>
+        <span class="text printText">Print</span>
+    </a>
+
     <div id="printArea" class="container containerDesign border rounded border-secondary">
 
         <div class="d-flex justify-content-center">

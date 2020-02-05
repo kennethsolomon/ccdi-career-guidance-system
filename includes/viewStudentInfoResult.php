@@ -168,13 +168,14 @@ if ($_GET['search'] == 1 && $studentID != '') {
                                 <div class="row">
                                     <div class="col-lg-3">
                                     </div>
+                                    <div class="col-lg-3 btnUpdateMargin">
+                                        <button name="btnStudentInfoUpdate" class="btn btn-success cgStudentInfoBtn" type="submit">Update</button>
+                                    </div>
                                     <div class="col-lg-3">
+                                        <button onclick="return confirmDelete()" name="btnStudentInfoDelete" class="btn btn-danger cgStudentInfoBtn" type="submit">Delete</button>
                                     </div>
                                     <div class="col-lg-3 btnUpdateMargin">
-                                        <button name="btnStudentInfoUpdate" class="btn btn-success cgStudentUpdate" type="submit">Update</button>
-                                    </div>
-                                    <div class="col-lg-3 btnUpdateMargin">
-                                        <button name="btnStudentInfoPrint" class="btn btn-info cgStudentUpdate" type="submit">Print</button>
+                                        <button name="btnStudentInfoPrint" class="btn btn-info cgStudentInfoBtn" type="submit">Print</button>
                                     </div>
                                 </div>
                                 <!-- End of Row -->
@@ -196,7 +197,7 @@ if ($_GET['search'] == 1 && $studentID != '') {
 
 // SELECT ALL
 else if ($studentID == '') {
-    $gStudentInfo = "SELECT * FROM user order by id desc";
+    $gStudentInfo = "SELECT * FROM user WHERE  userLevel != 0 AND userLevel != 1 order by id desc";
     $rStudentInfo = mysqli_query($conn, $gStudentInfo);
 
     if (mysqli_num_rows($rStudentInfo) > 0) {
@@ -359,13 +360,14 @@ else if ($studentID == '') {
                                 <div class="row">
                                     <div class="col-lg-3">
                                     </div>
+                                    <div class="col-lg-3 btnUpdateMargin">
+                                        <button name="btnStudentInfoUpdate" class="btn btn-success cgStudentInfoBtn" type="submit">Update</button>
+                                    </div>
                                     <div class="col-lg-3">
+                                        <button onclick="return confirmDelete()" name="btnStudentInfoDelete" class="btn btn-danger cgStudentInfoBtn" type="submit">Delete</button>
                                     </div>
                                     <div class="col-lg-3 btnUpdateMargin">
-                                        <button name="btnStudentInfoUpdate" class="btn btn-success cgStudentUpdate" type="submit">Update</button>
-                                    </div>
-                                    <div class="col-lg-3 btnUpdateMargin">
-                                        <button name="btnStudentInfoPrint" class="btn btn-info cgStudentUpdate" type="submit">Print</button>
+                                        <button name="btnStudentInfoPrint" class="btn btn-info cgStudentInfoBtn" type="submit">Print</button>
                                     </div>
                                 </div>
                                 <!-- End of Row -->

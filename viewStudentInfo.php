@@ -91,17 +91,17 @@ if ($_SESSION['userLevel'] == 0) {
 
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
-                            
-                            <!-- Update Message -->
+
+                            <!-- Message -->
                             <div class="text-center">
                                 <?php
-                                if (isset($_SESSION['updateMessage'])) {
+                                if (isset($_SESSION['message'])) {
                                 ?>
-                                <div class="alert alert-info text-center">
-                                    <?php echo $_SESSION['updateMessage']; ?>
-                                </div>
+                                    <div class="alert alert-info text-center">
+                                        <?php echo $_SESSION['message']; ?>
+                                    </div>
                                 <?php
-                                unset($_SESSION['updateMessage']);
+                                    unset($_SESSION['message']);
                                 }
 
                                 ?>
@@ -153,6 +153,12 @@ if ($_SESSION['userLevel'] == 0) {
             <!-- Page level custom scripts -->
             <script src="js/demo/chart-area-demo.js"></script>
             <script src="js/demo/chart-pie-demo.js"></script>
+
+            <script language="JavaScript" type="text/javascript">
+                function confirmDelete() {
+                    return confirm('Are you sure you want to delete this information?');
+                }
+            </script>
 
         </body>
 
