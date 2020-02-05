@@ -1,9 +1,13 @@
 .studentInfoContainer {
-  margin-left: 12%;
+  margin-left: 18%;
 }
 
 .cgStudentUpdate {
   width: 220px;
   margin-top: 30px;
   margin-left: 25px;
+}
+
+.lockLabel {
+  color: red;
 }
