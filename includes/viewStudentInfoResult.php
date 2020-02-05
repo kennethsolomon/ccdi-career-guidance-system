@@ -29,7 +29,7 @@ if ($_GET['search'] == 1 && $studentID != '') {
             $accountLock = $rowStudentInfo["takeExam"];
 
             echo '
-            <form action="includes/studentInfo.php" method="POST">
+            <form action="./includes/studentInfo.php" method="POST">
                 <div class="container studentInfoContainer">
                     <div class="row">
                         <div class="card shadow mb-4">
@@ -220,7 +220,7 @@ else if ($studentID == '') {
             $accountLock = $rowStudentInfo["takeExam"];
 
             echo '
-            <form action="includes/studentInfo.php" method="POST">
+            <form action="./includes/studentInfo.php" method="POST">
                 <div class="container studentInfoContainer">
                     <div class="row">
                         <div class="card shadow mb-4">

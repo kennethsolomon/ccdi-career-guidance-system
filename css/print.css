@@ -1,18 +1,24 @@
-.printMargin {
-  margin-top: 200px;
+.containerDesign {
+  margin-top: 30px;
+  padding: 20px;
+}
+.signature {
+  margin-top: 35px;
+}
+
+p {
+  font-weight: bold;
+}
+
+.resultFont {
+  font-size: 22px;
 }
 
 @media print {
   header,
   footer,
-  #cons {
+  .back {
     display: none;
-  }
-  .container {
-    width: 90%;
-    margin-top: 200px;
-    padding: 0px;
-    border-radius: 20px;
   }
 
   * {

@@ -19,9 +19,9 @@ if (isset($_POST['btnViewStudent'])) {
     }
 
     mysqli_close($conn);
-    
-    $url="./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=1";
-    $url=str_replace(PHP_EOL, '', $url);
+
+    $url = "./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=1";
+    $url = str_replace(PHP_EOL, '', $url);
     header("Location: $url");
 }
 
@@ -44,8 +44,8 @@ if (isset($_POST['btnStudentInfoUpdate'])) {
     $score = $_POST['examScore'];
     $accountLock = $_POST['accountLock'];
 
-  
-    
+
+
     $sql = "UPDATE user SET 
         lastName='$lastName', 
         firstName='$firstName', 
@@ -63,13 +63,12 @@ if (isset($_POST['btnStudentInfoUpdate'])) {
         WHERE 
         id='$studentId'";
     if ($conn->query($sql) === TRUE) {
-            $_SESSION['updateMessage'] = 'Student Update Successfully!';
-            header("location: ./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=$search");
-            // header("location: ./../home.php?id=$id");
-        } else {
-            echo "Error updating record: " . $conn->error;
-        }
-
+        $_SESSION['updateMessage'] = 'Student Update Successfully!';
+        header("location: ./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=$search");
+        // header("location: ./../home.php?id=$id");
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
 }
 
 if (isset($_POST['btnStudentInfoPrint'])) {
