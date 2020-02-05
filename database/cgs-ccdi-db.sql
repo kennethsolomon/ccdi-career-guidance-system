@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 04, 2020 at 03:58 PM
+-- Host: 127.0.0.1
+-- Generation Time: Feb 05, 2020 at 11:04 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examQuestion`
+-- Table structure for table `examquestion`
 --
 
-CREATE TABLE `examQuestion` (
+CREATE TABLE `examquestion` (
   `id` int(12) NOT NULL,
   `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -40,10 +40,10 @@ CREATE TABLE `examQuestion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `examQuestion`
+-- Dumping data for table `examquestion`
 --
 
-INSERT INTO `examQuestion` (`id`, `category`, `question`, `letterA`, `letterB`, `letterC`, `letterD`, `correctAnswer`) VALUES
+INSERT INTO `examquestion` (`id`, `category`, `question`, `letterA`, `letterB`, `letterC`, `letterD`, `correctAnswer`) VALUES
 (1, 'IT', 'Question 1', 'A', 'B', 'C', 'D', 'A'),
 (2, 'IT', 'Question 2', 'AA', 'BB', 'CC', 'DD', 'BB'),
 (3, 'IT', 'Question 3', 'AAA', 'BBB', 'CCC', 'DDD', 'CCC');
@@ -51,10 +51,10 @@ INSERT INTO `examQuestion` (`id`, `category`, `question`, `letterA`, `letterB`, 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examResult`
+-- Table structure for table `examresult`
 --
 
-CREATE TABLE `examResult` (
+CREATE TABLE `examresult` (
   `id` int(25) NOT NULL,
   `studentId` int(25) NOT NULL,
   `examScore` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -63,17 +63,18 @@ CREATE TABLE `examResult` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `examResult`
+-- Dumping data for table `examresult`
 --
 
-INSERT INTO `examResult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
+INSERT INTO `examresult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
 (30, 33, '0', '0', '2020-02-04 13:27:13'),
 (41, 34, '3', '4', '2020-02-04 14:47:05'),
 (42, 34, '1', '2', '2020-02-04 14:48:29'),
 (43, 35, '1', '2', '2020-02-04 14:56:20'),
 (44, 36, '2', '3', '2020-02-04 14:57:46'),
 (45, 37, '3', '4', '2020-02-04 14:59:15'),
-(46, 38, '20', '3', '2020-02-04 15:03:35');
+(46, 38, '20', '3', '2020-02-04 15:03:35'),
+(47, 38, '3', '4', '2020-02-05 02:50:26');
 
 -- --------------------------------------------------------
 
@@ -107,26 +108,26 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin Account', '', '', '', '', '', '', '2020-02-27 13:45:49.000000', '', '', 0, 0, '2020-02-04 11:58:35'),
-(35, 'q', '7694f4a66316e53c8cdd9d9954bd611d', 'q', 'q', 'q', 'q', 'Information Technology', 'Aemillianum College Inc.', '9301787782', 'Taked Exam', '2020/02/04-10:56:34pm', '', 'ACT', 3, 1, '2020-02-04 14:56:34'),
-(36, 'w', 'f1290186a5d0b1ceab27f4e77c0c5d68', 'w', 'w', 'w', 'w', 'Information Technology', 'Aemillianum College Inc.', '9301787782', 'Enrolled', '2020/02/04-10:57:53pm', '', 'ACT', 3, 0, '2020-02-04 15:51:23'),
+(35, 'q', '3675ac5c859c806b26e02e6f9fd62192', 'q', 'q', 'q', 'q', 'Information Technology', 'Aemillianum College Inc.', '9301787782', 'Enrolled', '2020/02/04-10:56:34pm', '', 'ACT', 3, 0, '2020-02-05 09:08:04'),
+(36, 'w', '23e65a679105b85c5dc7034fded4fb5f', 'w', 'w', 'w', 'w', 'Information Technology', 'Aemillianum College Inc.', '9301787782', 'Enrolled', '2020/02/04-10:57:53pm', '', 'ACT', 3, 0, '2020-02-05 06:57:31'),
 (37, 'e', 'e1671797c52e15f763380b45e841ec32', 'e', 'e', 'e', 'e', 'Information Technology', 'SNHS', '9301787782', 'Taked Exam', '2020/02/04-11:02:36pm', '3', 'ACT', 3, 1, '2020-02-04 15:02:36'),
-(38, 'r', '4b43b0aee35624cd95b910189b3dc231', 'r', 'r', 'r', 'r', 'Information Technology', 'SNHS', '23', 'Taked Exam', '2020/02/04-11:03:51pm', '20', 'Computer Science', 3, 1, '2020-02-04 15:03:51'),
-(39, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '123', 'Undecided', NULL, '0', NULL, 3, 0, '2020-02-04 15:48:28');
+(38, 'r', 'd9649cd369c2a50cc191c45504ef06db', 'r', 'r', 'r', 'r', 'Information Technology', 'SNHS', '23', 'Taked Exam', '2020/02/05-10:50:27am', '3', 'Computer Science', 3, 0, '2020-02-05 06:57:38'),
+(39, 'test', 'e08a7c49d96c2b475656cc8fe18cee8e', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '123', 'Enrolled', '', '0', '', 3, 0, '2020-02-05 09:09:27');
 
 --
 -- Indexes for dumped tables
 --
 
 --
--- Indexes for table `examQuestion`
+-- Indexes for table `examquestion`
 --
-ALTER TABLE `examQuestion`
+ALTER TABLE `examquestion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `examResult`
+-- Indexes for table `examresult`
 --
-ALTER TABLE `examResult`
+ALTER TABLE `examresult`
   ADD PRIMARY KEY (`id`),
   ADD KEY `studentId` (`studentId`);
 
@@ -141,16 +142,16 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `examQuestion`
+-- AUTO_INCREMENT for table `examquestion`
 --
-ALTER TABLE `examQuestion`
+ALTER TABLE `examquestion`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `examResult`
+-- AUTO_INCREMENT for table `examresult`
 --
-ALTER TABLE `examResult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+ALTER TABLE `examresult`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `user`
