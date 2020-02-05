@@ -22,3 +22,21 @@ if (isset($_POST['btnViewStudent'])) {
     $url=str_replace(PHP_EOL, '', $url);
     header("Location: $url");
 }
+
+if (isset($_POST['btnStudentInfoUpdate'])) {
+    $lastName = $_POST['lastName'];
+    $firstName = $_POST['firstName'];
+    $middleName = $_POST['middleName'];
+    $username = $_POST['username'];
+    $password = $_POST['lastName'];
+    $phoneNumber = $_POST['phoneNumber'];
+    $address = $_POST['address'];
+    $status = $_POST['status'];
+    $dateOfExamination = $_POST['dateOfExamination'];
+    $lastSchoolAttended = $_POST['lastSchoolAttended'];
+    $course = $_POST['course'];
+    $suggestedCourse = $_POST['suggestedCourse'];
+    $score = $_POST['examScore'];
+    $accountLock = $_POST['accountLock'];
+
+}

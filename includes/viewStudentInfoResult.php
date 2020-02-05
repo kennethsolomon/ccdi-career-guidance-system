@@ -26,7 +26,7 @@ if ($_GET['search'] == 1 && $studentID != '') {
             $accountLock = $rowStudentInfo["takeExam"];
 
             echo '
-            <form action="" method="POST">
+            <form action="includes/studentInfo.php" method="POST">
                 <div class="container studentInfoContainer">
                     <div class="row">
                         <div class="card shadow mb-4">
@@ -39,6 +39,7 @@ if ($_GET['search'] == 1 && $studentID != '') {
                                         <div class="form-group">
                                             <label for="username">Username:</label>
                                             <input disabled type="text" class="form-control" id="username" name="username" value=' . $username . '>
+                                            <input type="hidden" class="form-control" id="username" name="username" value=' . $username . '>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -51,6 +52,7 @@ if ($_GET['search'] == 1 && $studentID != '') {
                                         <div class="form-group">
                                             <label for="examScore">Score:</label>
                                             <input disabled type="text" class="form-control" id="examScore" name="examScore" value=' . $score . '>
+                                            <input type="hidden" class="form-control" id="examScore" name="examScore" value=' . $score . '>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -121,7 +123,7 @@ if ($_GET['search'] == 1 && $studentID != '') {
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <label for="lastSchoolAttended">Last School Attended:</label>
-                                        <select id="selectedLastSchoolAttended" class="browser-default custom-select">
+                                        <select value="' . $lastSchoolAttended . '" id="selectedLastSchoolAttended" class="browser-default custom-select" name="lastSchoolAttended">
                                             <option selected>' . $lastSchoolAttended . '</option>
                                             <option></option>
                                             <option>SNHS</option>
@@ -135,7 +137,7 @@ if ($_GET['search'] == 1 && $studentID != '') {
                                     </div>
                                     <div class="col-lg-3">
                                         <label for="course">Course:</label>
-                                        <select id="course" class="browser-default custom-select">
+                                        <select id="course" class="browser-default custom-select" name ="course" value="' . $course . '">
                                             <option selected>' . $course . '</option>
                                             <option></option>
                                             <option>Information Technology</option>
@@ -146,7 +148,7 @@ if ($_GET['search'] == 1 && $studentID != '') {
                                     </div>
                                     <div class="col-lg-4">
                                         <label for="accountLock" class="lockLabel">Account Lock ( 0 - Unlock | 1 - Lock ):</label>
-                                        <select id="accountLock" class="browser-default custom-select">
+                                        <select name="accountLock" value="' . $accountLock . '" id="accountLock" class="browser-default custom-select">
                                             <option selected>' . $accountLock . '</option>
                                             <option></option>
                                             <option value="0">0</option>
@@ -163,10 +165,10 @@ if ($_GET['search'] == 1 && $studentID != '') {
                                     <div class="col-lg-3">
                                     </div>
                                     <div class="col-lg-3 btnUpdateMargin">
-                                        <button name="studentInfoUpdate" class="btn btn-success cgStudentUpdate" type="submit">Update</button>
+                                        <button name="btnStudentInfoUpdate" class="btn btn-success cgStudentUpdate" type="submit">Update</button>
                                     </div>
                                     <div class="col-lg-3 btnUpdateMargin">
-                                        <button name="studentInfoPrint" class="btn btn-info cgStudentUpdate" type="submit">Print</button>
+                                        <button name="btnStudentInfoPrint" class="btn btn-info cgStudentUpdate" type="submit">Print</button>
                                     </div>
                                 </div>
                                 <!-- End of Row -->
@@ -209,7 +211,7 @@ else if ($studentID == '') {
             $accountLock = $rowStudentInfo["takeExam"];
 
             echo '
-            <form action="" method="POST">
+            <form action="includes/studentInfo.php" method="POST">
                 <div class="container studentInfoContainer">
                     <div class="row">
                         <div class="card shadow mb-4">
@@ -222,6 +224,7 @@ else if ($studentID == '') {
                                         <div class="form-group">
                                             <label for="username">Username:</label>
                                             <input disabled type="text" class="form-control" id="username" name="username" value=' . $username . '>
+                                            <input type="hidden" class="form-control" id="username" name="username" value=' . $username . '>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -234,6 +237,7 @@ else if ($studentID == '') {
                                         <div class="form-group">
                                             <label for="examScore">Score:</label>
                                             <input disabled type="text" class="form-control" id="examScore" name="examScore" value=' . $score . '>
+                                            <input type="hidden" class="form-control" id="examScore" name="examScore" value=' . $score . '>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -304,7 +308,7 @@ else if ($studentID == '') {
                                 <div class="row">
                                     <div class="col-lg-3">
                                         <label for="lastSchoolAttended">Last School Attended:</label>
-                                        <select id="selectedLastSchoolAttended" class="browser-default custom-select">
+                                        <select value="' . $lastSchoolAttended . '" id="selectedLastSchoolAttended" class="browser-default custom-select" name="lastSchoolAttended">
                                             <option selected>' . $lastSchoolAttended . '</option>
                                             <option></option>
                                             <option>SNHS</option>
@@ -318,7 +322,7 @@ else if ($studentID == '') {
                                     </div>
                                     <div class="col-lg-3">
                                         <label for="course">Course:</label>
-                                        <select id="course" class="browser-default custom-select">
+                                        <select id="course" class="browser-default custom-select" name ="course" value="' . $course . '">
                                             <option selected>' . $course . '</option>
                                             <option></option>
                                             <option>Information Technology</option>
@@ -329,7 +333,7 @@ else if ($studentID == '') {
                                     </div>
                                     <div class="col-lg-4">
                                         <label for="accountLock" class="lockLabel">Account Lock ( 0 - Unlock | 1 - Lock ):</label>
-                                        <select id="accountLock" class="browser-default custom-select">
+                                        <select name="accountLock" value="' . $accountLock . '" id="accountLock" class="browser-default custom-select">
                                             <option selected>' . $accountLock . '</option>
                                             <option></option>
                                             <option value="0">0</option>
@@ -346,10 +350,10 @@ else if ($studentID == '') {
                                     <div class="col-lg-3">
                                     </div>
                                     <div class="col-lg-3 btnUpdateMargin">
-                                        <button name="studentInfoUpdate" class="btn btn-success cgStudentUpdate" type="submit">Update</button>
+                                        <button name="btnStudentInfoUpdate" class="btn btn-success cgStudentUpdate" type="submit">Update</button>
                                     </div>
                                     <div class="col-lg-3 btnUpdateMargin">
-                                        <button name="studentInfoPrint" class="btn btn-info cgStudentUpdate" type="submit">Print</button>
+                                        <button name="btnStudentInfoPrint" class="btn btn-info cgStudentUpdate" type="submit">Print</button>
                                     </div>
                                 </div>
                                 <!-- End of Row -->
