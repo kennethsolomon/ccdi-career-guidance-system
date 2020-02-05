@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once './connection.php';
 
 if (isset($_POST['btnViewStudent'])) {
@@ -24,11 +26,14 @@ if (isset($_POST['btnViewStudent'])) {
 }
 
 if (isset($_POST['btnStudentInfoUpdate'])) {
+    $id = $_POST["id"];
+    $studentId = $_POST['studentId'];
+    $search = $_POST['search'];
     $lastName = $_POST['lastName'];
     $firstName = $_POST['firstName'];
     $middleName = $_POST['middleName'];
     $username = $_POST['username'];
-    $password = $_POST['lastName'];
+    $password = $_POST['password'];
     $phoneNumber = $_POST['phoneNumber'];
     $address = $_POST['address'];
     $status = $_POST['status'];
@@ -38,5 +43,31 @@ if (isset($_POST['btnStudentInfoUpdate'])) {
     $suggestedCourse = $_POST['suggestedCourse'];
     $score = $_POST['examScore'];
     $accountLock = $_POST['accountLock'];
+
+  
+    
+    $sql = "UPDATE user SET 
+        lastName='$lastName', 
+        firstName='$firstName', 
+        middleName='$middleName', 
+        password=md5('$password'), 
+        phoneNumber='$phoneNumber', 
+        address='$address',
+        status='$status',
+        dateOfExamination='$dateOfExamination',
+        lastSchoolAttended='$lastSchoolAttended',
+        course='$course',
+        suggestedCourse='$suggestedCourse',
+        score='$score',
+        takeExam='$accountLock' 
+        WHERE 
+        id='$studentId'";
+    if ($conn->query($sql) === TRUE) {
+            $_SESSION['updateMessage'] = 'Student Update Successfully!';
+            header("location: ./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=$search");
+            // header("location: ./../home.php?id=$id");
+        } else {
+            echo "Error updating record: " . $conn->error;
+        }
 
 }

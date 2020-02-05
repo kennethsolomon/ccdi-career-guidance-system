@@ -10,11 +10,14 @@ if ($_GET['search'] == 1 && $studentID != '') {
 
     if (mysqli_num_rows($rStudentInfo) > 0) {
         while ($rowStudentInfo = mysqli_fetch_assoc($rStudentInfo)) {
+            $id = $_GET["id"];
+            $search = $_GET["search"];
+            $studentId = $rowStudentInfo["id"];
             $lastName = $rowStudentInfo["lastName"];
             $firstName = $rowStudentInfo["firstName"];
             $middleName = $rowStudentInfo["middleName"];
             $username = $rowStudentInfo["username"];
-            $password = $rowStudentInfo["lastName"];
+            $password = $rowStudentInfo["password"];
             $phoneNumber = $rowStudentInfo["phoneNumber"];
             $address = $rowStudentInfo["address"];
             $status = $rowStudentInfo["status"];
@@ -35,6 +38,9 @@ if ($_GET['search'] == 1 && $studentID != '') {
                             </div>
                             <div class="card-body">
                                 <div class="row">
+                                <input type="hidden" class="form-control" id="id" name="id" value=' . $id . '>
+                                <input type="hidden" class="form-control" id="search" name="search" value=' . $search . '>
+                                <input type="hidden" class="form-control" id="studentId" name="studentId" value=' . $studentId . '>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="username">Username:</label>
@@ -45,7 +51,7 @@ if ($_GET['search'] == 1 && $studentID != '') {
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="password">Password:</label>
-                                            <input type="text" class="form-control" id="password" name="password">
+                                            <input type="password" class="form-control" id="password" name="password" value="' . $password . '">
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -195,11 +201,14 @@ else if ($studentID == '') {
 
     if (mysqli_num_rows($rStudentInfo) > 0) {
         while ($rowStudentInfo = mysqli_fetch_assoc($rStudentInfo)) {
+            $id = $_GET["id"];
+            $search = $_GET["search"];
+            $studentId = $rowStudentInfo["id"];
             $lastName = $rowStudentInfo["lastName"];
             $firstName = $rowStudentInfo["firstName"];
             $middleName = $rowStudentInfo["middleName"];
             $username = $rowStudentInfo["username"];
-            $password = $rowStudentInfo["lastName"];
+            $password = $rowStudentInfo["password"];
             $phoneNumber = $rowStudentInfo["phoneNumber"];
             $address = $rowStudentInfo["address"];
             $status = $rowStudentInfo["status"];
@@ -220,6 +229,9 @@ else if ($studentID == '') {
                             </div>
                             <div class="card-body">
                                 <div class="row">
+                                <input type="hidden" class="form-control" id="id" name="id" value=' . $id . '>
+                                <input type="hidden" class="form-control" id="studentId" name="studentId" value=' . $studentId . '>
+                                <input type="hidden" class="form-control" id="search" name="search" value=' . $search . '>
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="username">Username:</label>
@@ -230,7 +242,7 @@ else if ($studentID == '') {
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="password">Password:</label>
-                                            <input type="text" class="form-control" id="password" name="password">
+                                            <input type="password" class="form-control" id="password" name="password" value=' . $password . '>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
