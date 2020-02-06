@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 05, 2020 at 03:39 PM
+-- Generation Time: Feb 06, 2020 at 04:35 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -74,7 +74,8 @@ INSERT INTO `examResult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) 
 (44, 36, '2', '3', '2020-02-04 14:57:46'),
 (45, 37, '3', '4', '2020-02-04 14:59:15'),
 (46, 38, '20', '3', '2020-02-04 15:03:35'),
-(47, 40, '2', '3', '2020-02-05 15:23:51');
+(47, 40, '2', '3', '2020-02-05 15:23:51'),
+(48, 46, '1', '2', '2020-02-06 14:37:02');
 
 -- --------------------------------------------------------
 
@@ -107,8 +108,10 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`) VALUES
-(1, 'cgadmin', 'ee39dd49b6477fd99d9f356dcba3ad12', '', 'CG Admin', '', '', '', '', '', '', NULL, '', '', 0, '0', '2020-02-05 15:39:08'),
-(40, 'synecders', 'f7563373a7a8f4c2cf158a02cccccc57', 'Solomon', 'Kenneth', 'Lim', 'Seabreeze', 'Information Technology', 'SNHS', '09301787782', 'Enrolled', '2020/02/05-11:23:57pm', '2', 'Accosiciate in Computer Technology', 3, '0', '2020-02-05 15:30:27');
+(1, 'cgadmin', 'ee39dd49b6477fd99d9f356dcba3ad12', '', 'CG Admin', '', '', '', '', '', '', NULL, '', NULL, 0, '0', '2020-02-04 15:39:08'),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', '2020-02-04 13:57:45'),
+(6, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '09301787782', 'Taked Exam', '2020/02/06-10:37:07pm', '1', 'ACT', 3, '1', '2020-02-06 14:51:22'),
+(46, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '09454296723', 'Undecided', '2020/02/06-10:37:07pm', '1', 'ACT', 3, '1', '2020-02-06 14:51:56');
 
 --
 -- Indexes for dumped tables
@@ -147,13 +150,13 @@ ALTER TABLE `examQuestion`
 -- AUTO_INCREMENT for table `examResult`
 --
 ALTER TABLE `examResult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
