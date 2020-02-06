@@ -33,5 +33,7 @@ if (isset($_POST['btnLogin'])) {
       header("location: ./../home.php?id=$id");
    } else if ($userLevel == 3) {
       header("location: ./../exam.php?id=$id");
+   } else if ($userLevel == 1) {
+      header("location: ./../admin.php?id=$id");
    }
 }
