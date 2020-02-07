@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="./includes/adminInfo.php" method="POST">
+                <form action="./includes/adminInfo.php?<?php echo $_GET['id']; ?>" method="POST">
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
