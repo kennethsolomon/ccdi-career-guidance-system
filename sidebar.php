@@ -82,16 +82,38 @@ if ($_SESSION['userLevel'] == 1) {
                 <span>Dashboard</span></a>
         </li>
 
+
+        <div class="sidebar-heading">
+            Admin Control
+        </div>
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#adminAction" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Admin Actions</span>
+            </a>
+            <div id="adminAction" class="collapse" aria-labelledby="headingTwo" data-parent="#adminAction">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Admin Options:</h6>
+                    <a class="collapse-item" data-toggle="modal" data-target="#resetDataModal" href="#">Reset Data</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
+
+
         <div class="sidebar-heading">
             Question Info
         </div>
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#studentAction" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#questionAction" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Question Actions</span>
             </a>
-            <div id="studentAction" class="collapse" aria-labelledby="headingTwo" data-parent="#studentAction">
+            <div id="questionAction" class="collapse" aria-labelledby="headingTwo" data-parent="#questionAction">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Student Options:</h6>
                     <a class="collapse-item" data-toggle="modal" data-target="#addQuestionModal" href="#">Add Question</a>
@@ -122,3 +144,5 @@ if ($_SESSION['userLevel'] == 1) {
 <?php include_once('./modals/addQuestionModal.php') ?>
 <?php include_once('./modals/viewQuestionModal.php') ?>
 <?php include_once('./modals/deleteAllQuestionModal.php') ?>
+
+<?php include_once('./modals/resetDataModal.php') ?>
