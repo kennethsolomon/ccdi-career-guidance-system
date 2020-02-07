@@ -69,7 +69,7 @@ if ($_SESSION['userLevel'] == 1) {
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-laugh-wink"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">CG Panel<sup>CCDI</sup></div>
+            <div class="sidebar-brand-text mx-3">ADMIN<sup>CCDI</sup></div>
         </a>
 
         <!-- Divider -->

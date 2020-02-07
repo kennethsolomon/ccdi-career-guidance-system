@@ -71,7 +71,7 @@
                                     <option>Information Technology</option>
                                     <option>Computer Science</option>
                                     <option>ACT</option>
-                                    <option>IS</option>
+                                    <option>BSIS</option>
                                 </select>
                             </div>
                         </div>
