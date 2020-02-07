@@ -26,11 +26,8 @@ if (mysqli_num_rows($result) > 0) {
         }
     }
 } else {
-    echo "0 results";
 }
 
-
-
-
+header("location: ./../home.php?id=$id");
 
 mysqli_close($conn);
