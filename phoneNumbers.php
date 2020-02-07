@@ -51,12 +51,22 @@
                                          <!-- Query to get all the phone numbers -->
                                          <?php
                                             if (isset($_POST['btnPhoneNumber'])) {
+
+                                                // Get Date and Time
+                                                date_default_timezone_set("Asia/Manila");
+                                                //Test Trigger if Working
+                                                // $currentDate = '2020-02-22 00:00:00';
+                                                $currentDate = date("Y/m/d");
+                                                $currentDate = $currentDate . ' ' . '00:00:00';
                                                 $sql = "SELECT * FROM user Where userLevel=3 AND status='Taked Exam' OR status='Undecided' ORDER BY id desc";
                                                 $result = mysqli_query($conn, $sql);
 
                                                 if (mysqli_num_rows($result) > 0) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
-                                                        echo $phoneNumbers = $row["phoneNumber"] . ",";
+                                                        $exp_date_at = $row["exp_date_at"];
+                                                        if ($exp_date_at >= $currentDate) {
+                                                            echo $phoneNumbers = $row["phoneNumber"] . ",";
+                                                        }
                                                     }
                                                 } else {
                                                     echo "0 results";

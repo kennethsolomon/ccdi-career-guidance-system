@@ -2,6 +2,11 @@
 session_start();
 include_once './connection.php';
 
+// Get Date and Time
+date_default_timezone_set("Asia/Manila");
+// $currentDate = date("Y/m/d-h:i:s");
+$currentDate = date("Y/m/d");
+
 $id = $_POST['id'];
 $username = $_POST['username'];
 $password = $_POST['password'];
@@ -13,7 +18,7 @@ $phoneNumber = $_POST['phoneNumber'];
 $selectedCourse = $_POST['selectedCourse'];
 $lastSchoolAttended = $_POST['selectedSchool'];
 $status = $_POST['selectedStatus'];
-
+$created_at = $currentDate;
 
 if (isset($_POST['btnRegister'])) {
 
@@ -35,7 +40,8 @@ if (isset($_POST['btnRegister'])) {
         lastSchoolAttended,
         course,
         status,
-        userLevel
+        userLevel,
+        created_at
         ) VALUES (
         '$username',
         md5('$password'),
@@ -47,7 +53,8 @@ if (isset($_POST['btnRegister'])) {
         '$lastSchoolAttended',
         '$selectedCourse',
         '$status',
-        '3'
+        '3',
+        '$created_at'
         )";
 
         if (mysqli_query($conn, $sql)) {
