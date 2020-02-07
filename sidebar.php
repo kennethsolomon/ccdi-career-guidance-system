@@ -89,13 +89,13 @@ if ($_SESSION['userLevel'] == 1) {
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#studentAction" aria-expanded="true" aria-controls="collapseTwo">
                 <i class="fas fa-fw fa-cog"></i>
-                <span>Student Actions</span>
+                <span>Question Actions</span>
             </a>
             <div id="studentAction" class="collapse" aria-labelledby="headingTwo" data-parent="#studentAction">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Student Options:</h6>
-                    <a class="collapse-item" data-toggle="modal" data-target="#registerStudentModal" href="#">Register Student</a>
-                    <a class="collapse-item" data-toggle="modal" data-target="#viewStudentModal" href="#">View Info Student</a>
+                    <a class="collapse-item" data-toggle="modal" data-target="#addQuestionModal" href="#">Add Question</a>
+                    <a class="collapse-item" data-toggle="modal" data-target="#viewQuestionModal" href="#">View Question</a>
                 </div>
             </div>
         </li>
@@ -117,3 +117,6 @@ if ($_SESSION['userLevel'] == 1) {
 
 <?php include_once('./modals/registerStudentModal.php') ?>
 <?php include_once('./modals/viewStudentModal.php') ?>
+
+<?php include_once('./modals/addQuestionModal.php') ?>
+<?php include_once('./modals/viewQuestionModal.php') ?>

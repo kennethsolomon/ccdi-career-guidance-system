@@ -7,7 +7,18 @@
   margin-top: 30px;
   margin-left: 25px;
 }
-
+.adminStudentInfoBtn {
+  width: 220px;
+  margin-top: 32px;
+}
+.adminQuestionUpdate {
+  width: 220px;
+  margin-top: 10px;
+  margin-left: 830px;
+}
+.studentQuestionContainer {
+  margin-left: 10%;
+}
 .lockLabel {
   color: red;
 }

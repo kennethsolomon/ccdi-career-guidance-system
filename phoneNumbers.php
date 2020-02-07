@@ -55,12 +55,11 @@
                                                 // Get Date and Time
                                                 date_default_timezone_set("Asia/Manila");
                                                 //Test Trigger if Working
-                                                // $currentDate = '2020-02-22 00:00:00';
-                                                $currentDate = date("Y/m/d");
-                                                $currentDate = $currentDate . ' ' . '00:00:00';
+                                                // $currentDate = '2020-02-21 00:00:00';
+                                                $getCurrentDate = date("Y-m-d");
+                                                $currentDate = $getCurrentDate . ' ' . '00:00:00';
                                                 $sql = "SELECT * FROM user Where userLevel=3 AND status='Taked Exam' OR status='Undecided' ORDER BY id desc";
                                                 $result = mysqli_query($conn, $sql);
-
                                                 if (mysqli_num_rows($result) > 0) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
                                                         $exp_date_at = $row["exp_date_at"];
@@ -73,11 +72,8 @@
                                                 }
                                                 mysqli_close($conn);
                                             }
-
-
                                             ?>
                                      </div>
-
                                      <iframe src="https://pulsesms.app/" width="800px" height="600px" frameborder="0"></iframe>
                                      <hr>
                                      <div class="row">
