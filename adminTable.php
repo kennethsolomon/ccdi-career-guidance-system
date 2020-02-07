@@ -4,9 +4,12 @@ session_start();
 
 //database connection
 include_once './includes/connection.php';
+$query = "SELECT * FROM user WHERE userLevel != 1 AND userLevel != 0 ORDER BY ID DESC";
+$result = mysqli_query($conn, $query);
+?>
+<?php
 include_once './includes/cgDashboard.php';
 ?>
-
 <?php
 if ($_SESSION['userLevel'] == 1) {
     if (isset($_SESSION['loggedin'])) {
@@ -29,8 +32,11 @@ if ($_SESSION['userLevel'] == 1) {
             <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
             <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
-            <!-- Custom styles for this template-->
+            <!-- Custom styles for this template -->
             <link href="css/sb-admin-2.min.css" rel="stylesheet">
+
+            <!-- Custom styles for this page -->
+            <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
         </head>
 
@@ -76,6 +82,10 @@ if ($_SESSION['userLevel'] == 1) {
                         </nav>
                         <!-- End of Topbar -->
 
+
+
+
+
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
                             <?php
@@ -88,17 +98,99 @@ if ($_SESSION['userLevel'] == 1) {
                                 unset($_SESSION['message']);
                             }
                             ?>
-
                             <!-- Page Heading -->
-                            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                                <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
+                            <!-- <h1 class="h3 mb-2 text-gray-800">Tables</h1>
+                            <p class="mb-4">DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p> -->
+
+                            <!-- DataTales Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">All Student Data</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Username</th>
+                                                    <th>Lastname</th>
+                                                    <th>Firstname</th>
+                                                    <th>Middlename</th>
+                                                    <th>Address</th>
+                                                    <th>Phone Number</th>
+                                                    <th>Course</th>
+                                                    <th>Last School Attended</th>
+                                                    <th>Score</th>
+                                                    <th>Suggested Course</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </thead>
+                                            <tfoot>
+                                                <tr>
+                                                    <th>ID</th>
+                                                    <th>Username</th>
+                                                    <th>Lastname</th>
+                                                    <th>Firstname</th>
+                                                    <th>Middlename</th>
+                                                    <th>Address</th>
+                                                    <th>Phone Number</th>
+                                                    <th>Course</th>
+                                                    <th>Last School Attended</th>
+                                                    <th>Score</th>
+                                                    <th>Suggested Course</th>
+                                                    <th>Status</th>
+                                                </tr>
+                                            </tfoot>
+                                            <tbody>
+                                                <?php
+                                                while ($row = mysqli_fetch_array($result)) {
+                                                    echo '  
+                                                    <tr>  
+                                                        <td>' . $row["id"] . '</td>  
+                                                        <td>' . $row["username"] . '</td>  
+                                                        <td>' . $row["lastName"] . '</td>  
+                                                        <td>' . $row["firstName"] . '</td>  
+                                                        <td>' . $row["middleName"] . '</td>
+                                                        <td>' . $row["address"] . '</td>  
+                                                        <td>' . $row["phoneNumber"] . '</td>
+                                                        <td>' . $row["course"] . '</td>
+                                                        <td>' . $row["lastSchoolAttended"] . '</td>
+                                                        <td>' . $row["score"] . '</td>
+                                                        <td>' . $row["suggestedCourse"] . '</td>
+                                                        <td>' . $row["status"] . '</td>  
+                                                    </tr>  
+                                                    ';
+                                                }
+                                                ?>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                             </div>
-
-
-
 
                         </div>
                         <!-- /.container-fluid -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
                     </div>
                     <!-- End of Main Content -->
@@ -134,12 +226,13 @@ if ($_SESSION['userLevel'] == 1) {
             <!-- Custom scripts for all pages-->
             <script src="js/sb-admin-2.min.js"></script>
 
+
             <!-- Page level plugins -->
-            <script src="vendor/chart.js/Chart.min.js"></script>
+            <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+            <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
             <!-- Page level custom scripts -->
-            <script src="js/demo/chart-area-demo.js"></script>
-            <script src="js/demo/chart-pie-demo.js"></script>
+            <script src="js/demo/datatables-demo.js"></script>
 
         </body>
 
@@ -153,3 +246,9 @@ if ($_SESSION['userLevel'] == 1) {
     header('location: ./login.php');
 }
 ?>
+
+<script>
+    $(document).ready(function() {
+        $('#dataTable').DataTable();
+    });
+</script>
