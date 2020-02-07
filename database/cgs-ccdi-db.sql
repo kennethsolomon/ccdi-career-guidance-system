@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 07, 2020 at 04:51 PM
+-- Generation Time: Feb 07, 2020 at 06:53 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -44,7 +44,7 @@ CREATE TABLE `examQuestion` (
 --
 
 INSERT INTO `examQuestion` (`id`, `category`, `question`, `letterA`, `letterB`, `letterC`, `letterD`, `correctAnswer`) VALUES
-(1, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(1, 'IT', 'Question 1', '1 ', '2', '4', '3', '4'),
 (2, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
 (3, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
 (4, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
@@ -79,22 +79,6 @@ CREATE TABLE `examResult` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `examResult`
---
-
-INSERT INTO `examResult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
-(30, 33, '0', '0', '2020-02-04 13:27:13'),
-(41, 34, '3', '4', '2020-02-04 14:47:05'),
-(42, 34, '1', '2', '2020-02-04 14:48:29'),
-(43, 35, '1', '2', '2020-02-04 14:56:20'),
-(44, 36, '2', '3', '2020-02-04 14:57:46'),
-(45, 37, '3', '4', '2020-02-04 14:59:15'),
-(46, 38, '20', '3', '2020-02-04 15:03:35'),
-(47, 40, '2', '3', '2020-02-05 15:23:51'),
-(48, 46, '1', '2', '2020-02-06 14:37:02'),
-(49, 53, '1', '2', '2020-02-07 06:28:58');
-
 -- --------------------------------------------------------
 
 --
@@ -128,11 +112,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `exp_date_at`) VALUES
 (1, 'cgadmin', 'ee39dd49b6477fd99d9f356dcba3ad12', '', 'CG Admin', '', '', '', '', '', '', NULL, '', NULL, 0, '0', NULL, NULL),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL),
-(53, 'synecders', 'faa91a266fc57906aaf03ce06e455445', 'Solomon', 'Kenneth', 'Lim', 'Seabreeze', 'Information Technology', 'SNHS', '09454296723', 'Enrolled', '2020/02/07-02:29:05pm', '1', 'ACT', 3, '1', '2020-02-07 00:00:00', '2020-02-22 00:00:00'),
-(54, 'student2', '213ee683360d88249109c2f92789dbc3', 'student2', 'student2', 'student2', 'student2', 'Computer Science', 'SNHS', '123', 'Taked Exam', NULL, '0', NULL, 3, '0', '2020-02-07 00:00:00', '2020-02-22 00:00:00'),
-(55, 'student3', '8e4947690532bc44a8e41e9fb365b76a', 'student3', 'student3', 'student3', 'student3', 'ACT', 'SNHS', '123', 'Undecided', NULL, '0', NULL, 3, '0', '2020-02-07 00:00:00', '2020-02-22 00:00:00'),
-(57, 'student4', '166a50c910e390d922db4696e4c7747b', 'q', 'q', 'q', 'qwe', 'Information Technology', 'SSU', '21123', 'Expired', NULL, '0', NULL, 3, '0', '2020-02-23 00:00:00', '2020-03-09 00:00:00');
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL);
 
 --
 -- Triggers `user`
@@ -181,13 +161,13 @@ ALTER TABLE `examQuestion`
 -- AUTO_INCREMENT for table `examResult`
 --
 ALTER TABLE `examResult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
