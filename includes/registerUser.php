@@ -26,7 +26,7 @@ if (isset($_POST['btnRegister'])) {
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        $_SESSION['registerStudent1'] = 'Username Already Exist!';
+        $_SESSION['registerStudent'] = 'Username Already Exist!';
         header('location: ./../home.php');
     } else {
         $sql = "INSERT INTO user (
