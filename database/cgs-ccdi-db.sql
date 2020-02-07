@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 07, 2020 at 03:28 AM
+-- Generation Time: Feb 07, 2020 at 04:51 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -30,7 +30,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `examQuestion` (
   `id` int(12) NOT NULL,
-  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'IT',
   `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `letterA` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `letterB` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -44,9 +44,26 @@ CREATE TABLE `examQuestion` (
 --
 
 INSERT INTO `examQuestion` (`id`, `category`, `question`, `letterA`, `letterB`, `letterC`, `letterD`, `correctAnswer`) VALUES
-(1, 'IT', 'Question 1', 'A', 'B', 'C', 'D', 'A'),
-(2, 'IT', 'Question 2', 'AA', 'BB', 'CC', 'DD', 'BB'),
-(3, 'IT', 'Question 3', 'AAA', 'BBB', 'CCC', 'DDD', 'CCC');
+(1, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(2, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(3, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(4, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(5, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(6, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(7, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(8, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(9, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(10, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(11, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(12, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(13, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(14, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(15, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(16, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(17, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(18, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(19, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
+(20, 'IT', 'w', 'w', 'w', 'w', 'w', 'w');
 
 -- --------------------------------------------------------
 
@@ -75,7 +92,8 @@ INSERT INTO `examResult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) 
 (45, 37, '3', '4', '2020-02-04 14:59:15'),
 (46, 38, '20', '3', '2020-02-04 15:03:35'),
 (47, 40, '2', '3', '2020-02-05 15:23:51'),
-(48, 46, '1', '2', '2020-02-06 14:37:02');
+(48, 46, '1', '2', '2020-02-06 14:37:02'),
+(49, 53, '1', '2', '2020-02-07 06:28:58');
 
 -- --------------------------------------------------------
 
@@ -110,7 +128,11 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `exp_date_at`) VALUES
 (1, 'cgadmin', 'ee39dd49b6477fd99d9f356dcba3ad12', '', 'CG Admin', '', '', '', '', '', '', NULL, '', NULL, 0, '0', NULL, NULL),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL);
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL),
+(53, 'synecders', 'faa91a266fc57906aaf03ce06e455445', 'Solomon', 'Kenneth', 'Lim', 'Seabreeze', 'Information Technology', 'SNHS', '09454296723', 'Enrolled', '2020/02/07-02:29:05pm', '1', 'ACT', 3, '1', '2020-02-07 00:00:00', '2020-02-22 00:00:00'),
+(54, 'student2', '213ee683360d88249109c2f92789dbc3', 'student2', 'student2', 'student2', 'student2', 'Computer Science', 'SNHS', '123', 'Taked Exam', NULL, '0', NULL, 3, '0', '2020-02-07 00:00:00', '2020-02-22 00:00:00'),
+(55, 'student3', '8e4947690532bc44a8e41e9fb365b76a', 'student3', 'student3', 'student3', 'student3', 'ACT', 'SNHS', '123', 'Undecided', NULL, '0', NULL, 3, '0', '2020-02-07 00:00:00', '2020-02-22 00:00:00'),
+(57, 'student4', '166a50c910e390d922db4696e4c7747b', 'q', 'q', 'q', 'qwe', 'Information Technology', 'SSU', '21123', 'Expired', NULL, '0', NULL, 3, '0', '2020-02-23 00:00:00', '2020-03-09 00:00:00');
 
 --
 -- Triggers `user`
@@ -153,19 +175,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `examQuestion`
 --
 ALTER TABLE `examQuestion`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `examResult`
 --
 ALTER TABLE `examResult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=49;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
