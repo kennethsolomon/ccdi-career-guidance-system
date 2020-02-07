@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 06, 2020 at 04:35 PM
+-- Generation Time: Feb 07, 2020 at 03:28 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.2
 
@@ -100,18 +100,27 @@ CREATE TABLE `user` (
   `suggestedCourse` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `userLevel` int(12) NOT NULL,
   `takeExam` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `created_at` datetime DEFAULT NULL,
+  `exp_date_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`) VALUES
-(1, 'cgadmin', 'ee39dd49b6477fd99d9f356dcba3ad12', '', 'CG Admin', '', '', '', '', '', '', NULL, '', NULL, 0, '0', '2020-02-04 15:39:08'),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', '2020-02-04 13:57:45'),
-(6, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '09301787782', 'Taked Exam', '2020/02/06-10:37:07pm', '1', 'ACT', 3, '1', '2020-02-06 14:51:22'),
-(46, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '09454296723', 'Undecided', '2020/02/06-10:37:07pm', '1', 'ACT', 3, '1', '2020-02-06 14:51:56');
+INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `exp_date_at`) VALUES
+(1, 'cgadmin', 'ee39dd49b6477fd99d9f356dcba3ad12', '', 'CG Admin', '', '', '', '', '', '', NULL, '', NULL, 0, '0', NULL, NULL),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL);
+
+--
+-- Triggers `user`
+--
+DELIMITER $$
+CREATE TRIGGER `exp_date` BEFORE INSERT ON `user` FOR EACH ROW SET
+    NEW.created_at = IFNULL(NEW.created_at, NOW()),
+    NEW.exp_date_at = TIMESTAMPADD(DAY, 15, NEW.created_at)
+$$
+DELIMITER ;
 
 --
 -- Indexes for dumped tables
@@ -156,7 +165,7 @@ ALTER TABLE `examResult`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=47;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=53;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
