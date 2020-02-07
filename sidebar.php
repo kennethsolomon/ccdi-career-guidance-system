@@ -96,6 +96,7 @@ if ($_SESSION['userLevel'] == 1) {
                     <h6 class="collapse-header">Student Options:</h6>
                     <a class="collapse-item" data-toggle="modal" data-target="#addQuestionModal" href="#">Add Question</a>
                     <a class="collapse-item" data-toggle="modal" data-target="#viewQuestionModal" href="#">View Question</a>
+                    <a class="collapse-item" data-toggle="modal" data-target="#deleteAllQuestionModal" href="#">Delete all Question</a>
                 </div>
             </div>
         </li>
@@ -120,3 +121,4 @@ if ($_SESSION['userLevel'] == 1) {
 
 <?php include_once('./modals/addQuestionModal.php') ?>
 <?php include_once('./modals/viewQuestionModal.php') ?>
+<?php include_once('./modals/deleteAllQuestionModal.php') ?>

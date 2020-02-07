@@ -79,13 +79,13 @@ if ($_SESSION['userLevel'] == 1) {
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
                             <?php
-                            if (isset($_SESSION['registerStudent'])) {
+                            if (isset($_SESSION['message'])) {
                             ?>
                                 <div class="alert alert-info text-center">
-                                    <?php echo $_SESSION['registerStudent']; ?>
+                                    <?php echo $_SESSION['message']; ?>
                                 </div>
                             <?php
-                                unset($_SESSION['registerStudent']);
+                                unset($_SESSION['message']);
                             }
                             ?>
 

@@ -38,27 +38,60 @@ if (isset($_POST['btnQuestionInfoUpdate'])) {
     }
 }
 
-if (isset($_POST['btnStudentInfoPrint'])) {
-    $id = $_POST["id"];
-    $studentId = $_POST['studentId'];
-    $username = $_POST['username'];
-    header("location: ./../printStudentInfo.php?id=$id&studentId=$studentId&username=$username");
+if (isset($_POST['btnAddQuestion'])) {
+    $id = $_POST['id'];
+    $question = $_POST['question'];
+    $letterA = $_POST['letterA'];
+    $letterB = $_POST['letterB'];
+    $letterC = $_POST['letterC'];
+    $letterD = $_POST['letterD'];
+    $correctAnswer = $_POST['correctAnswer'];
+
+
+    $sql = "SELECT * FROM examQuestion";
+    $result = mysqli_query($conn, $sql);
+
+    $count = mysqli_num_rows($result);
+    if ($count > 19) {
+        $_SESSION['message'] = 'You Can Only Have 20 Questions!';
+        header("location: ./../admin.php?id=$id");
+    } else {
+        $sql = "INSERT INTO examQuestion (
+        question, 
+        letterA, 
+        letterB, 
+        letterC, 
+        letterD, 
+        correctAnswer,
+        category
+        ) VALUES (
+        '$question',
+        '$letterA',
+        '$letterB',
+        '$letterC',
+        '$letterD',
+        '$correctAnswer',
+        'IT'
+        )";
+
+        if (mysqli_query($conn, $sql)) {
+            $_SESSION['message'] = 'Add Question Successfully!';
+            header("location: ./../admin.php?id=$id");
+        } else {
+            echo "Error: " . $sql . "" . mysqli_error($conn);
+        }
+        $conn->close();
+    }
 }
 
-if (isset($_POST['btnStudentInfoDelete'])) {
-    $id = $_POST["id"];
-    $studentId = $_POST['studentId'];
-    $search = $_POST['search'];
-    $username = $_POST['username'];
-
-    $sql = "DELETE FROM user WHERE id=$studentId";
-
-    if ($conn->query($sql) === TRUE) {
-        $_SESSION['message'] = 'Student Deleted Successfully!';
-        header("location: ./../viewStudentInfo.php?id=$id&studentId=&username=$username&search=$search");
+if (isset($_POST['btnDeleteAllQuestion'])) {
+    $id = $_POST['id'];
+    $sql = "TRUNCATE TABLE examQuestion";
+    if (mysqli_query($conn, $sql)) {
+        $_SESSION['message'] = 'Delete All Questions Successfully!';
+        header("location: ./../admin.php?id=$id");
     } else {
-        echo "Error deleting record: " . $conn->error;
+        echo "Error: " . $sql . "" . mysqli_error($conn);
     }
-
     $conn->close();
 }
