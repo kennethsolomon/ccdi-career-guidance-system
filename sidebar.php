@@ -83,7 +83,7 @@ if ($_SESSION['userLevel'] == 1) {
         </li>
 
         <div class="sidebar-heading">
-            Student Info
+            Question Info
         </div>
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
