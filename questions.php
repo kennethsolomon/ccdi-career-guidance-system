@@ -16,7 +16,7 @@ if (mysqli_num_rows($examIdResult) > 0) {
     echo "0 results";
 }
 
-$sql = "SELECT * FROM examQuestion WHERE id='$eNum'";
+$sql = "SELECT * FROM examQuestion WHERE id='$eNum' AND question != ''";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
