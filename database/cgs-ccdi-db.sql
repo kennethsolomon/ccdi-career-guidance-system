@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 08, 2020 at 08:01 PM
+-- Generation Time: Feb 08, 2020 at 10:52 PM
 -- Server version: 10.4.12-MariaDB
 -- PHP Version: 7.4.2
 
@@ -21,6 +21,40 @@ SET time_zone = "+00:00";
 --
 -- Database: `cgs-ccdi-db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chatMessage`
+--
+
+CREATE TABLE `chatMessage` (
+  `id` int(25) NOT NULL,
+  `fromUserId` int(25) NOT NULL,
+  `chatMessage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `chatMessage`
+--
+
+INSERT INTO `chatMessage` (`id`, `fromUserId`, `chatMessage`, `timestamp`) VALUES
+(1, 2, 'HI!', '2020-02-08 16:00:00'),
+(3, 1, 'Alright!2', '2020-02-08 16:00:00'),
+(4, 2, 'HI!2', '2020-02-08 16:00:00'),
+(5, 2, 'Latest Chat', '2020-02-08 16:00:00'),
+(6, 2, 'Most Latest Chat', '2020-02-08 16:00:00'),
+(7, 1, 'Most Latest Chat2', '2020-02-08 16:00:00'),
+(8, 2, 'test', '2020-02-08 21:22:33'),
+(10, 1, 'test', '2020-02-08 22:41:38'),
+(11, 1, 'working na pucha!', '2020-02-08 22:41:55'),
+(12, 2, 'hahaha oo nga noh?', '2020-02-08 22:44:01'),
+(13, 1, 'wee', '2020-02-08 22:45:16'),
+(14, 2, 'hahaha', '2020-02-08 22:45:20'),
+(15, 2, 'Kumusta na??', '2020-02-08 22:45:36'),
+(16, 2, 'yo!', '2020-02-08 22:46:01'),
+(17, 1, 'HAHAHA', '2020-02-08 22:46:06');
 
 -- --------------------------------------------------------
 
@@ -124,6 +158,12 @@ DELIMITER ;
 --
 
 --
+-- Indexes for table `chatMessage`
+--
+ALTER TABLE `chatMessage`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `examQuestion`
 --
 ALTER TABLE `examQuestion`
@@ -145,6 +185,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `chatMessage`
+--
+ALTER TABLE `chatMessage`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `examQuestion`
