@@ -3,8 +3,8 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Feb 07, 2020 at 06:53 PM
--- Server version: 10.4.11-MariaDB
+-- Generation Time: Feb 08, 2020 at 08:01 PM
+-- Server version: 10.4.12-MariaDB
 -- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
@@ -44,26 +44,7 @@ CREATE TABLE `examQuestion` (
 --
 
 INSERT INTO `examQuestion` (`id`, `category`, `question`, `letterA`, `letterB`, `letterC`, `letterD`, `correctAnswer`) VALUES
-(1, 'IT', 'Question 1', '1 ', '2', '4', '3', '4'),
-(2, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(3, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(4, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(5, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(6, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(7, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(8, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(9, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(10, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(11, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(12, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(13, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(14, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(15, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(16, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(17, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(18, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(19, 'IT', 'q', 'q', 'w', 'e', 'r', 'q'),
-(20, 'IT', 'w', 'w', 'w', 'w', 'w', 'w');
+(1, 'IT', '', 'asd', 'r', 'asd', 'asd', 'r');
 
 -- --------------------------------------------------------
 
@@ -78,6 +59,19 @@ CREATE TABLE `examResult` (
   `eNum` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `examResult`
+--
+
+INSERT INTO `examResult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
+(3, 6, '4', '21', '2020-02-08 13:19:12'),
+(4, 3, '1', '2', '2020-02-08 15:23:38'),
+(5, 3, '1', '2', '2020-02-08 15:41:33'),
+(6, 3, '1', '2', '2020-02-08 15:54:48'),
+(7, 3, '0', '0', '2020-02-08 15:55:55'),
+(8, 3, '0', '0', '2020-02-08 16:00:22'),
+(9, 3, '0', '0', '2020-02-08 16:16:52');
 
 -- --------------------------------------------------------
 
@@ -111,8 +105,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `exp_date_at`) VALUES
-(1, 'cgadmin', 'ee39dd49b6477fd99d9f356dcba3ad12', '', 'CG Admin', '', '', '', '', '', '', NULL, '', NULL, 0, '0', NULL, NULL),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL);
+(1, 'cgofficer', 'faf0275a4da236e0e82050da7463a9f9', '', 'CgOfficer', '', '', '', '', '', '', '', '', '', 0, '0', NULL, NULL),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL),
+(3, 'synecders', '7bbcd71b44801d338bf583b183fcc9ab', 'solomon', 'kenneth', 'lim', 'Seabreeze', 'Computer Science', 'SNHS', '09454296723', 'Enrolled', '2020/02/09-12:16:58am', '0', 'ACT', 3, '1', '2020-02-08 00:00:00', '2020-02-23 00:00:00');
 
 --
 -- Triggers `user`
@@ -155,19 +150,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `examQuestion`
 --
 ALTER TABLE `examQuestion`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `examResult`
 --
 ALTER TABLE `examResult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
