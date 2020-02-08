@@ -25,6 +25,7 @@ if (mysqli_num_rows($result) > 0) {
         $status = $row["status"];
         $lastSchoolAttended = $row["lastSchoolAttended"];
         $course = $row["course"];
+        $score = $row["score"];
         $accountLock = $row["takeExam"];
     }
 } else {
