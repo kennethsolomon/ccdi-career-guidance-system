@@ -18,7 +18,7 @@ if (mysqli_num_rows($result) > 0) {
         $phoneNumber = $row["phoneNumber"];
         $dateOfExamination = $row["dateOfExamination"];
         $suggestedCourse = $row["suggestedCourse"];
-        $score = $row["score"];
+        $intendedCourse = $row["course"];
 
         $username = $row["username"];
         $password = $row["password"];
@@ -71,40 +71,77 @@ mysqli_close($conn);
         <span class="text printText">Print</span>
     </a>
 
-    <div id="printArea" class="container containerDesign border rounded border-secondary">
+    <div class="printArea" id="printArea">
 
-        <div class="d-flex justify-content-center">
-            <h3>Student Result</h3>
+        <div class="container container1 containerDesign border rounded border-secondary">
+
+            <div class="d-flex justify-content-center">
+                <h3>Student Result</h3>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Fullname: <span class="resultFont"><?php echo $fullName ?></span></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Address: <?php echo $address ?></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Phone Number: <?php echo $phoneNumber ?></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Intended Course: <?php echo $course ?></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Exam Score: <?php echo $score ?></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Suggested Course: <?php echo $suggestedCourse ?></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Date Of Examination: <?php echo $dateOfExamination ?></p>
+                </div>
+            </div>
+
+            <p class="signature">Authorized Personnel: _______________</p>
+            <p class="signature">Student Signature: __________________</p>
+
         </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Fullname: <span class="resultFont"><?php echo $fullName ?></span></p>
-            </div>
-            <div class="col-lg-12">
-                <p>Address: <?php echo $address ?></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Phone Number: <?php echo $phoneNumber ?></p>
-            </div>
-            <div class="col-lg-12">
-                <p>Exam Score: <?php echo $score ?></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
-                <p>Suggested Course: <?php echo $suggestedCourse ?></p>
-            </div>
-            <div class="col-lg-12">
-                <p>Date Of Examination: <?php echo $dateOfExamination ?></p>
-            </div>
-        </div>
+        <div class="container container2 containerDesign border rounded border-secondary">
 
-        <p class="signature">Authorized Personnel: _______________</p>
-        <p class="signature">Student Signature: __________________</p>
+            <div class="d-flex justify-content-center">
+                <h3>Student Result</h3>
+            </div>
 
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Fullname: <span class="resultFont"><?php echo $fullName ?></span></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Address: <?php echo $address ?></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Phone Number: <?php echo $phoneNumber ?></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Intended Course: <?php echo $course ?></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Exam Score: <?php echo $score ?></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Suggested Course: <?php echo $suggestedCourse ?></p>
+                </div>
+                <div class="col-lg-12">
+                    <p>Date Of Examination: <?php echo $dateOfExamination ?></p>
+                </div>
+            </div>
+
+            <p class="signature">Authorized Personnel: _______________</p>
+            <p class="signature">Student Signature: __________________</p>
+
+        </div>
     </div>
 
     <!-- Bootstrap core JavaScript-->

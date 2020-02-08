@@ -1,6 +1,14 @@
 .containerDesign {
   margin-top: 30px;
   padding: 20px;
+  margin-bottom: 30px;
+}
+.container1 {
+  margin-bottom: 300px;
+  margin-top: 80px;
+}
+.container2 {
+  display: none;
 }
 .signature {
   margin-top: 35px;
@@ -23,6 +31,9 @@ p {
   footer,
   .back {
     display: none;
+  }
+  .container2 {
+    display: block;
   }
 
   * {
