@@ -50,7 +50,7 @@
                                          <h1 class="h4 text-gray-900 mb-2">List of Contact Number:</h1>
                                          <!-- Query to get all the phone numbers -->
                                          <?php
-                                            if (isset($_POST['btnPhoneNumber'])) {
+                                            if (isset($_POST['btnTakedExamPhoneNumber'])) {
 
                                                 // Get Date and Time
                                                 date_default_timezone_set("Asia/Manila");
@@ -58,7 +58,29 @@
                                                 // $currentDate = '2020-02-21 00:00:00';
                                                 $getCurrentDate = date("Y-m-d");
                                                 $currentDate = $getCurrentDate . ' ' . '00:00:00';
-                                                $sql = "SELECT * FROM user Where userLevel=3 AND status='Taked Exam' OR status='Undecided' ORDER BY id desc";
+                                                $sql = "SELECT * FROM user Where userLevel=3 AND status='Taked Exam' ORDER BY id desc";
+                                                $result = mysqli_query($conn, $sql);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        $exp_date_at = $row["exp_date_at"];
+                                                        if ($exp_date_at >= $currentDate) {
+                                                            echo $phoneNumbers = $row["phoneNumber"] . ",";
+                                                        }
+                                                    }
+                                                } else {
+                                                    echo "0 results";
+                                                }
+                                                mysqli_close($conn);
+                                            }
+                                            if (isset($_POST['btnUndecidedPhoneNumber'])) {
+
+                                                // Get Date and Time
+                                                date_default_timezone_set("Asia/Manila");
+                                                //Test Trigger if Working
+                                                // $currentDate = '2020-02-21 00:00:00';
+                                                $getCurrentDate = date("Y-m-d");
+                                                $currentDate = $getCurrentDate . ' ' . '00:00:00';
+                                                $sql = "SELECT * FROM user Where userLevel=3 AND status='Undecided' ORDER BY id desc";
                                                 $result = mysqli_query($conn, $sql);
                                                 if (mysqli_num_rows($result) > 0) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -74,13 +96,16 @@
                                             }
                                             ?>
                                      </div>
-                                     <iframe src="https://pulsesms.app/" width="800px" height="600px" frameborder="0"></iframe>
+                                     <!-- <iframe src="https://pulsesms.app/" width="800px" height="600px" frameborder="0"></iframe> -->
+                                     <iframe src="https://app.mysms.com/#compose" width="810px" height="600px" frameborder="0"></iframe>
+
                                      <hr>
                                      <div class="row">
                                          <div class="col-lg-12 p-2">
                                              <div class="text-center">
                                                  <form method="post">
-                                                     <button class="btn btn-success " name="btnPhoneNumber" type="submit">Get All Student Number</button>
+                                                     <button class="btn btn-success " name="btnTakedExamPhoneNumber" type="submit">Get All Taked Exam Student Number</button>
+                                                     <button class="btn btn-success " name="btnUndecidedPhoneNumber" type="submit">Get All Undecided Student Number</button>
                                                  </form>
                                              </div>
                                          </div>
