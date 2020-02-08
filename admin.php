@@ -31,6 +31,7 @@ if ($_SESSION['userLevel'] == 1) {
 
             <!-- Custom styles for this template-->
             <link href="css/sb-admin-2.min.css" rel="stylesheet">
+            <link href="css/chat.css" rel="stylesheet">
 
         </head>
 
@@ -236,25 +237,112 @@ if ($_SESSION['userLevel'] == 1) {
                             </div>
                             <!-- Dash Board Row -->
 
+                            <!-- Need to Fix the Codes -->
+                            <div class="container" style="margin-top: 200px">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="panel panel-primary">
+                                            <div class="panel-body">
+                                                <ul class="chat">
+                                                    <?php
 
-                        </div>
-                        <!-- /.container-fluid -->
+                                                    if (isset($_POST['btnSendChat'])) {
+                                                        $chatMessage = $_POST['chatMessage'];
+                                                        $id = $_POST['id'];
+                                                        $sql = "INSERT INTO chatMessage (
+                                                        chatMessage, 
+                                                        fromUserId
+                                                        ) VALUES (
+                                                        '$chatMessage',
+                                                        '$id'
+                                                        )";
+                                                        if (mysqli_query($conn, $sql)) {
+                                                            header("location: ./../admin.php?id=$id");
+                                                        } else {
+                                                            echo "Error: " . $sql . "" . mysqli_error($conn);
+                                                        }
+                                                    }
 
-                    </div>
-                    <!-- End of Main Content -->
+                                                    //Get All Chat and User ID
+                                                    $getAllMessage = "SELECT * FROM chatMessage ORDER by id DESC LIMIT 10";
+                                                    $resultAllMessage = mysqli_query($conn, $getAllMessage);
 
-                    <!-- Footer -->
-                    <footer class="sticky-footer bg-white">
-                        <div class="container my-auto">
-                            <div class="copyright text-center my-auto">
-                                <span>Copyright &copy; Your Website 2019</span>
+                                                    if (mysqli_num_rows($resultAllMessage) > 0) {
+                                                        while ($rowAllMessage = mysqli_fetch_assoc($resultAllMessage)) {
+
+                                                            $allChatId =  $rowAllMessage["fromUserId"];
+                                                            $allChat =  $rowAllMessage["chatMessage"];
+                                                            $timestamp =  $rowAllMessage["timestamp"];
+
+                                                            //Get Chat Name
+                                                            $getChatName = "SELECT * FROM user Where id = '$allChatId'";
+                                                            $resultChatName = mysqli_query($conn, $getChatName);
+
+                                                            if (mysqli_num_rows($resultChatName) > 0) {
+                                                                while ($rowChatName = mysqli_fetch_assoc($resultChatName)) {
+                                                                    $chatName =  $rowChatName["firstName"];
+
+                                                                    echo '
+                                                                    <li class="right clearfix"><span class="chat-img pull-right">
+                                                                        <img src="https://www.mips.com.au/images/UserUploadedImages/103/graduate-student-avatar.png" width=50px; height=50px; alt="User Avatar" class="img-circle" />
+                                                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>' . $timestamp . '</small>
+                                                                        </span>
+                                                                    <div class="chat-body clearfix">
+                                                                        <div class="header">
+                                                                        <small class=" text-muted"><span class="glyphicon glyphicon-time"></span></small>
+                                                                        <strong class="pull-right primary-font">' . $chatName . '</strong>
+                                                                        </div>
+                                                                        <p>
+                                                                        ' . $allChat . ' 
+                                                                        </p>
+                                                                    </div>
+                                                                    </li>
+                                                                    ';
+                                                                }
+                                                            }
+                                                            // Ends Here
+
+                                                        }
+                                                    }
+                                                    // Ends Here
+                                                    ?>
+                                                </ul>
+                                            </div>
+                                            <div class="panel-footer">
+                                                <form action="admin.php?id=<?php echo $_GET['id'] ?>" method="post">
+                                                    <div class="input-group">
+                                                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." name="chatMessage" />
+                                                        <span class="input-group-btn">
+                                                            <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
+                                                            <button class="btn btn-warning btn-md" id="btn-chat" name="btnSendChat">Send</button>
+                                                </form>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </footer>
-                    <!-- End of Footer -->
+                        <!-- Need to Fix the Codes -->
+
+                    </div>
+                    <!-- /.container-fluid -->
 
                 </div>
-                <!-- End of Content Wrapper -->
+                <!-- End of Main Content -->
+
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2019</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
+
+            </div>
+            <!-- End of Content Wrapper -->
 
             </div>
             <!-- End of Page Wrapper -->

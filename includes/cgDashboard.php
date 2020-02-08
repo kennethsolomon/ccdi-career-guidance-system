@@ -76,14 +76,3 @@ if (mysqli_num_rows($resultIS) > 0) {
 } else {
     $totalIS = 0;
 }
-
-
-
-
-
-
-
-
-
-
-mysqli_close($conn);
