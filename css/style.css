@@ -22,3 +22,8 @@
 .lockLabel {
   color: red;
 }
+
+/* Questions */
+.choices {
+  margin-left: 150px;
+}

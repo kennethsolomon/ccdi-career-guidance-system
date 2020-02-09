@@ -64,6 +64,7 @@ if ($_SESSION['userLevel'] == 3 && $_SESSION['takeExam'] == 0) {
 
             <!-- Custom styles for this template-->
             <link href="css/sb-admin-2.min.css" rel="stylesheet">
+            <link href="css/style.css" rel="stylesheet">
 
         </head>
 
@@ -125,8 +126,10 @@ if ($_SESSION['userLevel'] == 3 && $_SESSION['takeExam'] == 0) {
                                                 ' . $question . '
                                                 </div>
                                                 </div>
+
+                                            <div class="container choices"">
                                                 <div class="row">
-                                                    <div class="col-lg-12">
+                                                    <div class="col-lg-1">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
                                                                 <input type="radio" class="form-check-input" value="' . $letterA . '" name="answer">' . $letterA . '
@@ -135,7 +138,7 @@ if ($_SESSION['userLevel'] == 3 && $_SESSION['takeExam'] == 0) {
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-lg-12">
+                                                    <div class="col-lg-1">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
                                                                 <input type="radio" class="form-check-input" value="' . $letterB . '" name="answer">' . $letterB . '
@@ -144,7 +147,7 @@ if ($_SESSION['userLevel'] == 3 && $_SESSION['takeExam'] == 0) {
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-lg-12">
+                                                    <div class="col-lg-1">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
                                                                 <input type="radio" class="form-check-input" value="' . $letterC . '" name="answer">' . $letterC . '
@@ -153,7 +156,7 @@ if ($_SESSION['userLevel'] == 3 && $_SESSION['takeExam'] == 0) {
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-lg-12">
+                                                    <div class="col-lg-1">
                                                         <div class="form-check">
                                                             <label class="form-check-label">
                                                                 <input type="radio" class="form-check-input" value="' . $letterD . '" name="answer">' . $letterD . '
@@ -161,6 +164,7 @@ if ($_SESSION['userLevel'] == 3 && $_SESSION['takeExam'] == 0) {
                                                         </div>
                                                     </div>
                                                 </div>
+                                            </div>
                                                 <hr>
                                                 <button class="btn btn-success .btn-circle .btn-lg" type="submit" name="saveAnswer">Save Answer</button>
                                                 ';
