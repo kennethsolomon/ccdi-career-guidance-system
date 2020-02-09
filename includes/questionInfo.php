@@ -62,16 +62,14 @@ if (isset($_POST['btnAddQuestion'])) {
         letterB, 
         letterC, 
         letterD, 
-        correctAnswer,
-        category
+        correctAnswer
         ) VALUES (
         '$question',
         '$letterA',
         '$letterB',
         '$letterC',
         '$letterD',
-        '$correctAnswer',
-        'IT'
+        '$correctAnswer'
         )";
 
         if (mysqli_query($conn, $sql)) {
