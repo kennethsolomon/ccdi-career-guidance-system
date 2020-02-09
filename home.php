@@ -62,7 +62,7 @@ if ($_SESSION['userLevel'] == 0) {
                 <li class="nav-item dropdown no-arrow">
                   <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['firstName']; ?></span>
-                    <img class="img-profile rounded-circle" src="https://www.ccdi-sorsogon.net/wp-content/uploads/2018/04/cropped-ccdilogo.png">
+                    <img class="img-profile rounded-circle" src="css/image/ccdiLogo.png">
                   </a>
                   <!-- Dropdown - User Information -->
                   <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -298,7 +298,7 @@ if ($_SESSION['userLevel'] == 0) {
 
                                   echo '
                                   <li class="right clearfix"><span class="chat-img pull-right">
-                                    <img src="https://www.mips.com.au/images/UserUploadedImages/103/graduate-student-avatar.png" width=50px; height=50px; alt="User Avatar" class="img-circle" />
+                                    <img src="css/image/chatAvatar.png" width=50px; height=50px; alt="User Avatar" class="img-circle" />
                                     <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>' . $timestamp . '</small>
                                     </span>
                                   <div class="chat-body clearfix">
