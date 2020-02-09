@@ -13,8 +13,10 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <h5>Are you sure you want to Reset ALL Student Data? <b>This Action is not Reversable. </b></h5><br>
-                                <h6> <i>We Recommend you atleast export data to .xls format before resetting the data.</i><a href="./includes/exportStudent.php"> Export </a> </h6>
+                                <h5>Are you sure you want to Reset ALL Student Data? <b>This Action is not Reversable.
+                                    </b></h5><br>
+                                <h6> <i>We Recommend you atleast export data to .xls format before resetting the
+                                        data.</i><a href="./includes/exportStudent.php"> Export </a> </h6>
 
                             </div>
                         </div>

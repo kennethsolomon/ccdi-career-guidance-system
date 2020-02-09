@@ -1,5 +1,6 @@
 <!-- View Student Modal-->
-<div class="modal fade" id="deleteAllQuestionModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteAllQuestionModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -13,7 +14,8 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <h5>Are you sure you want to delete all the Questions? <b>This Action is not Reversable. </b></h5>
+                                <h5>Are you sure you want to delete all the Questions? <b>This Action is not Reversable.
+                                    </b></h5>
                             </div>
                         </div>
                     </div>

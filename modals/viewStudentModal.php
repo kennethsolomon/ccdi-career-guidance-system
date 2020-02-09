@@ -1,5 +1,6 @@
 <!-- View Student Modal-->
-<div class="modal fade" id="viewStudentModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel" aria-hidden="true">
+<div class="modal fade" id="viewStudentModal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"
+    aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -14,8 +15,10 @@
                         <div class="col-lg-12">
                             <div class="form-group">
                                 <label for="username">Enter Username:</label>
-                                <input type="text" class="form-control form-control-user" id="username" name="username" aria-describedby="usernameHelp" placeholder="Username">
-                                <input required type="hidden" class="form-control form-control-user" id="id" name="id" value="<?php echo $_GET['id']; ?>">
+                                <input type="text" class="form-control form-control-user" id="username" name="username"
+                                    aria-describedby="usernameHelp" placeholder="Username">
+                                <input required type="hidden" class="form-control form-control-user" id="id" name="id"
+                                    value="<?php echo $_GET['id']; ?>">
                             </div>
                         </div>
                     </div>
