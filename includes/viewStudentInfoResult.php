@@ -51,7 +51,7 @@ if ($_GET['search'] == 1 && $studentID != '') {
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="password">Password:</label>
-                                            <input type="password" class="form-control" id="password" name="password" value="' . $password . '">
+                                            <input type="password" class="form-control" id="password" name="password" value="">
                                         </div>
                                     </div>
                                     <div class="col-lg-3">
@@ -243,7 +243,7 @@ else if ($studentID == '') {
                                     <div class="col-lg-3">
                                         <div class="form-group">
                                             <label for="password">Password:</label>
-                                            <input type="password" class="form-control" id="password" name="password" value=' . $password . '>
+                                            <input type="password" class="form-control" id="password" name="password" value="">
                                         </div>
                                     </div>
                                     <div class="col-lg-3">

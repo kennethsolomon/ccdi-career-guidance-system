@@ -44,9 +44,24 @@ if (isset($_POST['btnStudentInfoUpdate'])) {
     $score = $_POST['examScore'];
     $accountLock = $_POST['accountLock'];
 
-
-
-    $sql = "UPDATE user SET 
+    if ($password == '') {
+        $sql = "UPDATE user SET 
+        lastName='$lastName', 
+        firstName='$firstName', 
+        middleName='$middleName', 
+        phoneNumber='$phoneNumber', 
+        address='$address',
+        status='$status',
+        dateOfExamination='$dateOfExamination',
+        lastSchoolAttended='$lastSchoolAttended',
+        course='$course',
+        suggestedCourse='$suggestedCourse',
+        score='$score',
+        takeExam='$accountLock' 
+        WHERE 
+        id='$studentId'";
+    } else {
+        $sql = "UPDATE user SET 
         lastName='$lastName', 
         firstName='$firstName', 
         middleName='$middleName', 
@@ -62,6 +77,8 @@ if (isset($_POST['btnStudentInfoUpdate'])) {
         takeExam='$accountLock' 
         WHERE 
         id='$studentId'";
+    }
+
     if ($conn->query($sql) === TRUE) {
         $_SESSION['message'] = 'Student Update Successfully!';
         header("location: ./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=$search");
