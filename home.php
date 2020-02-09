@@ -112,7 +112,7 @@ if ($_SESSION['userLevel'] == 0) {
               <!-- Dash Board Row -->
               <div class="row">
 
-                <!-- Earnings (Monthly) Card Example -->
+                <!-- Total Enrolled  -->
                 <div class="col-xl-3 col-md-6 mb-4">
                   <div class="card border-left-primary shadow h-100 py-2">
                     <div class="card-body">
@@ -122,7 +122,126 @@ if ($_SESSION['userLevel'] == 0) {
                           <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalStudent ?></div>
                         </div>
                         <div class="col-auto">
-                          <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                          <i class="fas fa-school fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Taked Exam  -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Taked Exam Student</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalTakedExam ?></div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-book-open fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Total Undecided  -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Undecided Student</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalUndecided ?></div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-question-circle fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Total Expired  -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-danger shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total Expired Student</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalExpired ?></div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+              <!-- Dash Board Row -->
+
+              <!-- Dash Board Row -->
+              <div class="row">
+
+                <!-- IT  -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total IT Enrolled</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalIT ?></div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- CS  -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total CS Enrolled</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalCS ?></div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- IS  -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total IS Enrolled</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalIS ?></div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- ACT  -->
+                <div class="col-xl-3 col-md-6 mb-4">
+                  <div class="card border-left-success shadow h-100 py-2">
+                    <div class="card-body">
+                      <div class="row no-gutters align-items-center">
+                        <div class="col mr-2">
+                          <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total ACT Enrolled</div>
+                          <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalACT ?></div>
+                        </div>
+                        <div class="col-auto">
+                          <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
                         </div>
                       </div>
                     </div>
