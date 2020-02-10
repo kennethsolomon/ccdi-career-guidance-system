@@ -38,7 +38,6 @@ if (mysqli_num_rows($resultExpired) > 0) {
 }
 
 
-
 // 2nd Row
 // Total IT
 $sqlIT = "SELECT * FROM user WHERE userLevel = '3' && status = 'Enrolled' AND course ='Information Technology'";

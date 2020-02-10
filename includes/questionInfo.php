@@ -32,7 +32,10 @@ if (isset($_POST['btnQuestionInfoUpdate'])) {
         id='$questionNumber'";
     if ($conn->query($sql) === TRUE) {
         $_SESSION['message'] = 'Question Update Successfully!';
-        header("location: ./../viewQuestionInfo.php?id=$id&questionNumber=$questionNumber&search=1");
+
+        $url = "./../viewQuestionInfo.php?id=$id&questionNumber=$questionNumber&search=1";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("Location: $url");
     } else {
         echo "Error updating record: " . $conn->error;
     }
@@ -54,7 +57,9 @@ if (isset($_POST['btnAddQuestion'])) {
     $count = mysqli_num_rows($result);
     if ($count > 19) {
         $_SESSION['message'] = 'You Can Only Have 20 Questions!';
-        header("location: ./../admin.php?id=$id");
+        $url = "./../admin.php?id=$id";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("Location: $url");
     } else {
         $sql = "INSERT INTO examQuestion (
         question, 
@@ -74,7 +79,9 @@ if (isset($_POST['btnAddQuestion'])) {
 
         if (mysqli_query($conn, $sql)) {
             $_SESSION['message'] = 'Add Question Successfully!';
-            header("location: ./../admin.php?id=$id");
+            $url = "./../admin.php?id=$id";
+            $url = str_replace(PHP_EOL, '', $url);
+            header("Location: $url");
         } else {
             echo "Error: " . $sql . "" . mysqli_error($conn);
         }
@@ -87,7 +94,9 @@ if (isset($_POST['btnDeleteAllQuestion'])) {
     $sql = "TRUNCATE TABLE examQuestion";
     if (mysqli_query($conn, $sql)) {
         $_SESSION['message'] = 'Delete All Questions Successfully!';
-        header("location: ./../admin.php?id=$id");
+        $url = "./../admin.php?id=$id";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("Location: $url");
     } else {
         echo "Error: " . $sql . "" . mysqli_error($conn);
     }

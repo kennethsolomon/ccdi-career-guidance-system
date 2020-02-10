@@ -35,7 +35,9 @@ if ($examScore > 15) {
 $sql2 = "UPDATE user SET score='$examScore', dateOfExamination='$dateOfExamination', suggestedCourse='$suggestedCourse' WHERE id='$id'";
 
 if ($conn->query($sql2) === TRUE) {
-    header("location: ./logout.php");
+    $url = "./logout.php";
+    $url = str_replace(PHP_EOL, '', $url);
+    header("Location: $url");
 } else {
     echo "Error updating record: " . $conn->error;
 }

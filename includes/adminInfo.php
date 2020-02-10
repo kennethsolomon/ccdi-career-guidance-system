@@ -12,7 +12,9 @@ if (isset($_POST['btnResetAllStudentData'])) {
         $sql2 = "ALTER TABLE user AUTO_INCREMENT = 3";
         if ($conn->query($sql2) === TRUE) {
             $_SESSION['message'] = 'Reset Data Successfully!';
-            header("location: ./../admin.php?id=$id");
+            $url = "./../admin.php?id=$id";
+            $url = str_replace(PHP_EOL, '', $url);
+            header("Location: $url");
         } else {
             echo "Error reseting record: " . $conn->error;
         }

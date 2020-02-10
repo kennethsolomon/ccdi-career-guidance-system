@@ -27,7 +27,9 @@ if (isset($_POST['btnRegister'])) {
 
     if (mysqli_num_rows($result) > 0) {
         $_SESSION['registerStudent'] = 'Username Already Exist!';
-        header('location: ./../home.php');
+        $url = "./../home.php";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("Location: $url");
     } else {
         $sql = "INSERT INTO user (
         username, 
@@ -59,7 +61,9 @@ if (isset($_POST['btnRegister'])) {
 
         if (mysqli_query($conn, $sql)) {
             $_SESSION['registerStudent'] = 'Registered Successfully!';
-            header("location: ./../home.php?id=$id");
+            $url = "./../home.php?id=$id";
+            $url = str_replace(PHP_EOL, '', $url);
+            header("Location: $url");
         } else {
             echo "Error: " . $sql . "" . mysqli_error($conn);
         }

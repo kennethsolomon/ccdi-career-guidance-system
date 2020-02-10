@@ -19,7 +19,9 @@ if (mysqli_num_rows($result) > 0) {
             // //Update Expired Student
             $sql2 = "UPDATE user SET status='Expired' WHERE id='$studentId' AND status != 'Enrolled'";
             if ($conn->query($sql2) === TRUE) {
-                header("location: ./../home.php?id=$id");
+                $url = "./../home.php?id=$id";
+                $url = str_replace(PHP_EOL, '', $url);
+                header("Location: $url");
             } else {
                 echo "Error updating record: " . $conn->error;
             }
@@ -28,6 +30,8 @@ if (mysqli_num_rows($result) > 0) {
 } else {
 }
 
-header("location: ./../home.php?id=$id");
+$url = "./../home.php?id=$id";
+$url = str_replace(PHP_EOL, '', $url);
+header("Location: $url");
 
 mysqli_close($conn);

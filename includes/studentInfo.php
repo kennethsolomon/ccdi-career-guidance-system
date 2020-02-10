@@ -81,7 +81,9 @@ if (isset($_POST['btnStudentInfoUpdate'])) {
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['message'] = 'Student Update Successfully!';
-        header("location: ./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=$search");
+        $url = "./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=$search";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("Location: $url");
     } else {
         echo "Error updating record: " . $conn->error;
     }
@@ -91,7 +93,9 @@ if (isset($_POST['btnStudentInfoPrint'])) {
     $id = $_POST["id"];
     $studentId = $_POST['studentId'];
     $username = $_POST['username'];
-    header("location: ./../printStudentInfo.php?id=$id&studentId=$studentId&username=$username");
+    $url = "./../printStudentInfo.php?id=$id&studentId=$studentId&username=$username";
+    $url = str_replace(PHP_EOL, '', $url);
+    header("Location: $url");
 }
 
 if (isset($_POST['btnStudentInfoDelete'])) {
@@ -104,7 +108,9 @@ if (isset($_POST['btnStudentInfoDelete'])) {
 
     if ($conn->query($sql) === TRUE) {
         $_SESSION['message'] = 'Student Deleted Successfully!';
-        header("location: ./../viewStudentInfo.php?id=$id&studentId=&username=$username&search=$search");
+        $url = "./../viewStudentInfo.php?id=$id&studentId=&username=$username&search=$search";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("Location: $url");
     } else {
         echo "Error deleting record: " . $conn->error;
     }
