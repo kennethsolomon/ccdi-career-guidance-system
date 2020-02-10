@@ -4,7 +4,7 @@
     // Connect to database
     include_once('./includes/connection.php');
 
-    $id = $_POST['id'];
+    // $id = $_POST['id'];
     ?>
  <!DOCTYPE html>
  <html lang="en">
