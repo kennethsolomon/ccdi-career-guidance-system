@@ -220,12 +220,12 @@ if ($_SESSION['userLevel'] == 3 && $_SESSION['takeExam'] == 0) {
 
 <?php
     } else {
-        $url = "./login.php";
+        $url = "./index.php";
         $url = str_replace(PHP_EOL, '', $url);
         header("Location: $url");
     }
 } else {
-    $url = "./login.php";
+    $url = "./index.php";
     $url = str_replace(PHP_EOL, '', $url);
     header("Location: $url");
 }

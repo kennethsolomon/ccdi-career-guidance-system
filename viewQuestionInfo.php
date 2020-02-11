@@ -153,12 +153,12 @@ if ($_SESSION['userLevel'] == 1) {
 
 <?php
     } else {
-        $url = "./login.php";
+        $url = "./index.php";
         $url = str_replace(PHP_EOL, '', $url);
         header("Location: $url");
     }
 } else {
-    $url = "./login.php";
+    $url = "./index.php";
     $url = str_replace(PHP_EOL, '', $url);
     header("Location: $url");
 }
