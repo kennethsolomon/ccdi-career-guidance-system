@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 09, 2020 at 08:55 AM
--- Server version: 10.4.12-MariaDB
--- PHP Version: 7.4.2
+-- Host: 127.0.0.1
+-- Generation Time: Feb 16, 2020 at 05:34 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chatMessage`
+-- Table structure for table `chatmessage`
 --
 
-CREATE TABLE `chatMessage` (
+CREATE TABLE `chatmessage` (
   `id` int(25) NOT NULL,
   `fromUserId` int(25) NOT NULL,
   `chatMessage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -38,10 +38,10 @@ CREATE TABLE `chatMessage` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examQuestion`
+-- Table structure for table `examquestion`
 --
 
-CREATE TABLE `examQuestion` (
+CREATE TABLE `examquestion` (
   `id` int(12) NOT NULL,
   `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `letterA` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -54,10 +54,10 @@ CREATE TABLE `examQuestion` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examResult`
+-- Table structure for table `examresult`
 --
 
-CREATE TABLE `examResult` (
+CREATE TABLE `examresult` (
   `id` int(25) NOT NULL,
   `studentId` int(25) NOT NULL,
   `examScore` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -115,21 +115,21 @@ DELIMITER ;
 --
 
 --
--- Indexes for table `chatMessage`
+-- Indexes for table `chatmessage`
 --
-ALTER TABLE `chatMessage`
+ALTER TABLE `chatmessage`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `examQuestion`
+-- Indexes for table `examquestion`
 --
-ALTER TABLE `examQuestion`
+ALTER TABLE `examquestion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `examResult`
+-- Indexes for table `examresult`
 --
-ALTER TABLE `examResult`
+ALTER TABLE `examresult`
   ADD PRIMARY KEY (`id`),
   ADD KEY `studentId` (`studentId`);
 
@@ -144,28 +144,28 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `chatMessage`
+-- AUTO_INCREMENT for table `chatmessage`
 --
-ALTER TABLE `chatMessage`
+ALTER TABLE `chatmessage`
   MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `examQuestion`
+-- AUTO_INCREMENT for table `examquestion`
 --
-ALTER TABLE `examQuestion`
+ALTER TABLE `examquestion`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `examResult`
+-- AUTO_INCREMENT for table `examresult`
 --
-ALTER TABLE `examResult`
+ALTER TABLE `examresult`
   MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

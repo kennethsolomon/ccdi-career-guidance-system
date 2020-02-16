@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Feb 08, 2020 at 10:52 PM
--- Server version: 10.4.12-MariaDB
--- PHP Version: 7.4.2
+-- Host: 127.0.0.1
+-- Generation Time: Feb 16, 2020 at 05:32 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chatMessage`
+-- Table structure for table `chatmessage`
 --
 
-CREATE TABLE `chatMessage` (
+CREATE TABLE `chatmessage` (
   `id` int(25) NOT NULL,
   `fromUserId` int(25) NOT NULL,
   `chatMessage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -36,35 +36,28 @@ CREATE TABLE `chatMessage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `chatMessage`
+-- Dumping data for table `chatmessage`
 --
 
-INSERT INTO `chatMessage` (`id`, `fromUserId`, `chatMessage`, `timestamp`) VALUES
-(1, 2, 'HI!', '2020-02-08 16:00:00'),
-(3, 1, 'Alright!2', '2020-02-08 16:00:00'),
-(4, 2, 'HI!2', '2020-02-08 16:00:00'),
-(5, 2, 'Latest Chat', '2020-02-08 16:00:00'),
-(6, 2, 'Most Latest Chat', '2020-02-08 16:00:00'),
-(7, 1, 'Most Latest Chat2', '2020-02-08 16:00:00'),
-(8, 2, 'test', '2020-02-08 21:22:33'),
-(10, 1, 'test', '2020-02-08 22:41:38'),
-(11, 1, 'working na pucha!', '2020-02-08 22:41:55'),
-(12, 2, 'hahaha oo nga noh?', '2020-02-08 22:44:01'),
-(13, 1, 'wee', '2020-02-08 22:45:16'),
-(14, 2, 'hahaha', '2020-02-08 22:45:20'),
-(15, 2, 'Kumusta na??', '2020-02-08 22:45:36'),
-(16, 2, 'yo!', '2020-02-08 22:46:01'),
-(17, 1, 'HAHAHA', '2020-02-08 22:46:06');
+INSERT INTO `chatmessage` (`id`, `fromUserId`, `chatMessage`, `timestamp`) VALUES
+(1, 1, 'Heello!', '2020-02-12 09:49:40'),
+(2, 2, 'Hi!', '2020-02-12 09:49:56'),
+(3, 2, 'klasjdl', '2020-02-28 10:02:12'),
+(4, 2, 'klasjdl', '2020-02-28 10:02:13'),
+(5, 1, 'laskdlasd', '2020-02-28 10:06:26'),
+(6, 1, 'skdlskds', '2020-02-28 10:06:34'),
+(7, 1, 'hello', '2020-02-28 10:06:39'),
+(8, 1, 'lkalsdkasd', '2020-02-28 10:07:15'),
+(9, 1, 'ksjadkajsd', '2020-02-28 10:07:26');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examQuestion`
+-- Table structure for table `examquestion`
 --
 
-CREATE TABLE `examQuestion` (
+CREATE TABLE `examquestion` (
   `id` int(12) NOT NULL,
-  `category` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'IT',
   `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `letterA` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `letterB` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -74,19 +67,19 @@ CREATE TABLE `examQuestion` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `examQuestion`
+-- Dumping data for table `examquestion`
 --
 
-INSERT INTO `examQuestion` (`id`, `category`, `question`, `letterA`, `letterB`, `letterC`, `letterD`, `correctAnswer`) VALUES
-(1, 'IT', '', 'asd', 'r', 'asd', 'asd', 'r');
+INSERT INTO `examquestion` (`id`, `question`, `letterA`, `letterB`, `letterC`, `letterD`, `correctAnswer`) VALUES
+(1, 'a', 'a', 'a', 'a', 'a', 'a');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examResult`
+-- Table structure for table `examresult`
 --
 
-CREATE TABLE `examResult` (
+CREATE TABLE `examresult` (
   `id` int(25) NOT NULL,
   `studentId` int(25) NOT NULL,
   `examScore` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -95,17 +88,14 @@ CREATE TABLE `examResult` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `examResult`
+-- Dumping data for table `examresult`
 --
 
-INSERT INTO `examResult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
-(3, 6, '4', '21', '2020-02-08 13:19:12'),
-(4, 3, '1', '2', '2020-02-08 15:23:38'),
-(5, 3, '1', '2', '2020-02-08 15:41:33'),
-(6, 3, '1', '2', '2020-02-08 15:54:48'),
-(7, 3, '0', '0', '2020-02-08 15:55:55'),
-(8, 3, '0', '0', '2020-02-08 16:00:22'),
-(9, 3, '0', '0', '2020-02-08 16:16:52');
+INSERT INTO `examresult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
+(1, 3, '0', '0', '2020-02-10 02:38:30'),
+(2, 5, '1', '2', '2020-02-12 09:53:39'),
+(3, 3, '0', '0', '2020-02-12 14:19:20'),
+(4, 3, '0', '0', '2020-02-12 14:21:03');
 
 -- --------------------------------------------------------
 
@@ -141,7 +131,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `exp_date_at`) VALUES
 (1, 'cgofficer', 'faf0275a4da236e0e82050da7463a9f9', '', 'CgOfficer', '', '', '', '', '', '', '', '', '', 0, '0', NULL, NULL),
 (2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL),
-(3, 'synecders', '7bbcd71b44801d338bf583b183fcc9ab', 'solomon', 'kenneth', 'lim', 'Seabreeze', 'Computer Science', 'SNHS', '09454296723', 'Enrolled', '2020/02/09-12:16:58am', '0', 'ACT', 3, '1', '2020-02-08 00:00:00', '2020-02-23 00:00:00');
+(3, 'q', '7694f4a66316e53c8cdd9d9954bd611d', 'q', 'q', 'q', 'q', 'Information Technology', 'Aemillianum College Inc.', '123', 'Taked Exam', '2020/02/12-10:21:45pm', '0', 'ACT', 3, '1', '2020-02-12 00:00:00', '2020-02-27 00:00:00');
 
 --
 -- Triggers `user`
@@ -158,21 +148,21 @@ DELIMITER ;
 --
 
 --
--- Indexes for table `chatMessage`
+-- Indexes for table `chatmessage`
 --
-ALTER TABLE `chatMessage`
+ALTER TABLE `chatmessage`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `examQuestion`
+-- Indexes for table `examquestion`
 --
-ALTER TABLE `examQuestion`
+ALTER TABLE `examquestion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `examResult`
+-- Indexes for table `examresult`
 --
-ALTER TABLE `examResult`
+ALTER TABLE `examresult`
   ADD PRIMARY KEY (`id`),
   ADD KEY `studentId` (`studentId`);
 
@@ -187,22 +177,22 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `chatMessage`
+-- AUTO_INCREMENT for table `chatmessage`
 --
-ALTER TABLE `chatMessage`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+ALTER TABLE `chatmessage`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
--- AUTO_INCREMENT for table `examQuestion`
+-- AUTO_INCREMENT for table `examquestion`
 --
-ALTER TABLE `examQuestion`
+ALTER TABLE `examquestion`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- AUTO_INCREMENT for table `examResult`
+-- AUTO_INCREMENT for table `examresult`
 --
-ALTER TABLE `examResult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+ALTER TABLE `examresult`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `user`
