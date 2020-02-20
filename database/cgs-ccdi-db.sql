@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2020 at 05:32 AM
+-- Generation Time: Feb 20, 2020 at 10:54 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.1
 
@@ -35,20 +35,27 @@ CREATE TABLE `chatmessage` (
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `chatmessage`
+-- Table structure for table `content`
 --
 
-INSERT INTO `chatmessage` (`id`, `fromUserId`, `chatMessage`, `timestamp`) VALUES
-(1, 1, 'Heello!', '2020-02-12 09:49:40'),
-(2, 2, 'Hi!', '2020-02-12 09:49:56'),
-(3, 2, 'klasjdl', '2020-02-28 10:02:12'),
-(4, 2, 'klasjdl', '2020-02-28 10:02:13'),
-(5, 1, 'laskdlasd', '2020-02-28 10:06:26'),
-(6, 1, 'skdlskds', '2020-02-28 10:06:34'),
-(7, 1, 'hello', '2020-02-28 10:06:39'),
-(8, 1, 'lkalsdkasd', '2020-02-28 10:07:15'),
-(9, 1, 'ksjadkajsd', '2020-02-28 10:07:26');
+CREATE TABLE `content` (
+  `contentId` int(255) NOT NULL,
+  `userId` int(12) NOT NULL,
+  `author` varchar(255) NOT NULL,
+  `title` varchar(244) NOT NULL,
+  `content` text DEFAULT NULL,
+  `date` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `content`
+--
+
+INSERT INTO `content` (`contentId`, `userId`, `author`, `title`, `content`, `date`) VALUES
+(1, 2, 'Admin', 'Alright!', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\n', '2020-02-20 15:36:42');
 
 -- --------------------------------------------------------
 
@@ -66,13 +73,6 @@ CREATE TABLE `examquestion` (
   `correctAnswer` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `examquestion`
---
-
-INSERT INTO `examquestion` (`id`, `question`, `letterA`, `letterB`, `letterC`, `letterD`, `correctAnswer`) VALUES
-(1, 'a', 'a', 'a', 'a', 'a', 'a');
-
 -- --------------------------------------------------------
 
 --
@@ -86,16 +86,6 @@ CREATE TABLE `examresult` (
   `eNum` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `examresult`
---
-
-INSERT INTO `examresult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
-(1, 3, '0', '0', '2020-02-10 02:38:30'),
-(2, 5, '1', '2', '2020-02-12 09:53:39'),
-(3, 3, '0', '0', '2020-02-12 14:19:20'),
-(4, 3, '0', '0', '2020-02-12 14:21:03');
 
 -- --------------------------------------------------------
 
@@ -131,7 +121,7 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `exp_date_at`) VALUES
 (1, 'cgofficer', 'faf0275a4da236e0e82050da7463a9f9', '', 'CgOfficer', '', '', '', '', '', '', '', '', '', 0, '0', NULL, NULL),
 (2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL),
-(3, 'q', '7694f4a66316e53c8cdd9d9954bd611d', 'q', 'q', 'q', 'q', 'Information Technology', 'Aemillianum College Inc.', '123', 'Taked Exam', '2020/02/12-10:21:45pm', '0', 'ACT', 3, '1', '2020-02-12 00:00:00', '2020-02-27 00:00:00');
+(4, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '123123', 'Taked Exam', NULL, '0', NULL, 3, '0', '2020-02-20 00:00:00', '2020-03-06 00:00:00');
 
 --
 -- Triggers `user`
@@ -152,6 +142,12 @@ DELIMITER ;
 --
 ALTER TABLE `chatmessage`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `content`
+--
+ALTER TABLE `content`
+  ADD PRIMARY KEY (`contentId`);
 
 --
 -- Indexes for table `examquestion`
@@ -180,25 +176,31 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `chatmessage`
 --
 ALTER TABLE `chatmessage`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `content`
+--
+ALTER TABLE `content`
+  MODIFY `contentId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `examquestion`
 --
 ALTER TABLE `examquestion`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `examresult`
 --
 ALTER TABLE `examresult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
