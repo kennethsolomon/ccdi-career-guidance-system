@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2020 at 03:57 PM
+-- Generation Time: Feb 21, 2020 at 06:57 AM
 -- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.1
+-- PHP Version: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -35,6 +35,13 @@ CREATE TABLE `chatmessage` (
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Dumping data for table `chatmessage`
+--
+
+INSERT INTO `chatmessage` (`id`, `fromUserId`, `chatMessage`, `timestamp`) VALUES
+(1, 2, 'HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAA', '2020-02-21 05:53:50');
+
 -- --------------------------------------------------------
 
 --
@@ -43,7 +50,6 @@ CREATE TABLE `chatmessage` (
 
 CREATE TABLE `content` (
   `contentId` int(255) NOT NULL,
-  `userId` int(12) NOT NULL,
   `author` varchar(255) NOT NULL,
   `title` varchar(244) NOT NULL,
   `content` text DEFAULT NULL,
@@ -54,8 +60,15 @@ CREATE TABLE `content` (
 -- Dumping data for table `content`
 --
 
-INSERT INTO `content` (`contentId`, `userId`, `author`, `title`, `content`, `date`) VALUES
-(1, 2, 'Admin', 'Alright!', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\n', '2020-02-20 15:36:42');
+INSERT INTO `content` (`contentId`, `author`, `title`, `content`, `date`) VALUES
+(1, 'Admin', 'Alright!', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\n', '2020-02-20 15:36:42'),
+(2, 'Admin', 'Alright!', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\n', '2020-02-20 15:36:42'),
+(3, 'Admin', 'Alright!', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\n', '2020-02-20 15:36:42'),
+(4, 'Admin', 'hahaha', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\n', '2020-02-20 15:36:42'),
+(6, 'Admin', 'test add announcement', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\n', '2020-02-21 13:42:53'),
+(7, 'Admin', 'yes2', 'et Malorum\" (The Extremes of Good2\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\n', '2020-02-21 13:43:05'),
+(8, 'Admin', 'te', 'You can now take the Exam\r\n\r\nThe below is the student need to take the exam. \r\n\r\n- Test 1\r\n- Test 2\r\n- Test 3\r\n- Test 4\r\n\r\nThank you! <3', '2020-02-21 13:51:33'),
+(9, 'Admin', 'test2', 'You can now take the Exam\r\n\r\nThe below is the student need to take the exam. \r\n\r\n- Test 1\r\n- Test 2\r\n- Test 3\r\n- Test 4\r\n\r\nThank you! <3', '2020-02-21 13:56:51');
 
 -- --------------------------------------------------------
 
@@ -176,13 +189,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `chatmessage`
 --
 ALTER TABLE `chatmessage`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `content`
 --
 ALTER TABLE `content`
-  MODIFY `contentId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `contentId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `examquestion`
