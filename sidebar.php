@@ -97,6 +97,7 @@ if ($_SESSION['userLevel'] == 1) {
             <div id="adminAction" class="collapse" aria-labelledby="headingTwo" data-parent="#adminAction">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Admin Options:</h6>
+                    <a class="collapse-item" href="announcement.php?id=<?php echo $_GET['id']; ?>">Announcement</a>
                     <a class="collapse-item" href="adminTable.php?id=<?php echo $_GET['id']; ?>">Student Table</a>
                     <a class="collapse-item" data-toggle="modal" data-target="#resetDataModal" href="#">Reset Data</a>
                 </div>
@@ -150,3 +151,5 @@ if ($_SESSION['userLevel'] == 1) {
 <?php include_once('./modals/deleteAllQuestionModal.php') ?>
 
 <?php include_once('./modals/resetDataModal.php') ?>
+
+<?php include_once('./modals/announcementModal.php') ?>

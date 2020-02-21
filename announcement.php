@@ -2,10 +2,10 @@
 //start session
 session_start();
 
+$author =  $_SESSION['firstName'];
+
 //database connection
 include_once './includes/connection.php';
-$query = "SELECT * FROM user WHERE userLevel != 1 AND userLevel != 0 ORDER BY ID DESC";
-$result = mysqli_query($conn, $query);
 ?>
 <?php
 include_once './includes/cgDashboard.php';
@@ -82,10 +82,6 @@ if ($_SESSION['userLevel'] == 1) {
                         </nav>
                         <!-- End of Topbar -->
 
-
-
-
-
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
                             <?php
@@ -105,68 +101,17 @@ if ($_SESSION['userLevel'] == 1) {
                             <!-- DataTales Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">All Student Data</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Announcement</h6>
                                 </div>
                                 <div class="card-body">
-                                    <div class="table-responsive">
-                                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                            <thead>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Username</th>
-                                                    <th>Lastname</th>
-                                                    <th>Firstname</th>
-                                                    <th>Middlename</th>
-                                                    <th>Address</th>
-                                                    <th>Phone Number</th>
-                                                    <th>Course</th>
-                                                    <th>Last School Attended</th>
-                                                    <th>Score</th>
-                                                    <th>Suggested Course</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </thead>
-                                            <tfoot>
-                                                <tr>
-                                                    <th>ID</th>
-                                                    <th>Username</th>
-                                                    <th>Lastname</th>
-                                                    <th>Firstname</th>
-                                                    <th>Middlename</th>
-                                                    <th>Address</th>
-                                                    <th>Phone Number</th>
-                                                    <th>Course</th>
-                                                    <th>Last School Attended</th>
-                                                    <th>Score</th>
-                                                    <th>Suggested Course</th>
-                                                    <th>Status</th>
-                                                </tr>
-                                            </tfoot>
-                                            <tbody>
-                                                <?php
-                                                while ($row = mysqli_fetch_array($result)) {
-                                                    echo '  
-                                                    <tr>  
-                                                        <td>' . $row["id"] . '</td>  
-                                                        <td>' . $row["username"] . '</td>  
-                                                        <td>' . $row["lastName"] . '</td>  
-                                                        <td>' . $row["firstName"] . '</td>  
-                                                        <td>' . $row["middleName"] . '</td>
-                                                        <td>' . $row["address"] . '</td>  
-                                                        <td>' . $row["phoneNumber"] . '</td>
-                                                        <td>' . $row["course"] . '</td>
-                                                        <td>' . $row["lastSchoolAttended"] . '</td>
-                                                        <td>' . $row["score"] . '</td>
-                                                        <td>' . $row["suggestedCourse"] . '</td>
-                                                        <td>' . $row["status"] . '</td>  
-                                                    </tr>  
-                                                    ';
-                                                }
-                                                ?>
-
-                                            </tbody>
-                                        </table>
+                                    
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <button class="btn btn-info"  data-toggle="modal" data-target="#announcementModal">Add Announcement</button>
+                                        </div>
                                     </div>
+                                <br>
+                                <?php include_once './includes/announcement.php'; ?>
                                 </div>
                             </div>
 
