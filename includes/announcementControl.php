@@ -10,10 +10,11 @@ if(isset($_POST['btnAnnouncementUpdate'])){
     $date = $_POST['date'];
     $title = $_POST['title'];
     $content = $_POST['content'];
+    $fullContent = str_replace('\'', '\'\'', $content);
 
     $sql = "UPDATE content SET 
     title='$title', 
-    content='$content'
+    content='$fullContent'
     WHERE 
     contentId='$contentId'";
 
@@ -53,9 +54,9 @@ if(isset($_POST['btnAnnouncementAdd'])){
     $author = 'Admin'; // Static for now
     $title = $_POST['title'];
     $content = $_POST['content'];
+    $fullContent = str_replace('\'', '\'\'', $content);
 
-
-    $sql = "INSERT INTO content (author, title, content) VALUES ('$author','$title','$content')";
+    $sql = "INSERT INTO content (author, title, content) VALUES ('$author','$title','$fullContent')";
 
         if (mysqli_query($conn, $sql)) {
             $_SESSION['message'] = 'Announcement Added Successfully!';
