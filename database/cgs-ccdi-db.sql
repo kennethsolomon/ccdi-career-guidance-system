@@ -2,10 +2,10 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Feb 21, 2020 at 07:57 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.2
+-- Host: localhost
+-- Generation Time: Mar 10, 2020 at 10:32 AM
+-- Server version: 10.4.12-MariaDB
+-- PHP Version: 7.4.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chatmessage`
+-- Table structure for table `chatMessage`
 --
 
-CREATE TABLE `chatmessage` (
+CREATE TABLE `chatMessage` (
   `id` int(25) NOT NULL,
   `fromUserId` int(25) NOT NULL,
   `chatMessage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -36,11 +36,15 @@ CREATE TABLE `chatmessage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `chatmessage`
+-- Dumping data for table `chatMessage`
 --
 
-INSERT INTO `chatmessage` (`id`, `fromUserId`, `chatMessage`, `timestamp`) VALUES
-(1, 2, 'HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAA', '2020-02-21 05:53:50');
+INSERT INTO `chatMessage` (`id`, `fromUserId`, `chatMessage`, `timestamp`) VALUES
+(1, 2, 'HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAA', '2020-02-21 05:53:50'),
+(2, 2, 'Test', '2020-02-22 10:14:34'),
+(3, 1, 'test', '2020-02-22 10:14:55'),
+(4, 1, 'test', '2020-02-22 10:18:26'),
+(5, 1, 'ilovemyself', '2020-02-22 10:18:31');
 
 -- --------------------------------------------------------
 
@@ -61,33 +65,16 @@ CREATE TABLE `content` (
 --
 
 INSERT INTO `content` (`contentId`, `author`, `title`, `content`, `date`) VALUES
-(1, 'Admin', 'Alright!', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (Th', '2020-02-20 15:36:42'),
-(2, 'Admin', 'Alright!', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (Th', '2020-02-20 15:36:42'),
-(3, 'Admin', 'Alright!', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (Th', '2020-02-20 15:36:42'),
-(4, 'Admin', 'hahaha', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (Th', '2020-02-20 15:36:42'),
-(6, 'Admin', 'test add announcement', 'et Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (Th', '2020-02-21 13:42:53'),
-(7, 'Admin', 'yes2', 'et Malorum\" (The Extremes of Good2\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (The Extremes of Good\r\net Malorum\" (The Extremes of Good\r\n\r\net Malorum\" (The Extremes of Good\r\n\r\n\r\net Malorum\" (T', '2020-02-21 13:43:05'),
-(8, 'Admin', 'te', 'You can now take the Exam\r\n\r\nThe below is the student need to take the exam. \r\n\r\n- Test 1\r\n- Test 2\r\n- Test 3\r\n- Test 4\r\n\r\nThank you! <3', '2020-02-21 13:51:33'),
-(9, 'Admin', 'test2', 'You can now take the Exam<br />\r\n<br />\r\nThe below is the student need to take the exam. <br />\r\n<br />\r\n- Test 1<br />\r\n- Test 2<br />\r\n- Test 3<br />\r\n- Test 4<br />\r\n<br />\r\nThank you! <3', '2020-02-21 13:56:51'),
-(10, 'Admin', 'test', 'test', '2020-02-21 14:01:54'),
-(11, 'Admin', '123', 'qeqweq<br /><br />\r\n<br /><br />\r\nqweqwe123<br />\r\nqeqweq<br /><br />\r\n<br /><br />\r\nqweqwe123<br />\r\nasdasd<br />\r\n<br />\r\nasd', '2020-02-21 14:02:02'),
-(12, 'Admin', 'test', 'test\r\n\r\ntest', '2020-02-21 14:11:01'),
-(13, 'Admin', 'qweqwe', 'qweqwe\r\n\r\nqwe', '2020-02-21 14:12:32'),
-(14, 'Admin', 'QWEQW', 'It is important to provide an alternate description for any images or diagrams created using preformatted text.\r\n\r\nhahahahha', '2020-02-21 14:14:21'),
-(15, 'Admin', 'test', 'What is Lorem Ipsum?', '2020-02-21 14:16:19'),
-(16, 'Admin', '', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industrys', '2020-02-21 14:17:07'),
-(17, 'Admin', 'test', '', '2020-02-21 14:18:57'),
-(18, 'Admin', 'asdasd', 'Hello, I\'m Kenneth!', '2020-02-21 14:19:12'),
-(19, 'Admin', 'HAHAHA', 'What is Lorem Ipsum?\r\nLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s \r\nstandard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it \r\nto make a type specimen book. It has survived not only five centuries, but also the leap into electronic \r\ntypesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset \r\nsheets containing Lorem Ipsum passages, and more recently with desktop publis', '2020-02-21 14:36:26'),
-(20, 'Admin', 'Exam 2019 Ethics', 'The following list is for the exam:\r\n\r\nIT - Room B - (3:00pm - 4:00pm)\r\n\r\nWhere does it come from?\r\n\r\n                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical \r\n                 Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at\r\n                 Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, \r\n                 from a Lorem Ipsum passage, and going through the cites of the word in classical literature, \r\n                 discovered the undoubWhere does it come from?\r\n\r\n                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical \r\n                 Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at\r\n                 Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, \r\n                 from a Lorem Ipsum passage, and going through the cites of the word in classical literature, \r\n                 discovered the undoubWhere does it come from?\r\n\r\n                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical \r\n                 Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at\r\n                 Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, \r\n                 from a Lorem Ipsum passage, and going through the cites of the word in classical literature, \r\n                 discovered the undoub\r\n\r\nWhere does it come from?\r\n\r\n                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical \r\n                 Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at\r\n                 Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, \r\n                 from a Lorem Ipsum passage, and going through the cites of the word in classical literature, \r\n                 discovered the undoubWhere does it come from?\r\n\r\n                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical \r\n                 Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at\r\n                 Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, \r\n                 from a Lorem Ipsum passage, and going through the cites of the word in classical literature, \r\n                 discovered the undoubWhere does it come from?\r\n\r\n                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical \r\n                 Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at\r\n                 Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, \r\n                 from a Lorem Ipsum passage, and going through the cites of the word in classical literature, \r\n                 discovered the undoub', '2020-02-21 14:37:04');
+(21, 'Admin', 'What is Lorem Ipsum?', 'Lorem Ipsum is simply dummy text of the printing \r\nand typesetting industry. Lorem Ipsum has been the \r\nindustry\'s standard dummy text ever since the 1500s, \r\nwhen an unknown printer took a galley of type \r\nand scrambled it to make a type specimen book. \r\nIt has survived not only five centuries, but also the \r\nleap into electronic typesetting, remaining essentially \r\nunchanged. It was popularised in the 1960s with \r\nthe release of Letraset sheets containing \r\nLorem Ipsum passages, and more recently \r\nwith desktop publishing software like Aldus \r\nPageMaker including versions of Lorem Ipsum.', '2020-02-22 01:49:17'),
+(22, 'Admin', 'Why do we use it?', 't is a long established fact that a reader will be distracted by the readable content \r\nof a page when looking at its layout. The point of using Lorem Ipsum is that \r\nit has a more-or-less normal distribution of letters, as opposed to using \r\n\'Content here, content here\', making it look like readable English. Many \r\ndesktop publishing packages and web page editors now use Lorem Ipsum \r\nas their default model text, and a search for \'lorem ipsum\' will uncover many \r\nweb sites still in their infancy. Various versions have evolved over the years, \r\nsometimes by accident, sometimes on purpose (injected humour and the like).', '2020-02-22 18:12:45');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examquestion`
+-- Table structure for table `examQuestion`
 --
 
-CREATE TABLE `examquestion` (
+CREATE TABLE `examQuestion` (
   `id` int(12) NOT NULL,
   `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `letterA` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -100,16 +87,23 @@ CREATE TABLE `examquestion` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examresult`
+-- Table structure for table `examResult`
 --
 
-CREATE TABLE `examresult` (
+CREATE TABLE `examResult` (
   `id` int(25) NOT NULL,
   `studentId` int(25) NOT NULL,
   `examScore` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `eNum` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `examResult`
+--
+
+INSERT INTO `examResult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
+(1, 4, '0', '0', '2020-02-22 10:15:40');
 
 -- --------------------------------------------------------
 
@@ -145,7 +139,9 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `exp_date_at`) VALUES
 (1, 'cgofficer', 'faf0275a4da236e0e82050da7463a9f9', '', 'CgOfficer', '', '', '', '', '', '', '', '', '', 0, '0', NULL, NULL),
 (2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL),
-(4, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '123123', 'Taked Exam', NULL, '0', NULL, 3, '0', '2020-02-20 00:00:00', '2020-03-06 00:00:00');
+(4, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '09301787782', 'Taked Exam', '2020/02/22-06:15:42pm', '0', 'ACT', 3, '1', '2020-02-20 00:00:00', '2020-03-06 00:00:00'),
+(6, 'test2', 'ad0234829205b9033196ba818f7a872b', 'asd', 'asd', 'asd', 'sad', 'ACT', 'SNHS', '09454296783', 'Undecided', NULL, '0', NULL, 3, '0', '2020-02-22 00:00:00', '2020-03-08 00:00:00'),
+(7, 'test3', '8ad8757baa8564dc136c1e07507f4a98', 'test3', 'test3', 'test3', 'test3', 'Computer Science', 'Aemillianum College Inc.', '09454296723', 'Taked Exam', NULL, '0', NULL, 3, '0', '2020-02-22 00:00:00', '2020-03-08 00:00:00');
 
 --
 -- Triggers `user`
@@ -162,9 +158,9 @@ DELIMITER ;
 --
 
 --
--- Indexes for table `chatmessage`
+-- Indexes for table `chatMessage`
 --
-ALTER TABLE `chatmessage`
+ALTER TABLE `chatMessage`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -174,15 +170,15 @@ ALTER TABLE `content`
   ADD PRIMARY KEY (`contentId`);
 
 --
--- Indexes for table `examquestion`
+-- Indexes for table `examQuestion`
 --
-ALTER TABLE `examquestion`
+ALTER TABLE `examQuestion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `examresult`
+-- Indexes for table `examResult`
 --
-ALTER TABLE `examresult`
+ALTER TABLE `examResult`
   ADD PRIMARY KEY (`id`),
   ADD KEY `studentId` (`studentId`);
 
@@ -197,34 +193,34 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `chatmessage`
+-- AUTO_INCREMENT for table `chatMessage`
 --
-ALTER TABLE `chatmessage`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `chatMessage`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `content`
 --
 ALTER TABLE `content`
-  MODIFY `contentId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `contentId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `examquestion`
+-- AUTO_INCREMENT for table `examQuestion`
 --
-ALTER TABLE `examquestion`
+ALTER TABLE `examQuestion`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `examresult`
+-- AUTO_INCREMENT for table `examResult`
 --
-ALTER TABLE `examresult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT;
+ALTER TABLE `examResult`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
