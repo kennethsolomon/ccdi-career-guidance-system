@@ -1,1 +1,1 @@
-# CCDI - Admin Panel
+# CCDI - Admin Panel - Career Guidance System 
