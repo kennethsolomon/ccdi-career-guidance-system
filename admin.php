@@ -65,10 +65,10 @@ if ($_SESSION['userLevel'] == 1) {
                                     </a>
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                        <a class="dropdown-item" href="http://localhost/ccdi-student/wp-login.php">
+                                        <!-- <a class="dropdown-item" href="http://localhost/ccdi-student/wp-login.php">
                                             <i class="fas fa-window-maximize fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Landing Page
-                                        </a>
+                                        </a> -->
                                         <a class="dropdown-item" href="./includes/logout.php">
                                             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Logout
