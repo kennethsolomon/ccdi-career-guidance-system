@@ -99,8 +99,12 @@
                                             ?>
                                      </div>
                                      <!-- <iframe src="https://pulsesms.app/" width="800px" height="600px" frameborder="0"></iframe> -->
-                                     <iframe src="https://app.mysms.com/#compose" width="810px" height="600px"
-                                         frameborder="0"></iframe>
+                                     <iframe src="https://mightytext.net/web8/" width="810px" height="600px"
+                                         frameborder="0"></iframe> 
+                                         <!-- <object data="https://mightytext.net" width="600" height="400">
+    <embed src="https://mightytext.net" width="600" height="400"> </embed>
+    Error: Embedded data could not be displayed.
+</object> -->
 
                                      <hr>
                                      <div class="row">

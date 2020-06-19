@@ -13,13 +13,13 @@ if (isset($_POST['btnViewQuestion'])) {
 
 if (isset($_POST['btnQuestionInfoUpdate'])) {
     $id = $_POST["id"];
-    $questionNumber = $_POST['questionNumber'];
-    $question = $_POST["question"];
-    $letterA = $_POST["letterA"];
-    $letterB = $_POST["letterB"];
-    $letterC = $_POST["letterC"];
-    $letterD = $_POST["letterD"];
-    $correctAnswer = $_POST["correctAnswer"];
+    $questionNumber = str_replace("'","\'",$_POST['questionNumber']);
+    $question = str_replace("'","\'",$_POST['question']);
+    $letterA = str_replace("'","\'",$_POST['letterA']);
+    $letterB = str_replace("'","\'",$_POST['letterB']);
+    $letterC = str_replace("'","\'",$_POST['letterC']);
+    $letterD = str_replace("'","\'",$_POST['letterD']);
+    $correctAnswer = str_replace("'","\'",$_POST['correctAnswer']);
 
     $sql = "UPDATE examQuestion SET 
         question='$question', 
@@ -43,12 +43,12 @@ if (isset($_POST['btnQuestionInfoUpdate'])) {
 
 if (isset($_POST['btnAddQuestion'])) {
     $id = $_POST['id'];
-    $question = $_POST['question'];
-    $letterA = $_POST['letterA'];
-    $letterB = $_POST['letterB'];
-    $letterC = $_POST['letterC'];
-    $letterD = $_POST['letterD'];
-    $correctAnswer = $_POST['correctAnswer'];
+    $question = str_replace("'","\'",$_POST['question']);
+    $letterA = str_replace("'","\'",$_POST['letterA']);
+    $letterB = str_replace("'","\'",$_POST['letterB']);
+    $letterC = str_replace("'","\'",$_POST['letterC']);
+    $letterD = str_replace("'","\'",$_POST['letterD']);
+    $correctAnswer = str_replace("'","\'",$_POST['correctAnswer']);
 
 
     $sql = "SELECT * FROM examQuestion";
@@ -61,7 +61,7 @@ if (isset($_POST['btnAddQuestion'])) {
         $url = str_replace(PHP_EOL, '', $url);
         header("Location: $url");
     } else {
-        $sql = "INSERT INTO examQuestion (
+        $sql = "INSERT INTO examquestion (
         question, 
         letterA, 
         letterB, 
