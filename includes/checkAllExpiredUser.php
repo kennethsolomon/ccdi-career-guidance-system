@@ -27,11 +27,4 @@ if (mysqli_num_rows($result) > 0) {
             }
         }
     }
-} else {
 }
-
-$url = "./../home.php?id=$id";
-$url = str_replace(PHP_EOL, '', $url);
-header("Location: $url");
-
-mysqli_close($conn);
