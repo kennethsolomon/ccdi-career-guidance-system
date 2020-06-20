@@ -27,7 +27,7 @@ if (isset($_POST['btnRegister'])) {
 
     if (mysqli_num_rows($result) > 0) {
         $_SESSION['registerStudent'] = 'Username Already Exist!';
-        $url = "./../home.php";
+        $url = "./../home.php?id=$id";
         $url = str_replace(PHP_EOL, '', $url);
         header("Location: $url");
     } else {
