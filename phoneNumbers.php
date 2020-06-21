@@ -98,11 +98,7 @@
                                             }
                                             ?>
                                      </div>
-<<<<<<< HEAD
                                       <iframe src="https://pulsesms.app/" width="800px" height="600px" frameborder="0"></iframe>
-=======
-                                    <iframe src="https://pulsesms.app/" width="800px" height="600px" frameborder="0"></iframe>
->>>>>>> cfc31519405ef014df3fa14b39e2fa5706ed4a1f
                                      <hr>
                                      <div class="row">
                                          <div class="col-lg-12 p-2">
