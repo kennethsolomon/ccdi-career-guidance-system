@@ -6,12 +6,17 @@ include_once './connection.php';
 date_default_timezone_set("Asia/Manila");
 // $currentDate = date("Y/m/d-h:i:s");
 $currentDate = date("Y/m/d");
+$monthDate = date("md");
 
 $id = $_POST['id'];
-$username = $_POST['username'];
-$password = $_POST['password'];
+//$username = $_POST['username'];
+//$password = $_POST['password'];
 $lastName = $_POST['lastName'];
 $firstName = $_POST['firstName'];
+$base_username = $lastName.$firstName.$monthDate;
+$base_password = $lastName.$firstName.$monthDate;
+$username = strtolower($base_username);
+$password = strtolower($base_password);
 $middleName = $_POST['middleName'];
 $address = $_POST['address'];
 $phoneNumber = $_POST['phoneNumber'];
@@ -60,7 +65,7 @@ if (isset($_POST['btnRegister'])) {
         )";
 
         if (mysqli_query($conn, $sql)) {
-            $_SESSION['registerStudent'] = 'Registered Successfully!';
+            $_SESSION['registerStudent'] = 'Registered Successfully! Username & Password is ' . $username;
             $url = "./../home.php?id=$id";
             $url = str_replace(PHP_EOL, '', $url);
             header("Location: $url");

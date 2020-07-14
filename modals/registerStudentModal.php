@@ -11,7 +11,7 @@
             </div>
             <div class="modal-body">
                 <form action="./includes/registerUser.php" method="POST">
-                    <div class="row">
+<!--                   <div class="row">
                         <input required type="hidden" class="form-control form-control-user" id="id" name="id"
                             value=<?php echo $_GET['id']; ?>>
                         <div class="col-lg-6">
@@ -19,7 +19,7 @@
                                 <label for="username">Username:</label>
                                 <input required type="text" class="form-control form-control-user" id="username"
                                     name="username" aria-describedby="usernameHelp" placeholder="Username">
-                            </div>
+                            </div> 
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
@@ -28,11 +28,13 @@
                                     name="password" placeholder="Password">
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- End of Row 1 -->
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
+                                <input required type="hidden" class="form-control form-control-user" id="id" name="id"
+                                    value=<?php echo $_GET['id']; ?>>
                                 <label for="lastName">Lastname:</label>
                                 <input required type="text" class="form-control form-control-user" id="lastName"
                                     name="lastName" placeholder="Lastname">
