@@ -20,10 +20,8 @@
      <title>CGS - CCDI</title>
 
      <!-- Custom fonts for this template-->
-     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
-     <link
-         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-         rel="stylesheet">
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
      <!-- Custom styles for this template-->
      <link href="css/sb-admin-2.min.css" rel="stylesheet">
@@ -75,7 +73,7 @@
                                                                     textStatus>3";
 
                                                                 if ($conn->query($sql) === TRUE) {
-                                                                    $url = "./phoneNumbers.php?id=2";
+                                                                    $url = "./phoneNumbers.php?id=1";
                                                                     $url = str_replace(PHP_EOL, '', $url);
                                                                     header("Location: $url");
                                                                         
@@ -99,7 +97,7 @@
                                                 // $currentDate = '2020-02-21 00:00:00';
                                                 $getCurrentDate = date("Y-m-d");
                                                 $currentDate = $getCurrentDate . ' ' . '00:00:00';
-                                                $sql = "SELECT * FROM user Where userLevel=3 AND textStatus<=3 AND textedDate!='$getCurrentDate' ORDER BY id desc";
+                                                $sql = "SELECT * FROM user where userLevel=3 AND textStatus<=3 AND textedDate!='$getCurrentDate' ORDER BY id desc";
                                                 $result = mysqli_query($conn, $sql);
                                                 if (mysqli_num_rows($result) > 0) {
                                                     echo '<h3>List to Text: </h3> '; 
@@ -124,13 +122,16 @@
                                       <iframe src="https://pulsesms.app/" width="800px" height="600px" frameborder="0" class="mt-2"></iframe>
                                      <hr>
                                      <div class="row">
-                                         <div class="col-lg-12 p-2">
+                                         <div class="col-lg-7 p-2">
                                              <div class="text-center">
                                                  <form method="post">
                                                      <button class="btn btn-success " name="btnTakedExamPhoneNumber"
                                                          type="submit">Student Number</button>
                                                  </form>
                                              </div>
+                                         </div>
+                                         <div class="col-lg-5 p-2">
+                                                <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#updateStatusModal">Update Status</a>
                                          </div>
                                      </div>
                                      <div class="row">
@@ -155,7 +156,9 @@
 
              </div>
 
+<?php include_once('./modals/updateStatusModal.php') ?>
          </div>
+
 
      </div>
 
