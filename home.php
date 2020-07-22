@@ -230,19 +230,17 @@ if ($_SESSION['userLevel'] == 0) {
                                 </div>
 
                             </div>
-			<div class="container" id="patientTable">
-                    <center>
-                    </center>
+			<div class="container-fluid" id="patientTable">
                     <div class="row">
-
                         <div class="col-md-12 border border-info">
                             <table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Municipality</th>
                                         <th>Phone</th>
+                                        <th>School</th>
                                         <th>Status</th>
+                                        <th>Municipality</th>
                                         <th>Course Intended</th>
                                     </tr>
                                 </thead>
@@ -258,6 +256,7 @@ if ($_SESSION['userLevel'] == 0) {
                                             $phoneNumber = $row['phoneNumber'];
                                             $status = $row['status'];
                                             $courseIntended = $row['suggestedCourse'];
+                                            $lastSchoolAttended = $row['lastSchoolAttended'];
 
                                             $sql2 = "SELECT * FROM user where id = '$id'";
                                             $result2 = mysqli_query($conn, $sql2);
@@ -272,11 +271,12 @@ if ($_SESSION['userLevel'] == 0) {
 
                                             echo '
                                                 <tr>
-                                                <td>' . $lastName . ',' . $firstName . ' ' . $middleName . '</td>
-                                                <td>' . $municipality . '</td>
-                                                <td>' . $phoneNumber . '</td>
-                                                <td>' . $status . '</td>
-                                                <td>' . $courseIntended . '</td>
+                                                    <td>' . $lastName . ',' . $firstName . ' ' . $middleName . '</td>
+                                                    <td>' . $phoneNumber . '</td>
+                                                    <td>' . $lastSchoolAttended . '</td>
+                                                    <td>' . $status . '</td>
+                                                    <td>' . $municipality . '</td>
+                                                    <td>' . $courseIntended . '</td>
                                                 </tr>
                                                 ';
                                         }
@@ -287,9 +287,10 @@ if ($_SESSION['userLevel'] == 0) {
                                 <tfoot>
                                     <tr>
                                         <th>Name</th>
-                                        <th>Municipality</th>
                                         <th>Phone</th>
+                                        <th>School</th>
                                         <th>Status</th>
+                                        <th>Municipality</th>
                                         <th>Course Intended</th>
                                     </tr>
                                 </tfoot>
