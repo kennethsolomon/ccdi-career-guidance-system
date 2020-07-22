@@ -2,10 +2,10 @@
 -- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 10, 2020 at 10:32 AM
--- Server version: 10.4.12-MariaDB
--- PHP Version: 7.4.3
+-- Host: 127.0.0.1
+-- Generation Time: Jul 22, 2020 at 06:11 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.2.28
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,10 +25,10 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `chatMessage`
+-- Table structure for table `chatmessage`
 --
 
-CREATE TABLE `chatMessage` (
+CREATE TABLE `chatmessage` (
   `id` int(25) NOT NULL,
   `fromUserId` int(25) NOT NULL,
   `chatMessage` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -36,10 +36,10 @@ CREATE TABLE `chatMessage` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `chatMessage`
+-- Dumping data for table `chatmessage`
 --
 
-INSERT INTO `chatMessage` (`id`, `fromUserId`, `chatMessage`, `timestamp`) VALUES
+INSERT INTO `chatmessage` (`id`, `fromUserId`, `chatMessage`, `timestamp`) VALUES
 (1, 2, 'HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAA', '2020-02-21 05:53:50'),
 (2, 2, 'Test', '2020-02-22 10:14:34'),
 (3, 1, 'test', '2020-02-22 10:14:55'),
@@ -71,10 +71,10 @@ INSERT INTO `content` (`contentId`, `author`, `title`, `content`, `date`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examQuestion`
+-- Table structure for table `examquestion`
 --
 
-CREATE TABLE `examQuestion` (
+CREATE TABLE `examquestion` (
   `id` int(12) NOT NULL,
   `question` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `letterA` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -87,10 +87,10 @@ CREATE TABLE `examQuestion` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `examResult`
+-- Table structure for table `examresult`
 --
 
-CREATE TABLE `examResult` (
+CREATE TABLE `examresult` (
   `id` int(25) NOT NULL,
   `studentId` int(25) NOT NULL,
   `examScore` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -99,11 +99,13 @@ CREATE TABLE `examResult` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `examResult`
+-- Dumping data for table `examresult`
 --
 
-INSERT INTO `examResult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
-(1, 4, '0', '0', '2020-02-22 10:15:40');
+INSERT INTO `examresult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
+(1, 4, '0', '0', '2020-02-22 10:15:40'),
+(2, 8, '0', '0', '2020-07-10 13:37:41'),
+(3, 12, '0', '0', '2020-07-14 19:24:12');
 
 -- --------------------------------------------------------
 
@@ -119,7 +121,10 @@ CREATE TABLE `user` (
   `firstName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `middleName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `municipality` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `course` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `textStatus` int(12) NOT NULL,
+  `textedDate` date NOT NULL,
   `lastSchoolAttended` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `phoneNumber` varchar(12) COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -136,12 +141,19 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `course`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `exp_date_at`) VALUES
-(1, 'cgofficer', 'faf0275a4da236e0e82050da7463a9f9', '', 'CgOfficer', '', '', '', '', '', '', '', '', '', 0, '0', NULL, NULL),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL),
-(4, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', 'Information Technology', 'SNHS', '09301787782', 'Taked Exam', '2020/02/22-06:15:42pm', '0', 'ACT', 3, '1', '2020-02-20 00:00:00', '2020-03-06 00:00:00'),
-(6, 'test2', 'ad0234829205b9033196ba818f7a872b', 'asd', 'asd', 'asd', 'sad', 'ACT', 'SNHS', '09454296783', 'Undecided', NULL, '0', NULL, 3, '0', '2020-02-22 00:00:00', '2020-03-08 00:00:00'),
-(7, 'test3', '8ad8757baa8564dc136c1e07507f4a98', 'test3', 'test3', 'test3', 'test3', 'Computer Science', 'Aemillianum College Inc.', '09454296723', 'Taked Exam', NULL, '0', NULL, 3, '0', '2020-02-22 00:00:00', '2020-03-08 00:00:00');
+INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `municipality`, `course`, `textStatus`, `textedDate`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `exp_date_at`) VALUES
+(1, 'cgofficer', 'faf0275a4da236e0e82050da7463a9f9', '', 'CgOfficer', '', '', '', '', 2, '2020-07-22', '', '', '', '', '', '', 0, '0', NULL, NULL),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', 2, '2020-07-22', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL),
+(4, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', '', 'Information Technology', 4, '0000-00-00', 'SNHS', '09301787782', 'Not Interested', '2020/02/22-06:15:42pm', '0', 'ACT', 3, '1', '2020-02-20 00:00:00', '2020-03-06 00:00:00'),
+(6, 'test2', 'ad0234829205b9033196ba818f7a872b', 'asd', 'asd', 'asd', 'sad', '', 'ACT', 4, '2020-07-22', 'SNHS', '09454296783', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-02-22 00:00:00', '2020-03-08 00:00:00'),
+(7, 'test3', '8ad8757baa8564dc136c1e07507f4a98', 'test3', 'test3', 'test3', 'test3', '', 'Computer Science', 4, '0000-00-00', 'Aemillianum College Inc.', '09454296723', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-02-22 00:00:00', '2020-03-08 00:00:00'),
+(8, 'qweqwe', 'efe6398127928f1b2e9ef3207fb82663', 'qwe', 'qwe', 'qwe', 'Seabreeze Cabid-an', '', 'Information Technology', 4, '0000-00-00', 'SNHS', '09454296723', 'Not Interested', '2020/07/10-09:37:52pm', '0', 'ACT', 3, '1', '2020-07-10 00:00:00', '2020-07-25 00:00:00'),
+(9, 'zxc', '5fa72358f0b4fb4f2c5d7de8c9a41846', 'zxc', 'zxc', 'zxc', 'zxc', '', 'Information Technology', 4, '0000-00-00', 'SNHS', '213', 'Not Interested', '', '0', '', 3, '0', '2020-07-10 00:00:00', '2020-07-25 00:00:00'),
+(10, 'asdf', '912ec803b2ce49e4a541068d495ab570', 'adf', 'adf', 'asdf', 'adf', '', 'Computer Science', 4, '0000-00-00', 'Aemillianum College Inc.', '123', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '2020-07-30 00:00:00'),
+(11, 'adsff', '8136f09c17354891c642b9b9f1722c34', 'adff', 'adff', 'asdff', 'adff', '', 'Information Technology', 4, '2020-07-22', 'SNHS', '123', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '2020-07-30 00:00:00'),
+(12, 'SolomonKenneth0715', '0c6b7752db1ac12da0068b09d29f9e07', 'Solomon', 'Kenneth', 'Lim', 'adfadf', '', 'Information Technology', 4, '2020-07-22', 'SNHS', '123', 'Not Interested', '2020/07/15-03:24:14am', '0', 'ACT', 3, '1', '2020-07-15 00:00:00', '2020-07-30 00:00:00'),
+(13, 'kennethsolomon0715', '2770a531abbb4274789c214ff009841c', 'kenneth', 'solomon', 'lim', 'df', '', 'Information Technology', 3, '2020-07-22', 'SNHS', '123', '', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '2020-07-30 00:00:00'),
+(14, 'kensolomon0715', '4d3b95722a878de65c7e1ed3d4c46a70', 'KEN', 'SOLOMON', 'hahah', 'afadf', '', 'Information Technology', 3, '2020-07-22', 'SNHS', '123', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '2020-07-30 00:00:00');
 
 --
 -- Triggers `user`
@@ -158,9 +170,9 @@ DELIMITER ;
 --
 
 --
--- Indexes for table `chatMessage`
+-- Indexes for table `chatmessage`
 --
-ALTER TABLE `chatMessage`
+ALTER TABLE `chatmessage`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -170,15 +182,15 @@ ALTER TABLE `content`
   ADD PRIMARY KEY (`contentId`);
 
 --
--- Indexes for table `examQuestion`
+-- Indexes for table `examquestion`
 --
-ALTER TABLE `examQuestion`
+ALTER TABLE `examquestion`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `examResult`
+-- Indexes for table `examresult`
 --
-ALTER TABLE `examResult`
+ALTER TABLE `examresult`
   ADD PRIMARY KEY (`id`),
   ADD KEY `studentId` (`studentId`);
 
@@ -193,9 +205,9 @@ ALTER TABLE `user`
 --
 
 --
--- AUTO_INCREMENT for table `chatMessage`
+-- AUTO_INCREMENT for table `chatmessage`
 --
-ALTER TABLE `chatMessage`
+ALTER TABLE `chatmessage`
   MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
@@ -205,22 +217,22 @@ ALTER TABLE `content`
   MODIFY `contentId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
--- AUTO_INCREMENT for table `examQuestion`
+-- AUTO_INCREMENT for table `examquestion`
 --
-ALTER TABLE `examQuestion`
+ALTER TABLE `examquestion`
   MODIFY `id` int(12) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `examResult`
+-- AUTO_INCREMENT for table `examresult`
 --
-ALTER TABLE `examResult`
-  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+ALTER TABLE `examresult`
+  MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
