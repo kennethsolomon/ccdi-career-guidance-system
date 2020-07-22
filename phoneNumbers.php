@@ -105,7 +105,7 @@
                                              <div class="text-center">
                                                  <form method="post">
                                                      <button class="btn btn-success " name="btnTakedExamPhoneNumber"
-                                                         type="submit">Get All Taked Exam Student Number</button>
+                                                         type="submit">Student Number</button>
                                                      <button class="btn btn-success " name="btnUndecidedPhoneNumber"
                                                          type="submit">Get All Undecided Student Number</button>
                                                  </form>

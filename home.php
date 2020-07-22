@@ -109,84 +109,6 @@ if ($_SESSION['userLevel'] == 0) {
                                 <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
                             </div>
 
-                            <!-- Dash Board Row -->
-                            <div class="row">
-
-                                <!-- Total Enrolled  -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-primary shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
-                                                        Enrolled Student</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <?php echo $totalStudent ?></div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-school fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Taked Exam  -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-primary shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
-                                                        Taked Exam Student</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <?php echo $totalTakedExam ?></div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-book-open fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Total Undecided  -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-primary shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
-                                                        Undecided Student</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <?php echo $totalUndecided ?></div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-question-circle fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Total Expired  -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-danger shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">Total
-                                                        Expired Student</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <?php echo $totalExpired ?></div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-exclamation-triangle fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <!-- Dash Board Row -->
 
                             <!-- Dash Board Row -->
                             <div class="row">
@@ -267,92 +189,114 @@ if ($_SESSION['userLevel'] == 0) {
                             </div>
                             <!-- End Dash Board Row -->
 
-                            <!-- Need to Fix the Codes -->
-                            <div class="container" style="margin-top: 200px">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="panel panel-primary">
-                                            <div class="panel-body">
-                                                <ul class="chat">
-                                                    <?php
+                            <!-- Dash Board Row -->
+                            <div class="row">
 
-                                                    if (isset($_POST['btnSendChat'])) {
-                                                        $chatMessage = $_POST['chatMessage'];
-                                                        $id = $_POST['id'];
-                                                        $sql = "INSERT INTO chatMessage (
-                              chatMessage, 
-                              fromUserId
-                              ) VALUES (
-                              '$chatMessage',
-                              '$id'
-                              )";
-                                                        if (mysqli_query($conn, $sql)) {
-                                                        } else {
-                                                            echo "Error: " . $sql . "" . mysqli_error($conn);
-                                                        }
-                                                    }
-
-                                                    //Get All Chat and User ID
-                                                    $getAllMessage = "SELECT * FROM chatMessage ORDER by id DESC LIMIT 10";
-                                                    $resultAllMessage = mysqli_query($conn, $getAllMessage);
-
-                                                    if (mysqli_num_rows($resultAllMessage) > 0) {
-                                                        while ($rowAllMessage = mysqli_fetch_assoc($resultAllMessage)) {
-
-                                                            $allChatId =  $rowAllMessage["fromUserId"];
-                                                            $allChat =  $rowAllMessage["chatMessage"];
-                                                            $timestamp =  $rowAllMessage["timestamp"];
-
-                                                            //Get Chat Name
-                                                            $getChatName = "SELECT * FROM user Where id = '$allChatId'";
-                                                            $resultChatName = mysqli_query($conn, $getChatName);
-
-                                                            if (mysqli_num_rows($resultChatName) > 0) {
-                                                                while ($rowChatName = mysqli_fetch_assoc($resultChatName)) {
-                                                                    $chatName =  $rowChatName["firstName"];
-
-                                                                    echo '
-                                  <li class="right clearfix"><span class="chat-img pull-right">
-                                    <img src="css/image/chatAvatar.png" width=50px; height=50px; alt="User Avatar" class="img-circle" />
-                                    <small class=" text-muted"><span class="glyphicon glyphicon-time"></span>' . $timestamp . '</small>
-                                    </span>
-                                  <div class="chat-body clearfix">
-                                    <div class="header">
-                                      <small class=" text-muted"><span class="glyphicon glyphicon-time"></span></small>
-                                      <strong class="pull-right primary-font">' . $chatName . '</strong>
-                                    </div>
-                                    <p>
-                                      ' . $allChat . ' 
-                                    </p>
-                                  </div>
-                                </li>
-                                ';
-                                                                }
-                                                            }
-                                                            // Ends Here
-
-                                                        }
-                                                    }
-                                                    // Ends Here
-                                                    ?>
-                                                </ul>
-                                            </div>
-                                            <div class="panel-footer">
-                                                <form action="home.php?id=<?php echo $_GET['id'] ?>" method="post">
-                                                    <div class="input-group">
-                                                        <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." name="chatMessage" />
-                                                        <span class="input-group-btn">
-                                                            <input type="hidden" name="id" value="<?php echo $_GET['id'] ?>">
-                                                            <button class="btn btn-warning btn-md" id="btn-chat" name="btnSendChat">Send</button>
-                                                </form>
-                                                </span>
+                                <!-- Total Enrolled  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
+                                                        Enrolled Student</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                        <?php echo $totalStudent ?></div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-school fa-2x text-gray-300"></i>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <!-- Taked Exam  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
+                                                        Taked Exam Student</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                        <?php echo $totalTakedExam ?></div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-book-open fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
+			<div class="container" id="patientTable">
+                    <center>
+                    </center>
+                    <div class="row">
+
+                        <div class="col-md-12 border border-info">
+                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Municipality</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Course Intended</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <?php
+                                    $sql = "SELECT * FROM user ORDER BY id desc";
+                                    $result = mysqli_query($conn, $sql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $id = $row['id'];
+                                            $municipality = $row['municipality'];
+                                            $phoneNumber = $row['phoneNumber'];
+                                            $status = $row['status'];
+                                            $courseIntended = $row['suggestedCourse'];
+
+                                            $sql2 = "SELECT * FROM user where id = '$id'";
+                                            $result2 = mysqli_query($conn, $sql2);
+
+                                            if (mysqli_num_rows($result2) > 0) {
+                                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                                                    $lastName = $row2['lastName'];
+                                                    $firstName = $row2['firstName'];
+                                                    $middleName = $row2['middleName'];
+                                                }
+                                            }
+
+                                            echo '
+                                                <tr>
+                                                <td>' . $lastName . ',' . $firstName . ' ' . $middleName . '</td>
+                                                <td>' . $municipality . '</td>
+                                                <td>' . $phoneNumber . '</td>
+                                                <td>' . $status . '</td>
+                                                <td>' . $courseIntended . '</td>
+                                                </tr>
+                                                ';
+                                        }
+                                    }
+                                    ?>
+
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Municipality</th>
+                                        <th>Phone</th>
+                                        <th>Status</th>
+                                        <th>Course Intended</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
                         </div>
-                        <!-- Need to Fix the Codes -->
+                    </div>
+                </div>                            <!-- End Dash Board Row -->
 
                     </div>
                     <!-- /.container-fluid -->
@@ -398,6 +342,44 @@ if ($_SESSION['userLevel'] == 0) {
             <script src="js/demo/chart-area-demo.js"></script>
             <script src="js/demo/chart-pie-demo.js"></script>
 
+			<script src="js/jquery.dataTables.min.js"></script>
+			<script src="js/dataTables.bootstrap4.min.js"></script>
+
+			<script type="text/javascript">
+				$(document).ready(function() {
+					// Javascript method's body can be found in assets/js/demos.js
+					demo.initDashboardPageCharts();
+
+					// demo.showNotification("Goodshit!");
+				});
+
+				// $(document).ready(function() {
+				//     $('#example').DataTable();
+				// });
+				$(document).ready(function() {
+					// Setup - add a text input to each footer cell
+					$('#example tfoot th').each(function() {
+						var title = $(this).text();
+						$(this).html('<input type="text" placeholder="' + title + '" />');
+					});
+
+					// DataTable
+					var table = $('#example').DataTable();
+
+					// Apply the search
+					table.columns().every(function() {
+						var that = this;
+
+						$('input', this.footer()).on('keyup change clear', function() {
+							if (that.search() !== this.value) {
+								that
+									.search(this.value)
+									.draw();
+							}
+						});
+					});
+				});
+			</script>
         </body>
 
         </html>

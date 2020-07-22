@@ -109,9 +109,9 @@
                                 <label for="dropDownStatus">Status:</label>
                                 <select name="selectedStatus" class="form-control" id="dropDownStatus">
                                     <option></option>
-                                    <option value="Taked Exam">Take Exam</option>
-                                    <option>Enroll</option>
-                                    <option>Undecided</option>
+                                    <option value="Interested">Interested</option>
+                                    <option value="Not Interested">Not Interested</option>
+                                    <option value="Enrolled">Enrolled</option>
                                 </select>
                             </div>
                         </div>
