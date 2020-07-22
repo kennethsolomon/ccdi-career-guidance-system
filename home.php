@@ -265,7 +265,7 @@ if ($_SESSION['userLevel'] == 0) {
                                 </div>
 
                             </div>
-                            <!-- Dash Board Row -->
+                            <!-- End Dash Board Row -->
 
                             <!-- Need to Fix the Codes -->
                             <div class="container" style="margin-top: 200px">
