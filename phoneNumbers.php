@@ -97,7 +97,7 @@
                                                 // $currentDate = '2020-02-21 00:00:00';
                                                 $getCurrentDate = date("Y-m-d");
                                                 $currentDate = $getCurrentDate . ' ' . '00:00:00';
-                                                $sql = "SELECT * FROM user where userLevel=3 AND textStatus<=3 AND textedDate!='$getCurrentDate' ORDER BY id desc";
+                                                $sql = "SELECT * FROM user where userLevel=3 AND textStatus<=3 AND textedDate!='$getCurrentDate' AND status !='Enrolled' ORDER BY id desc";
                                                 $result = mysqli_query($conn, $sql);
                                                 if (mysqli_num_rows($result) > 0) {
                                                     echo '<h3>List to Text: </h3> '; 

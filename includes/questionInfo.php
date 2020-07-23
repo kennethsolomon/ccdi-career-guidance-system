@@ -3,6 +3,25 @@ session_start();
 
 include_once './connection.php';
 
+if (isset($_POST['btnUpdateStatus'])) {
+    $id = $_POST['statusNameList'];
+    $status = $_POST['statusList'];
+
+    $sql = "UPDATE user SET 
+        status='$status'
+        WHERE 
+        id='$id'";
+    if ($conn->query($sql) === TRUE) {
+        $url = "./../phoneNumbers.php?id=1";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("Location: $url");
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
+
+
+}
+
 if (isset($_POST['btnViewQuestion'])) {
     $questionNumber = $_POST['questionNumber'];
     $id = $_POST['id'];
