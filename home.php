@@ -263,7 +263,8 @@ if ($_SESSION['userLevel'] == 0) {
                                 </div>
 
                             </div>
-			<div class="container-fluid" id="patientTable">
+
+            <div class="container-fluid" id="patientTable">
                     <div class="row">
                         <div class="col-md-12 border border-info">
                             <div class="table-responsive">
@@ -276,12 +277,14 @@ if ($_SESSION['userLevel'] == 0) {
                                         <th>Status</th>
                                         <th>Municipality</th>
                                         <th>Course Intended</th>
+                                        <th>Month</th>
+                                        <th>Year</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     <?php
-                                    $sql = "SELECT * FROM user ORDER BY id desc";
+                                    $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
                                     $result = mysqli_query($conn, $sql);
                                     if (mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_assoc($result)) {
@@ -289,7 +292,7 @@ if ($_SESSION['userLevel'] == 0) {
                                             $municipality = $row['municipality'];
                                             $phoneNumber = $row['phoneNumber'];
                                             $status = $row['status'];
-                                            $courseIntended = $row['suggestedCourse'];
+                                            $course = $row['course'];
                                             $lastSchoolAttended = $row['lastSchoolAttended'];
 
                                             $sql2 = "SELECT * FROM user where id = '$id'";
@@ -300,6 +303,8 @@ if ($_SESSION['userLevel'] == 0) {
                                                     $lastName = $row2['lastName'];
                                                     $firstName = $row2['firstName'];
                                                     $middleName = $row2['middleName'];
+                                                    $month = $row2['month'];
+                                                    $year = $row2['year'];
                                                 }
                                             }
 
@@ -310,7 +315,9 @@ if ($_SESSION['userLevel'] == 0) {
                                                     <td>' . $lastSchoolAttended . '</td>
                                                     <td>' . $status . '</td>
                                                     <td>' . $municipality . '</td>
-                                                    <td>' . $courseIntended . '</td>
+                                                    <td>' . $course . '</td>
+                                                    <td>' . $month . '</td>
+                                                    <td>' . $year . '</td>
                                                 </tr>
                                                 ';
                                         }
@@ -326,6 +333,8 @@ if ($_SESSION['userLevel'] == 0) {
                                         <th>Status</th>
                                         <th>Municipality</th>
                                         <th>Course Intended</th>
+                                        <th>Month</th>
+                                        <th>Year</th>
                                     </tr>
                                 </tfoot>
                             </table>

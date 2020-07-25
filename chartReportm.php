@@ -55,64 +55,93 @@ if ($_SESSION['userLevel'] == 0) {
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Students');
+        data.addColumn('number', 'Municipality');
         data.addRows([
 <?php 
 $year = date("Y");
 
-$sJanruary = "SELECT * FROM user where month='Janruary' and year=$year";
-$rJanruary = mysqli_query($conn, $sJanruary);
-$sFebruary = "SELECT * FROM user where month='February' and year=$year";
-$rFebruary = mysqli_query($conn, $sFebruary);
-$sMarch = "SELECT * FROM user where month='March' and year=$year";
-$rMarch = mysqli_query($conn, $sMarch);
-$sApril = "SELECT * FROM user where month='April' and year=$year";
-$rApril = mysqli_query($conn, $sApril);
-$sMay = "SELECT * FROM user where month='May' and year=$year";
-$rMay = mysqli_query($conn, $sMay);
-$sJune = "SELECT * FROM user where month='June' and year=$year";
-$rJune = mysqli_query($conn, $sJune);
-$sJuly = "SELECT * FROM user where month='July' and year=$year";
-$rJuly = mysqli_query($conn, $sJuly);
-$sAugust = "SELECT * FROM user where month='August' and year=$year";
-$rAugust = mysqli_query($conn, $sAugust);
-$sSeptember = "SELECT * FROM user where month='September' and year=$year";
-$rSeptember = mysqli_query($conn, $sSeptember);
-$sOctober = "SELECT * FROM user where month='October' and year=$year";
-$rOctober = mysqli_query($conn, $sOctober);
-$sNovember = "SELECT * FROM user where month='November' and year=$year";
-$rNovember = mysqli_query($conn, $sNovember);
-$sDecember = "SELECT * FROM user where month='December' and year=$year";
-$rDecember = mysqli_query($conn, $sDecember);
+$sSorsogon = "SELECT * FROM user where municipality='Sorsogon City' and year=$year";
+$rSorsogon = mysqli_query($conn, $sSorsogon);
 
-$janruary = mysqli_num_rows($rJanruary);
-$february = mysqli_num_rows($rFebruary);
-$march = mysqli_num_rows($rMarch);
-$april = mysqli_num_rows($rApril);
-$may = mysqli_num_rows($rMay);
-$june = mysqli_num_rows($rJune);
-$july = mysqli_num_rows($rJuly);
-$august = mysqli_num_rows($rAugust);
-$september = mysqli_num_rows($rSeptember);
-$october = mysqli_num_rows($rOctober);
-$november = mysqli_num_rows($rNovember);
-$december = mysqli_num_rows($rDecember);
+$sBarcelona = "SELECT * FROM user where municipality='Barcelona' and year=$year";
+$rBarcelona = mysqli_query($conn, $sBarcelona);
+
+$sBulan = "SELECT * FROM user where municipality='Bulan' and year=$year";
+$rBulan = mysqli_query($conn, $sBulan);
+
+$sBulusan = "SELECT * FROM user where municipality='Bulusan' and year=$year";
+$rBulusan = mysqli_query($conn, $sBulusan);
+
+$sCasiguran = "SELECT * FROM user where municipality='Casiguran' and year=$year";
+$rCasiguran = mysqli_query($conn, $sCasiguran);
+
+$sCastilla = "SELECT * FROM user where municipality='Castilla' and year=$year";
+$rCastilla = mysqli_query($conn, $sCastilla);
+
+$sDonsol = "SELECT * FROM user where municipality='Donsol' and year=$year";
+$rDonsol = mysqli_query($conn, $sDonsol);
+
+$sGubat = "SELECT * FROM user where municipality='Gubat' and year=$year";
+$rGubat = mysqli_query($conn, $sGubat);
+
+$sIrosin = "SELECT * FROM user where municipality='Irosin' and year=$year";
+$rIrosin = mysqli_query($conn, $sIrosin);
+
+$sJuban = "SELECT * FROM user where municipality='Juban' and year=$year";
+$rJuban = mysqli_query($conn, $sJuban);
+
+$sMagallanes = "SELECT * FROM user where municipality='Magallanes' and year=$year";
+$rMagallanes = mysqli_query($conn, $sMagallanes);
+
+$sMatnog = "SELECT * FROM user where municipality='Matnog' and year=$year";
+$rMatnog = mysqli_query($conn, $sMatnog);
+
+$sPilar = "SELECT * FROM user where municipality='Pilar' and year=$year";
+$rPilar = mysqli_query($conn, $sPilar);
+
+$sPrietoDiaz = "SELECT * FROM user where municipality='Prieto Diaz' and year=$year";
+$rPrietoDiaz = mysqli_query($conn, $sPrietoDiaz);
+
+$sStaMagdalena = "SELECT * FROM user where municipality='Sta. Magdalena' and year=$year";
+$rStaMagdalena = mysqli_query($conn, $sStaMagdalena);
+
+$sorsogon = mysqli_num_rows($rSorsogon);
+$barcelona = mysqli_num_rows($rBarcelona);
+$bulan = mysqli_num_rows($rBulan);
+$bulusan = mysqli_num_rows($rBulusan);
+$casiguran = mysqli_num_rows($rCasiguran);
+$castilla = mysqli_num_rows($rCastilla);
+$donsol = mysqli_num_rows($rDonsol);
+$gubat = mysqli_num_rows($rGubat);
+$irosin = mysqli_num_rows($rIrosin);
+$juban = mysqli_num_rows($rJuban);
+$magallanes = mysqli_num_rows($rMagallanes);
+$matnog = mysqli_num_rows($rMatnog);
+$pilar = mysqli_num_rows($rPilar);
+$prietoDiaz = mysqli_num_rows($rPrietoDiaz);
+$staMagdalena = mysqli_num_rows($rStaMagdalena);
 ?>
-          ['Janruary', <?php echo $janruary ?>],
-          ['February', <?php echo $february ?>],
-          ['March', <?php echo $march ?>],
-          ['April', <?php echo $april ?>],
-          ['May', <?php echo $may ?>],
-          ['June', <?php echo $june ?>],
-          ['July', <?php echo $july ?>],
-          ['August', <?php echo $august ?>],
-          ['September', <?php echo $september ?>],
-          ['October', <?php echo $october ?>],
-          ['November', <?php echo $november ?>],
-          ['December', <?php echo $december ?>]
+
+
+          ['Sorsogon', <?php echo $sorsogon ?>],
+          ['Barcelona', <?php echo $barcelona ?>],
+          ['Bulan', <?php echo $bulan ?>],
+          ['Bulusan', <?php echo $bulusan ?>],
+          ['Casiguran', <?php echo $casiguran ?>],
+          ['Castilla', <?php echo $castilla ?>],
+          ['Donsol', <?php echo $donsol ?>],
+          ['Gubat', <?php echo $gubat ?>],
+          ['Irosin', <?php echo $irosin ?>],
+          ['Juban', <?php echo $juban ?>],
+          ['Magallanes', <?php echo $magallanes ?>],
+          ['Matnog', <?php echo $matnog ?>],
+          ['Pilar', <?php echo $pilar ?>],
+          ['Prieto Diaz', <?php echo $prietoDiaz ?>],
+          ['Sta. Magdalena', <?php echo $staMagdalena ?>]
+
         ]);
         // Set chart options
-        var pie_options = {'title':'Students Data',
+        var pie_options = {'title':'Municipality Data',
                        'width':1100,
                        'height':900};
 
@@ -121,7 +150,7 @@ $december = mysqli_num_rows($rDecember);
         piechart.draw(data, pie_options);
 
         // Set chart options
-        var bar_options = {'title':'Students Data',
+        var bar_options = {'title':'Municipality Data',
                        'width':1100,
                        'height':900};
 
@@ -195,7 +224,7 @@ $december = mysqli_num_rows($rDecember);
 
 function changeCharts(){
     var x = document.getElementById("chartsOption").value;
-    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReports.php?id=1&chart_type='+ x);
+    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportm.php?id=1&chart_type='+ x);
 }
 </script>
 
@@ -221,6 +250,7 @@ echo '
 <div id="pie_div"></div>
 ';
 }
+
 
                             ?>
 

@@ -57,9 +57,8 @@ if ($_SESSION['userLevel'] == 0) {
             <div id="studentReport" class="collapse" aria-labelledby="headingTwo" data-parent="#studentReport">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Student Options:</h6>
-                    <a class="collapse-item" href="./chartReports.php?id=<?php echo $_GET['id'] ?>&chart_type=bar">Reports Chart</a>
-                    <a class="collapse-item" data-toggle="modal" data-target="#registerStudentModal" href="#">Register
-                        Student</a>
+                    <a class="collapse-item" data-toggle="modal" data-target="#chartTypeModal" href="#">Chart Reports</a>
+                    <a class="collapse-item" data-toggle="modal" data-target="#resetDataModal" href="#">Export Data</a>
                 </div>
             </div>
         </li>
@@ -170,5 +169,6 @@ if ($_SESSION['userLevel'] == 1) {
 <?php include_once('./modals/deleteAllQuestionModal.php') ?>
 
 <?php include_once('./modals/resetDataModal.php') ?>
+<?php include_once('./modals/chartTypeModal.php') ?>
 
 <?php include_once('./modals/announcementModal.php') ?>

@@ -3,9 +3,10 @@ include_once './includes/connection.php';
 $id = $_GET['id'];
 //$username = $_GET['username'];
 $studentID = $_GET['studentId'];
+$searchLastname = $_GET['lastname'];
 
 if ($_GET['search'] == 1 && $studentID != '') {
-    $gStudentInfo = "SELECT * FROM user WHERE id='$studentID'";
+    $gStudentInfo = "SELECT * FROM user WHERE lastName='$searchLastname'";
     $rStudentInfo = mysqli_query($conn, $gStudentInfo);
 
     if (mysqli_num_rows($rStudentInfo) > 0) {

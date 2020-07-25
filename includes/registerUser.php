@@ -25,6 +25,7 @@ $phoneNumber = $_POST['phoneNumber'];
 $selectedCourse = $_POST['selectedCourse'];
 $lastSchoolAttended = $_POST['selectedSchool'];
 $status = $_POST['selectedStatus'];
+$municipality = $_POST['selectedMunicipality'];
 $created_at = $currentDate;
 
 if (isset($_POST['btnRegister'])) {
@@ -52,6 +53,7 @@ if (isset($_POST['btnRegister'])) {
         userLevel,
         month,
         year,
+        municipality,
         created_at
         ) VALUES (
         '$username',
@@ -67,11 +69,12 @@ if (isset($_POST['btnRegister'])) {
         '3',
         '$month',
         '$year',
+        '$municipality',
         '$created_at'
         )";
 
         if (mysqli_query($conn, $sql)) {
-            $_SESSION['registerStudent'] = 'Registered Successfully! Username & Password is ' . $username;
+            $_SESSION['registerStudent'] = 'Registered Successfully!';
             $url = "./../home.php?id=$id";
             $url = str_replace(PHP_EOL, '', $url);
             header("Location: $url");

@@ -55,6 +55,31 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="dropDownCourse">Municipality</label>
+                                <select required name="selectedMunicipality" class="form-control" id="dropDownCourse">
+                                    <option></option>
+     									<option value="Sorsogon City">Sorsogon City</option>
+                                        <option value="Barcelona">Barcelona</option>
+                                        <option value="Bulan">Bulan</option>
+                                        <option value="Bulusan">Bulusan</option>
+                                        <option value="Casiguran">Casiguran</option>
+                                        <option value="Castilla">Castilla</option>
+                                        <option value="Donsol">Donsol</option>
+                                        <option value="Gubat">Gubat</option>
+                                        <option value="Irosin">Irosin</option>
+                                        <option value="Juban">Juban</option>
+                                        <option value="Magallanes">Magallanes</option>
+                                        <option value="Matnog">Matnog</option>
+                                        <option value="Pilar">Pilar</option>
+                                        <option value="Prieto Diaz">Prieto Diaz</option>
+                                        <option value="Sta. Magdalena">Sta. Magdalena</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <!-- End of Row 2 -->
                     <div class="row">
                         <div class="col-lg-12">

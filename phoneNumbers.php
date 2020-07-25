@@ -50,8 +50,8 @@
                                          <h1 class="h4 text-gray-900 mb-2">List of Contact Number:</h1>
                                          <!-- Query to get all the phone numbers -->
                                          <?php
-                                            if (isset($_POST['numberTexted'])) {
-                                                $sql = "SELECT * FROM user Where userLevel=3 AND textStatus<=3 ORDER BY id desc";
+                                            if (isset($_POST['numberTexted1'])) {
+                                                $sql = "SELECT * FROM user Where userLevel=3 AND textStatus=0 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
                                                 $result = mysqli_query($conn, $sql);
                                                 if (mysqli_num_rows($result) > 0) {
                                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -64,13 +64,13 @@
                                                             textStatus='$textStatus',
                                                             textedDate = '$currentDate'
                                                             WHERE 
-                                                            id='$id' AND textStatus<=3 AND textedDate!= '$currentDate'";
+                                                            id='$id' AND textStatus=0 AND textedDate!= '$currentDate'";
                                                         if ($conn->query($sql) === TRUE) {
                                                             //$_SESSION['message'] = 'Question Update Successfully!';
                                                                 $sql = "UPDATE user SET 
                                                                     status='No Response'
                                                                     WHERE 
-                                                                    textStatus>3";
+                                                                    textStatus=3";
 
                                                                 if ($conn->query($sql) === TRUE) {
                                                                     $url = "./phoneNumbers.php?id=1";
@@ -89,7 +89,85 @@
                                                     echo "0 results";
                                                 }
                                             }
-                                            if (isset($_POST['btnTakedExamPhoneNumber'])) {
+                                            if (isset($_POST['numberTexted2'])) {
+                                                $sql = "SELECT * FROM user Where userLevel=3 AND textStatus=1 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+                                                $result = mysqli_query($conn, $sql);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        $getTextStatus = $row['textStatus'];
+                                                        $currentDate = date("Y-m-d");
+                                                        $id = $row['id'];
+                                                        $textStatus = $getTextStatus + 1;
+
+                                                        $sql = "UPDATE user SET 
+                                                            textStatus='$textStatus',
+                                                            textedDate = '$currentDate'
+                                                            WHERE 
+                                                            id='$id' AND textStatus=1 AND textedDate!= '$currentDate'";
+                                                        if ($conn->query($sql) === TRUE) {
+                                                            //$_SESSION['message'] = 'Question Update Successfully!';
+                                                                $sql = "UPDATE user SET 
+                                                                    status='No Response'
+                                                                    WHERE 
+                                                                    textStatus=3";
+
+                                                                if ($conn->query($sql) === TRUE) {
+                                                                    $url = "./phoneNumbers.php?id=1";
+                                                                    $url = str_replace(PHP_EOL, '', $url);
+                                                                    header("Location: $url");
+                                                                        
+                                                                }
+
+                                                        } else {
+                                                            echo "Error updating record: " . $conn->error;
+                                                        }
+
+
+                                                    }
+                                                } else {
+                                                    echo "0 results";
+                                                }
+                                            }
+                                            if (isset($_POST['numberTexted3'])) {
+                                                $sql = "SELECT * FROM user Where userLevel=3 AND textStatus=2 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+                                                $result = mysqli_query($conn, $sql);
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                        $getTextStatus = $row['textStatus'];
+                                                        $currentDate = date("Y-m-d");
+                                                        $id = $row['id'];
+                                                        $textStatus = $getTextStatus + 1;
+
+                                                        $sql = "UPDATE user SET 
+                                                            textStatus='$textStatus',
+                                                            textedDate = '$currentDate'
+                                                            WHERE 
+                                                            id='$id' AND textStatus=2 AND textedDate!= '$currentDate'";
+                                                        if ($conn->query($sql) === TRUE) {
+                                                            //$_SESSION['message'] = 'Question Update Successfully!';
+                                                                $sql = "UPDATE user SET 
+                                                                    status='No Response'
+                                                                    WHERE 
+                                                                    textStatus=3";
+
+                                                                if ($conn->query($sql) === TRUE) {
+                                                                    $url = "./phoneNumbers.php?id=1";
+                                                                    $url = str_replace(PHP_EOL, '', $url);
+                                                                    header("Location: $url");
+                                                                        
+                                                                }
+
+                                                        } else {
+                                                            echo "Error updating record: " . $conn->error;
+                                                        }
+
+
+                                                    }
+                                                } else {
+                                                    echo "0 results";
+                                                }
+                                            }
+                                            if (isset($_POST['btnTakedExamPhoneNumber1'])) {
 
                                                 // Get Date and Time
                                                 date_default_timezone_set("Asia/Manila");
@@ -97,8 +175,9 @@
                                                 // $currentDate = '2020-02-21 00:00:00';
                                                 $getCurrentDate = date("Y-m-d");
                                                 $currentDate = $getCurrentDate . ' ' . '00:00:00';
-                                                $sql = "SELECT * FROM user where userLevel=3 AND textStatus<=3 AND textedDate!='$getCurrentDate' AND status !='Enrolled' ORDER BY id desc";
+                                                $sql = "SELECT * FROM user where userLevel=3 AND textStatus=0 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' ORDER BY id desc";
                                                 $result = mysqli_query($conn, $sql);
+
                                                 if (mysqli_num_rows($result) > 0) {
                                                     echo '<h3>List to Text: </h3> '; 
                                                     while ($row = mysqli_fetch_assoc($result)) {
@@ -108,14 +187,72 @@
                                                     }
                                                             echo '
                                                                  <form method="post">
-                                                                     <button class="btn btn-info " name="numberTexted"
+                                                                     <button class="btn btn-info " name="numberTexted1"
                                                                          type="submit">Texted</button>
                                                                  </form>
                                                             ';
                                                 } else {
                                                     echo "0 results";
                                                 }
-                                                mysqli_close($conn);
+
+                                            }
+                                            if (isset($_POST['btnTakedExamPhoneNumber2'])) {
+
+                                                // Get Date and Time
+                                                date_default_timezone_set("Asia/Manila");
+                                                //Test Trigger if Working
+                                                // $currentDate = '2020-02-21 00:00:00';
+                                                $getCurrentDate = date("Y-m-d");
+                                                $currentDate = $getCurrentDate . ' ' . '00:00:00';
+                                                $sql = "SELECT * FROM user where userLevel=3 AND textStatus=1 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' ORDER BY id desc";
+                                                $result = mysqli_query($conn, $sql);
+
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    echo '<h3>List to Text: </h3> '; 
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                            $id = $row['id'];
+                                                            $textStatus = $row['textStatus'];
+                                                            echo $phoneNumbers = $row["phoneNumber"] . ",";
+                                                    }
+                                                            echo '
+                                                                 <form method="post">
+                                                                     <button class="btn btn-info " name="numberTexted2"
+                                                                         type="submit">Texted</button>
+                                                                 </form>
+                                                            ';
+                                                } else {
+                                                    echo "0 results";
+                                                }
+
+                                            }
+                                            if (isset($_POST['btnTakedExamPhoneNumber3'])) {
+
+                                                // Get Date and Time
+                                                date_default_timezone_set("Asia/Manila");
+                                                //Test Trigger if Working
+                                                // $currentDate = '2020-02-21 00:00:00';
+                                                $getCurrentDate = date("Y-m-d");
+                                                $currentDate = $getCurrentDate . ' ' . '00:00:00';
+                                                $sql = "SELECT * FROM user where userLevel=3 AND textStatus=2 AND textedDate!='$getCurrentDate' AND status !='Interested' AND status !='Enrolled' ORDER BY id desc";
+                                                $result = mysqli_query($conn, $sql);
+
+                                                if (mysqli_num_rows($result) > 0) {
+                                                    echo '<h3>List to Text: </h3> '; 
+                                                    while ($row = mysqli_fetch_assoc($result)) {
+                                                            $id = $row['id'];
+                                                            $textStatus = $row['textStatus'];
+                                                            echo $phoneNumbers = $row["phoneNumber"] . ",";
+                                                    }
+                                                            echo '
+                                                                 <form method="post">
+                                                                     <button class="btn btn-info " name="numberTexted3"
+                                                                         type="submit">Texted</button>
+                                                                 </form>
+                                                            ';
+                                                } else {
+                                                    echo "0 results";
+                                                }
+
                                             }
                                             ?>
                                      </div>
@@ -125,8 +262,12 @@
                                          <div class="col-lg-7 p-2">
                                              <div class="text-center">
                                                  <form method="post">
-                                                     <button class="btn btn-success " name="btnTakedExamPhoneNumber"
-                                                         type="submit">Student Number</button>
+                                                     <button class="btn btn-success " name="btnTakedExamPhoneNumber1"
+                                                         type="submit">Template 1</button>
+                                                     <button class="btn btn-success " name="btnTakedExamPhoneNumber2"
+                                                         type="submit">Template 2</button>
+                                                     <button class="btn btn-success " name="btnTakedExamPhoneNumber3"
+                                                         type="submit">Template 3</button>
                                                  </form>
                                              </div>
                                          </div>

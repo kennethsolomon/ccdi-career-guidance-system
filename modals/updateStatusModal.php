@@ -18,7 +18,7 @@
                                 <input required type="hidden" class="form-control form-control-user" id="id" name="id"
                                     value="<?php echo $_GET['id']; ?>">
 <?php 
-                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus<=3 AND status!='Enrolled' ORDER BY id desc";
+$sql = "SELECT * FROM user where userLevel=3 AND textStatus!=3 AND status!='Interested' AND status!='Enrolled' AND status!='No Response' ORDER BY id desc";
                                     $result = mysqli_query($conn, $sql);
                                     if (mysqli_num_rows($result) > 0) {
                                         echo '
@@ -29,8 +29,9 @@
                                                 $firstName = $row['firstName'];
                                                 $middleName = $row['middleName'];
                                                 $status = $row['status'];
+                                                $phoneNumber = $row['phoneNumber'];
                                             echo'
-                                            <option name="studentName" value="'.$id.'">'.$lastName.', '. $firstName .' '. $middleName.' - '. $status.'</option>
+                                            <option name="studentName" value="'.$id.'">'.$phoneNumber.'-'.$lastName.', '. $firstName .' '. $middleName.' - '. $status.'</option>
                                             ';
                                         }
                                         echo'
@@ -39,7 +40,6 @@
                                     } else {
                                         echo "0 results";
                                     }
-
 ?>
                             </div>
                         </div>
