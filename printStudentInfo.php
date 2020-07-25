@@ -60,7 +60,7 @@ mysqli_close($conn);
 </head>
 
 <body>
-    <a href="viewStudentInfo.php?id=<?php echo $id ?>&studentId=<?php echo $studentId ?>&username=<?php echo $username ?>&search=1"
+    <a href="viewStudentInfo.php?id=<?php echo $id ?>&studentId=<?php echo $studentId ?>&lastname=<?php echo $lastName ?>&search=1"
         class="btn btn-warning btn-icon-split back">
         <span class="icon text-white-50 back">
             <i class="fas fa-exclamation-triangle back"></i>
