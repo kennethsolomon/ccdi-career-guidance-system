@@ -27,3 +27,11 @@
 .choices {
   margin-left: 150px;
 }
+
+@media print {
+    .no-printme{
+        display:none;
+    }
+      
+}
+

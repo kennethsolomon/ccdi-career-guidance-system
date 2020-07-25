@@ -34,7 +34,11 @@ if ($_SESSION['userLevel'] == 0) {
             <link href="css/sb-admin-2.min.css" rel="stylesheet">
             <link href="css/chat.css" rel="stylesheet">
 
+            <link href="css/style.css" rel="stylesheet">
+
+
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
 <script type="text/javascript">
 
       // Load the Visualization API and the corechart package.
@@ -136,7 +140,9 @@ $december = mysqli_num_rows($rDecember);
             <div id="wrapper">
 
                 <!-- Sidebar -->
+<div class="no-printme">
                 <?php include_once('./sidebar.php') ?>
+</div>
 
                 <!-- Content Wrapper -->
                 <div id="content-wrapper" class="d-flex flex-column">
@@ -174,7 +180,7 @@ $december = mysqli_num_rows($rDecember);
 
                         <!-- Begin Page Content -->
                         <div class="container">
-        <div class="row">
+        <div class="row no-printme">
             <div class="col-lg-3">
                 <label for="cars">Chart Type: </label>
                 <select name="chartsOption" class="form-control" id="chartsOption" onchange="changeCharts()">
@@ -182,6 +188,11 @@ $december = mysqli_num_rows($rDecember);
                   <option value="bar">Bar Chart</option>
                   <option value="pie">Pie Chart</option>
                 </select>
+            </div>
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3"></div>
+            <div class="col-lg-3">
+              <button type="submit" data-toggle="modal" data-target="" class="btn btn-info btn-fill mt-2 .no-print no-printme" onclick="window.print();return false;">Print</button>
             </div>
         </div>
 
@@ -225,10 +236,10 @@ echo '
                 <!-- End of Main Content -->
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white">
+                <footer class="sticky-footer bg-white no-printme">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2019</span>
+                            <span>Copyright &copy; Your Website 2020</span>
                         </div>
                     </div>
                 </footer>
