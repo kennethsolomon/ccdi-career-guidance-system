@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 22, 2020 at 06:11 PM
+-- Generation Time: Jul 25, 2020 at 06:27 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -134,6 +134,8 @@ CREATE TABLE `user` (
   `userLevel` int(12) NOT NULL,
   `takeExam` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT '0',
   `created_at` datetime DEFAULT NULL,
+  `month` varchar(122) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `year` varchar(122) COLLATE utf8mb4_unicode_ci NOT NULL,
   `exp_date_at` datetime DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -141,19 +143,23 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `municipality`, `course`, `textStatus`, `textedDate`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `exp_date_at`) VALUES
-(1, 'cgofficer', 'faf0275a4da236e0e82050da7463a9f9', '', 'CgOfficer', '', '', '', '', 2, '2020-07-22', '', '', '', '', '', '', 0, '0', NULL, NULL),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', '', 'Admin', '', '', '', '', 2, '2020-07-22', '', '', '', NULL, '', NULL, 1, '0', NULL, NULL),
-(4, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', '', 'Information Technology', 4, '0000-00-00', 'SNHS', '09301787782', 'Not Interested', '2020/02/22-06:15:42pm', '0', 'ACT', 3, '1', '2020-02-20 00:00:00', '2020-03-06 00:00:00'),
-(6, 'test2', 'ad0234829205b9033196ba818f7a872b', 'asd', 'asd', 'asd', 'sad', '', 'ACT', 4, '2020-07-22', 'SNHS', '09454296783', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-02-22 00:00:00', '2020-03-08 00:00:00'),
-(7, 'test3', '8ad8757baa8564dc136c1e07507f4a98', 'test3', 'test3', 'test3', 'test3', '', 'Computer Science', 4, '0000-00-00', 'Aemillianum College Inc.', '09454296723', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-02-22 00:00:00', '2020-03-08 00:00:00'),
-(8, 'qweqwe', 'efe6398127928f1b2e9ef3207fb82663', 'qwe', 'qwe', 'qwe', 'Seabreeze Cabid-an', '', 'Information Technology', 4, '0000-00-00', 'SNHS', '09454296723', 'Not Interested', '2020/07/10-09:37:52pm', '0', 'ACT', 3, '1', '2020-07-10 00:00:00', '2020-07-25 00:00:00'),
-(9, 'zxc', '5fa72358f0b4fb4f2c5d7de8c9a41846', 'zxc', 'zxc', 'zxc', 'zxc', '', 'Information Technology', 4, '0000-00-00', 'SNHS', '213', 'Not Interested', '', '0', '', 3, '0', '2020-07-10 00:00:00', '2020-07-25 00:00:00'),
-(10, 'asdf', '912ec803b2ce49e4a541068d495ab570', 'adf', 'adf', 'asdf', 'adf', '', 'Computer Science', 4, '0000-00-00', 'Aemillianum College Inc.', '123', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '2020-07-30 00:00:00'),
-(11, 'adsff', '8136f09c17354891c642b9b9f1722c34', 'adff', 'adff', 'asdff', 'adff', '', 'Information Technology', 4, '2020-07-22', 'SNHS', '123', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '2020-07-30 00:00:00'),
-(12, 'SolomonKenneth0715', '0c6b7752db1ac12da0068b09d29f9e07', 'Solomon', 'Kenneth', 'Lim', 'adfadf', '', 'Information Technology', 4, '2020-07-22', 'SNHS', '123', 'Not Interested', '2020/07/15-03:24:14am', '0', 'ACT', 3, '1', '2020-07-15 00:00:00', '2020-07-30 00:00:00'),
-(13, 'kennethsolomon0715', '2770a531abbb4274789c214ff009841c', 'kenneth', 'solomon', 'lim', 'df', '', 'Information Technology', 3, '2020-07-22', 'SNHS', '123', '', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '2020-07-30 00:00:00'),
-(14, 'kensolomon0715', '4d3b95722a878de65c7e1ed3d4c46a70', 'KEN', 'SOLOMON', 'hahah', 'afadf', '', 'Information Technology', 3, '2020-07-22', 'SNHS', '123', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '2020-07-30 00:00:00');
+INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `municipality`, `course`, `textStatus`, `textedDate`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `month`, `year`, `exp_date_at`) VALUES
+(1, 'cgofficer', 'faf0275a4da236e0e82050da7463a9f9', 'cgofficer', 'CgOfficer', '', '', '', '', 2, '2020-07-22', '', '', '', '', '', '', 0, '0', NULL, '', '', NULL),
+(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Admin', '', '', '', '', 2, '2020-07-22', '', '', '', NULL, '', NULL, 1, '0', NULL, '', '', NULL),
+(4, 'test', '098f6bcd4621d373cade4e832627b4f6', 'test', 'test', 'test', 'test', '', 'Information Technology', 4, '0000-00-00', 'SNHS', '09301787782', 'Expired', '2020/02/22-06:15:42pm', '0', 'ACT', 3, '1', '2020-02-20 00:00:00', '', '', '2020-03-06 00:00:00'),
+(6, 'test2', 'ad0234829205b9033196ba818f7a872b', 'asd', 'asd', 'asd', 'sad', '', 'ACT', 4, '2020-07-22', 'SNHS', '09454296783', 'Expired', NULL, '0', NULL, 3, '0', '2020-02-22 00:00:00', '', '', '2020-03-08 00:00:00'),
+(7, 'test3', '8ad8757baa8564dc136c1e07507f4a98', 'test3', 'test3', 'test3', 'test3', '', 'Computer Science', 5000, '0000-00-00', 'Aemillianum College Inc.', '09454296723', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-02-22 00:00:00', '', '', '2020-03-08 00:00:00'),
+(8, 'qweqwe', 'efe6398127928f1b2e9ef3207fb82663', 'qwe', 'qwe', 'qwe', 'Seabreeze Cabid-an', '', 'Information Technology', 4, '0000-00-00', 'SNHS', '09454296723', 'Not Interested', '2020/07/10-09:37:52pm', '0', 'ACT', 3, '1', '2020-07-10 00:00:00', '', '', '2020-07-25 00:00:00'),
+(9, 'zxc', '5fa72358f0b4fb4f2c5d7de8c9a41846', 'zxc', 'zxc', 'zxc', 'zxc', '', 'Information Technology', 4, '0000-00-00', 'SNHS', '213', 'Not Interested', '', '0', '', 3, '0', '2020-07-10 00:00:00', '', '', '2020-07-25 00:00:00'),
+(10, 'asdf', '912ec803b2ce49e4a541068d495ab570', 'adf', 'adf', 'asdf', 'adf', '', 'Computer Science', 4, '0000-00-00', 'Aemillianum College Inc.', '123', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '', '', '2020-07-30 00:00:00'),
+(11, 'adsff', '8136f09c17354891c642b9b9f1722c34', 'adff', 'adff', 'asdff', 'adff', '', 'Information Technology', 4, '2020-07-22', 'SNHS', '123', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '', '', '2020-07-30 00:00:00'),
+(12, 'SolomonKenneth0715', '0c6b7752db1ac12da0068b09d29f9e07', 'Solomon', 'Kenneth', 'Lim', 'adfadf', '', 'Information Technology', 4, '2020-07-22', 'SNHS', '123', 'Not Interested', '2020/07/15-03:24:14am', '0', 'ACT', 3, '1', '2020-07-15 00:00:00', '', '', '2020-07-30 00:00:00'),
+(13, 'kennethsolomon0715', '2770a531abbb4274789c214ff009841c', 'kenneth', 'solomon', 'lim', 'df', '', 'Information Technology', 1, '2020-07-22', 'SNHS', '123', 'Enrolled', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '', '', '2020-07-30 00:00:00'),
+(14, 'kensolomon0715', '4d3b95722a878de65c7e1ed3d4c46a70', 'KEN', 'SOLOMON', 'hahah', 'afadf', '', 'Information Technology', 3, '2020-07-23', 'SNHS', '123', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-15 00:00:00', '', '', '2020-07-30 00:00:00'),
+(24, '11111110725', '0347876a71487d330e3b8becebd6f029', '111', '1111', '111', '111', '', 'Information Technology', 0, '0000-00-00', 'SNHS', '111', 'Interested', NULL, '0', NULL, 3, '0', '2020-07-25 00:00:00', '', '', '2020-08-09 00:00:00'),
+(25, '222222july', 'd24a9a62eced65cb530ac62d187cbddf', '222', '222', '222', '222', '', 'Information Technology', 0, '0000-00-00', 'SNHS', '22', 'Interested', NULL, '0', NULL, 3, '0', '2020-07-25 00:00:00', '', '', '2020-08-09 00:00:00'),
+(26, '3333330725', 'a9e9c2c5160e1486236c5a9036a0e68e', '333', '333', '33', '33', '', 'Information Technology', 0, '0000-00-00', 'SNHS', '33', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-25 00:00:00', 'August', '2020', '2020-08-09 00:00:00'),
+(27, '4444440725', '003bd5c12eb4741f84f569101ee70eb9', '444', '444', '444', '44', '', 'Information Technology', 0, '0000-00-00', 'Aemillianum College Inc.', '44', 'Not Interested', NULL, '0', NULL, 3, '0', '2020-07-25 00:00:00', 'July', '2020', '2020-08-09 00:00:00');
 
 --
 -- Triggers `user`
@@ -232,7 +238,7 @@ ALTER TABLE `examresult`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
