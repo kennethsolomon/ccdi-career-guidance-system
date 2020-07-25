@@ -174,6 +174,25 @@ $december = mysqli_num_rows($rDecember);
 
                         <!-- Begin Page Content -->
                         <div class="container">
+        <div class="row">
+            <div class="col-lg-3">
+                <label for="cars">Chart Type: </label>
+                <select name="chartsOption" class="form-control" id="chartsOption" onchange="changeCharts()">
+                  <option value=""></option>
+                  <option value="bar">Bar Chart</option>
+                  <option value="pie">Pie Chart</option>
+                </select>
+            </div>
+        </div>
+
+<script>
+
+function changeCharts(){
+    var x = document.getElementById("chartsOption").value;
+    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReports.php?id=1&chart_type='+ x);
+}
+</script>
+
                             <?php
                             if (isset($_SESSION['registerStudent'])) {
                             ?>
