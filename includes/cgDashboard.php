@@ -9,14 +9,32 @@ if (mysqli_num_rows($resultEnrolled) > 0) {
     $totalStudent = 0;
 }
 
-// Total Taked Exam
-$sqlTakedExam = "SELECT * FROM user WHERE userLevel = '3' && status = 'Taked Exam'";
+// Total No Response 
+$sqlTakedExam = "SELECT * FROM user WHERE userLevel = '3' && status = 'No Response'";
 $resultTakedExam = mysqli_query($conn, $sqlTakedExam);
 
 if (mysqli_num_rows($resultTakedExam) > 0) {
-    $totalTakedExam = mysqli_num_rows($resultTakedExam);
+    $totalNoResponse = mysqli_num_rows($resultTakedExam);
 } else {
-    $totalTakedExam = 0;
+    $totalNoResponse = 0;
+}
+// Total Not Interested 
+$sqlTakedExam = "SELECT * FROM user WHERE userLevel = '3' && status = 'Not Interested'";
+$resultTakedExam = mysqli_query($conn, $sqlTakedExam);
+
+if (mysqli_num_rows($resultTakedExam) > 0) {
+    $totalNotInterested = mysqli_num_rows($resultTakedExam);
+} else {
+    $totalNotInterested = 0;
+}
+// Total Interested 
+$sqlTakedExam = "SELECT * FROM user WHERE userLevel = '3' && status = 'Interested'";
+$resultTakedExam = mysqli_query($conn, $sqlTakedExam);
+
+if (mysqli_num_rows($resultTakedExam) > 0) {
+    $totalInterested = mysqli_num_rows($resultTakedExam);
+} else {
+    $totalInterested = 0;
 }
 // Total Undecided
 $sqlUndecided = "SELECT * FROM user WHERE userLevel = '3' && status = 'Undecided'";

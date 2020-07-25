@@ -4,9 +4,9 @@ session_start();
 include_once './connection.php';
 
 if (isset($_POST['btnViewStudent'])) {
-    $username = $_POST['username'];
+    $lastName = $_POST['lastName'];
     $id = $_POST['id'];
-    $sql = "SELECT * FROM user WHERE username='$username'";
+    $sql = "SELECT * FROM user WHERE lastName='$lastName'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
@@ -20,7 +20,7 @@ if (isset($_POST['btnViewStudent'])) {
 
     mysqli_close($conn);
 
-    $url = "./../viewStudentInfo.php?id=$id&studentId=$studentId&username=$username&search=1";
+    $url = "./../viewStudentInfo.php?id=$id&studentId=$studentId&lastname=$lastName&search=1";
     $url = str_replace(PHP_EOL, '', $url);
     header("Location: $url");
 }

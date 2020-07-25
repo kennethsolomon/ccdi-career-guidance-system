@@ -14,9 +14,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             <div class="form-group">
-                                <label for="username">Enter Username:</label>
-                                <input type="text" class="form-control form-control-user" id="username" name="username"
-                                    aria-describedby="usernameHelp" placeholder="Username">
+                                <label for="lastName">Enter Lastname:</label>
+                                <input type="text" class="form-control form-control-user" id="lastName" name="lastName"
+                                    aria-describedby="usernameHelp" placeholder="Lastname">
                                 <input required type="hidden" class="form-control form-control-user" id="id" name="id"
                                     value="<?php echo $_GET['id']; ?>">
                             </div>

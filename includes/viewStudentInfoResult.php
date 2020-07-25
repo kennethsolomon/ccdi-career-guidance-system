@@ -1,11 +1,11 @@
 <?php
 include_once './includes/connection.php';
 $id = $_GET['id'];
-$username = $_GET['username'];
+//$username = $_GET['username'];
 $studentID = $_GET['studentId'];
 
 if ($_GET['search'] == 1 && $studentID != '') {
-    $gStudentInfo = "SELECT * FROM user WHERE username='$username'";
+    $gStudentInfo = "SELECT * FROM user WHERE id='$studentID'";
     $rStudentInfo = mysqli_query($conn, $gStudentInfo);
 
     if (mysqli_num_rows($rStudentInfo) > 0) {

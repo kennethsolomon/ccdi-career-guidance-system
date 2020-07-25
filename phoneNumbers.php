@@ -68,7 +68,7 @@
                                                         if ($conn->query($sql) === TRUE) {
                                                             //$_SESSION['message'] = 'Question Update Successfully!';
                                                                 $sql = "UPDATE user SET 
-                                                                    status='Not Interested'
+                                                                    status='No Response'
                                                                     WHERE 
                                                                     textStatus>3";
 

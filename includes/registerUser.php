@@ -7,6 +7,8 @@ date_default_timezone_set("Asia/Manila");
 // $currentDate = date("Y/m/d-h:i:s");
 $currentDate = date("Y/m/d");
 $monthDate = date("md");
+$month = date("F");
+$year = date("Y");
 
 $id = $_POST['id'];
 //$username = $_POST['username'];
@@ -48,6 +50,8 @@ if (isset($_POST['btnRegister'])) {
         course,
         status,
         userLevel,
+        month,
+        year,
         created_at
         ) VALUES (
         '$username',
@@ -61,6 +65,8 @@ if (isset($_POST['btnRegister'])) {
         '$selectedCourse',
         '$status',
         '3',
+        '$month',
+        '$year',
         '$created_at'
         )";
 

@@ -47,6 +47,25 @@ if ($_SESSION['userLevel'] == 0) {
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
+        <div class="sidebar-heading">Reports</div>
+        <!-- Nav Item - Pages Collapse Menu -->
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#studentReport" aria-expanded="true" aria-controls="collapseTwo">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Student Reports</span>
+            </a>
+            <div id="studentReport" class="collapse" aria-labelledby="headingTwo" data-parent="#studentReport">
+                <div class="bg-white py-2 collapse-inner rounded">
+                    <h6 class="collapse-header">Student Options:</h6>
+                    <a class="collapse-item" href="./chartReports.php?id=<?php echo $_GET['id'] ?>&chart_type=bar">Reports Chart</a>
+                    <a class="collapse-item" data-toggle="modal" data-target="#registerStudentModal" href="#">Register
+                        Student</a>
+                </div>
+            </div>
+        </li>
+
+        <!-- Divider -->
+        <hr class="sidebar-divider d-none d-md-block">
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
