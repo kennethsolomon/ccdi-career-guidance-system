@@ -37,7 +37,7 @@ if ($_SESSION['userLevel'] == 0) {
             <link href="css/style.css" rel="stylesheet">
 
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="js/loader.js"></script>
 
 <script type="text/javascript">
 

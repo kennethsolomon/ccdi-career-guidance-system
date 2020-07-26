@@ -33,18 +33,18 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
+                                <label for="firstName">Firstname:</label>
+                                <input required type="text" class="form-control form-control-user" id="firstName"
+                                    name="firstName" placeholder="Firstname">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
                                 <input required type="hidden" class="form-control form-control-user" id="id" name="id"
                                     value=<?php echo $_GET['id']; ?>>
                                 <label for="lastName">Lastname:</label>
                                 <input required type="text" class="form-control form-control-user" id="lastName"
                                     name="lastName" placeholder="Lastname">
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
-                                <label for="firstName">Firstname:</label>
-                                <input required type="text" class="form-control form-control-user" id="firstName"
-                                    name="firstName" placeholder="Firstname">
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -56,7 +56,22 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="dropDownSchool">Last School Attended:</label>
+                                <select required name="selectedSchool" class="form-control" id="dropDownSchool">
+                                    <option></option>
+                                    <option>SNHS</option>
+                                    <option>Aemillianum College Inc.</option>
+                                    <option>TLC</option>
+                                    <option>SMLCS</option>
+                                    <option>SSU</option>
+                                    <option>Annunciation College</option>
+                                    <option>Others</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="dropDownCourse">Municipality</label>
                                 <select required name="selectedMunicipality" class="form-control" id="dropDownCourse">
@@ -110,26 +125,6 @@
                                     <option>BSIS</option>
                                 </select>
                             </div>
-                        </div>
-                    </div>
-                    <!-- End of Row 4 -->
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="dropDownSchool">Last School Attended:</label>
-                                <select required name="selectedSchool" class="form-control" id="dropDownSchool">
-                                    <option></option>
-                                    <option>SNHS</option>
-                                    <option>Aemillianum College Inc.</option>
-                                    <option>TLC</option>
-                                    <option>SMLCS</option>
-                                    <option>SSU</option>
-                                    <option>Annunciation College</option>
-                                    <option>Others</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
                         </div>
                     </div>
                     <!-- End of Row 5 -->

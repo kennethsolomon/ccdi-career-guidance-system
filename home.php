@@ -34,6 +34,16 @@ if ($_SESSION['userLevel'] == 0) {
             <link href="css/sb-admin-2.min.css" rel="stylesheet">
             <link href="css/chat.css" rel="stylesheet">
 
+            <link href="css/style.css" rel="stylesheet">
+
+
+<script type="text/javascript" src="js/loader.js"></script>
+
+<?php
+include_once './includes/chartStudent.php';
+include_once './includes/chartMunicipality.php';
+?>
+
         </head>
 
         <body id="page-top">
@@ -264,6 +274,28 @@ if ($_SESSION['userLevel'] == 0) {
 
                             </div>
 
+
+
+
+<div class="row">
+    <div class="col-lg-6">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Monthly Student Chart</h1>
+            </div>
+        <div id="bar_div"></div>
+    </div>
+
+    <div class="col-lg-6">
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Municipality Chart</h1>
+            </div>
+        <div id="pie_div"></div>
+    </div>
+</div>
+
+            <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                <h1 class="h3 mb-0 text-gray-800">Student Info Table</h1>
+            </div>
             <div class="container-fluid" id="patientTable">
                     <div class="row">
                         <div class="col-md-12 border border-info">
@@ -279,6 +311,7 @@ if ($_SESSION['userLevel'] == 0) {
                                         <th>Course Intended</th>
                                         <th>Month</th>
                                         <th>Year</th>
+                                        <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -318,12 +351,12 @@ if ($_SESSION['userLevel'] == 0) {
                                                     <td>' . $course . '</td>
                                                     <td>' . $month . '</td>
                                                     <td>' . $year . '</td>
+                                                    <td><a type="button" class="btn btn-primary" href="viewStudentInfo.php?id=1&studentId='.$id.'&lastname='.$lastName.'&search=1">Modify</a></td>
                                                 </tr>
                                                 ';
                                         }
                                     }
                                     ?>
-
                                 </tbody>
                                 <tfoot>
                                     <tr>
@@ -408,7 +441,7 @@ if ($_SESSION['userLevel'] == 0) {
 					});
 
 					// DataTable
-					var table = $('#example').DataTable();
+                    var table = $('#example').DataTable();
 
 					// Apply the search
 					table.columns().every(function() {
