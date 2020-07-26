@@ -310,7 +310,7 @@ if ($_SESSION['userLevel'] == 0) {
 
                                             echo '
                                                 <tr>
-                                                    <td>' . $lastName . ',' . $firstName . ' ' . $middleName . '</td>
+                                                    <td>' . $lastName . ', ' . $firstName . ' ' . $middleName . '</td>
                                                     <td>' . $phoneNumber . '</td>
                                                     <td>' . $lastSchoolAttended . '</td>
                                                     <td>' . $status . '</td>

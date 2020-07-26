@@ -130,16 +130,6 @@
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="dropDownStatus">Status:</label>
-                                <select name="selectedStatus" class="form-control" id="dropDownStatus">
-                                    <option></option>
-                                    <option value="Interested">Interested</option>
-                                    <option value="Not Interested">Not Interested</option>
-                                    <option value='No Response'>No Response</option>
-                                    <option value="Enrolled">Enrolled</option>
-                                </select>
-                            </div>
                         </div>
                     </div>
                     <!-- End of Row 5 -->
