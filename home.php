@@ -106,7 +106,7 @@ include_once './includes/chartMunicipality.php';
                             <?php
                             if (isset($_SESSION['registerStudent'])) {
                             ?>
-                                <div class="alert alert-info text-center">
+                                <div id="alert-timer" class="alert alert-info text-center">
                                     <?php echo $_SESSION['registerStudent']; ?>
                                 </div>
                             <?php
@@ -423,6 +423,11 @@ include_once './includes/chartMunicipality.php';
 			<script src="js/dataTables.bootstrap4.min.js"></script>
 
 			<script type="text/javascript">
+
+                                    setTimeout(function(){
+                                        $('#alert-timer').fadeOut('slow');
+                                    },3000);
+
 				$(document).ready(function() {
 					// Javascript method's body can be found in assets/js/demos.js
 					demo.initDashboardPageCharts();

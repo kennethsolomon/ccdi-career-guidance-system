@@ -58,40 +58,51 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="dropDownSchool">Last School Attended:</label>
-                                <select required name="selectedSchool" class="form-control" id="dropDownSchool">
-                                    <option></option>
-                                    <option>SNHS</option>
-                                    <option>Aemillianum College Inc.</option>
-                                    <option>TLC</option>
-                                    <option>SMLCS</option>
-                                    <option>SSU</option>
-                                    <option>Annunciation College</option>
-                                    <option>Others</option>
-                                </select>
+                                <label for="dropDownCourse">Courses:</label>
+                                    <?php
+                                    $sql = "SELECT * FROM course";
+                                    $result = mysqli_query($conn, $sql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        echo '
+                                            <select required name="selectedCourse" class="form-control" id="dropDownCourse">
+                                            <option></option>
+                                            ';
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $name = $row['name'];
+                                            echo '
+                                                <option value="'.$name.'">'.$name.'</option>
+                                                ';
+                                        }
+                                        echo '
+                                            </select>
+                                            ';
+                                    }
+                                    ?>
                             </div>
                         </div>
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="dropDownCourse">Municipality</label>
-                                <select required name="selectedMunicipality" class="form-control" id="dropDownCourse">
-                                    <option></option>
-     									<option value="Sorsogon City">Sorsogon City</option>
-                                        <option value="Barcelona">Barcelona</option>
-                                        <option value="Bulan">Bulan</option>
-                                        <option value="Bulusan">Bulusan</option>
-                                        <option value="Casiguran">Casiguran</option>
-                                        <option value="Castilla">Castilla</option>
-                                        <option value="Donsol">Donsol</option>
-                                        <option value="Gubat">Gubat</option>
-                                        <option value="Irosin">Irosin</option>
-                                        <option value="Juban">Juban</option>
-                                        <option value="Magallanes">Magallanes</option>
-                                        <option value="Matnog">Matnog</option>
-                                        <option value="Pilar">Pilar</option>
-                                        <option value="Prieto Diaz">Prieto Diaz</option>
-                                        <option value="Sta. Magdalena">Sta. Magdalena</option>
-                                </select>
+                                <label for="dropDownCourse">School</label>
+                                    <?php
+                                    $sql = "SELECT * FROM municipality";
+                                    $result = mysqli_query($conn, $sql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        echo '
+                                            <select required name="selectedSchool" class="form-control" id="dropDownSchool">
+                                            <option></option>
+                                            ';
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $name = $row['name'];
+                                            $school = $row['school'];
+                                            echo '
+                                                <option value="'.$school.'">'.$school.'</option>
+                                                ';
+                                        }
+                                        echo '
+                                            </select>
+                                            ';
+                                    }
+                                    ?>
                             </div>
                         </div>
                     </div>
@@ -112,18 +123,6 @@
                                 <label for="phoneNumber">Phone Number:</label>
                                 <input required type="number" class="form-control form-control-user" id="phoneNumber"
                                     name="phoneNumber" placeholder="Phone Number">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="dropDownCourse">Courses:</label>
-                                <select required name="selectedCourse" class="form-control" id="dropDownCourse">
-                                    <option></option>
-                                    <option>Information Technology</option>
-                                    <option>Computer Science</option>
-                                    <option>ACT</option>
-                                    <option>BSIS</option>
-                                </select>
                             </div>
                         </div>
                     </div>

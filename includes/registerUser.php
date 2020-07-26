@@ -25,10 +25,20 @@ $phoneNumber = $_POST['phoneNumber'];
 $selectedCourse = $_POST['selectedCourse'];
 $lastSchoolAttended = $_POST['selectedSchool'];
 $status = $_POST['selectedStatus'];
-$municipality = $_POST['selectedMunicipality'];
+//$municipality = $_POST['selectedMunicipality'];
 $created_at = $currentDate;
 
 if (isset($_POST['btnRegister'])) {
+
+    $sql = "SELECT * FROM municipality WHERE school='$lastSchoolAttended'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $school = $row['school'];
+            $municipality = $row['name'];
+
+        }
+    }
 
     $sql = "SELECT * FROM user WHERE username='$username'";
     $result = mysqli_query($conn, $sql);
@@ -63,7 +73,7 @@ if (isset($_POST['btnRegister'])) {
         '$middleName',
         '$address',
         '$phoneNumber',
-        '$lastSchoolAttended',
+        '$school',
         '$selectedCourse',
         '$status',
         '3',
