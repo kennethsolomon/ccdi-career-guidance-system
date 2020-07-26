@@ -30,12 +30,12 @@ include_once('./includes/connection.php');
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="bgDesign">
 
     <div class="container">
 
         <!-- Outer Row -->
-        <div class="row justify-content-center">
+        <div class="row justify-content-center" style="margin-top:15vh">
 
             <div class="col-xl-10 col-lg-12 col-md-9">
 

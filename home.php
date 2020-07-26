@@ -280,14 +280,14 @@ include_once './includes/chartMunicipality.php';
 <div class="row">
     <div class="col-lg-6">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Monthly Student Chart</h1>
+                <h1 class="h3 mb-0 text-gray-800">Number of Prospect Student (Monthly)</h1>
             </div>
         <div id="bar_div"></div>
     </div>
 
     <div class="col-lg-6">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Municipality Chart</h1>
+                <h1 class="h3 mb-0 text-gray-800">Prospect Student Per Municipality</h1>
             </div>
         <div id="pie_div"></div>
     </div>

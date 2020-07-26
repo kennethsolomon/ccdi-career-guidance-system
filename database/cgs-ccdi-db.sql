@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 25, 2020 at 05:32 PM
+-- Generation Time: Jul 26, 2020 at 03:15 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -35,17 +35,6 @@ CREATE TABLE `chatmessage` (
   `timestamp` timestamp NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `chatmessage`
---
-
-INSERT INTO `chatmessage` (`id`, `fromUserId`, `chatMessage`, `timestamp`) VALUES
-(1, 2, 'HAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAHAA', '2020-02-21 05:53:50'),
-(2, 2, 'Test', '2020-02-22 10:14:34'),
-(3, 1, 'test', '2020-02-22 10:14:55'),
-(4, 1, 'test', '2020-02-22 10:18:26'),
-(5, 1, 'ilovemyself', '2020-02-22 10:18:31');
-
 -- --------------------------------------------------------
 
 --
@@ -60,13 +49,26 @@ CREATE TABLE `content` (
   `date` datetime NOT NULL DEFAULT current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `content`
+-- Table structure for table `course`
 --
 
-INSERT INTO `content` (`contentId`, `author`, `title`, `content`, `date`) VALUES
-(21, 'Admin', 'What is Lorem Ipsum?', 'Lorem Ipsum is simply dummy text of the printing \r\nand typesetting industry. Lorem Ipsum has been the \r\nindustry\'s standard dummy text ever since the 1500s, \r\nwhen an unknown printer took a galley of type \r\nand scrambled it to make a type specimen book. \r\nIt has survived not only five centuries, but also the \r\nleap into electronic typesetting, remaining essentially \r\nunchanged. It was popularised in the 1960s with \r\nthe release of Letraset sheets containing \r\nLorem Ipsum passages, and more recently \r\nwith desktop publishing software like Aldus \r\nPageMaker including versions of Lorem Ipsum.', '2020-02-22 01:49:17'),
-(22, 'Admin', 'Why do we use it?', 't is a long established fact that a reader will be distracted by the readable content \r\nof a page when looking at its layout. The point of using Lorem Ipsum is that \r\nit has a more-or-less normal distribution of letters, as opposed to using \r\n\'Content here, content here\', making it look like readable English. Many \r\ndesktop publishing packages and web page editors now use Lorem Ipsum \r\nas their default model text, and a search for \'lorem ipsum\' will uncover many \r\nweb sites still in their infancy. Various versions have evolved over the years, \r\nsometimes by accident, sometimes on purpose (injected humour and the like).', '2020-02-22 18:12:45');
+CREATE TABLE `course` (
+  `id` int(255) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `course`
+--
+
+INSERT INTO `course` (`id`, `name`) VALUES
+(1, 'Information Technology'),
+(2, 'Computer Science'),
+(3, 'Associate in Computer Technology'),
+(4, 'BSIS');
 
 -- --------------------------------------------------------
 
@@ -98,14 +100,30 @@ CREATE TABLE `examresult` (
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+-- --------------------------------------------------------
+
 --
--- Dumping data for table `examresult`
+-- Table structure for table `municipality`
 --
 
-INSERT INTO `examresult` (`id`, `studentId`, `examScore`, `eNum`, `created_at`) VALUES
-(1, 4, '0', '0', '2020-02-22 10:15:40'),
-(2, 8, '0', '0', '2020-07-10 13:37:41'),
-(3, 12, '0', '0', '2020-07-14 19:24:12');
+CREATE TABLE `municipality` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `school` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `municipality`
+--
+
+INSERT INTO `municipality` (`id`, `name`, `school`) VALUES
+(1, 'Sorsogon City', 'Sorsogon National High School'),
+(2, 'Sorsogon City', 'Aemillianum College Inc.'),
+(3, 'Sorsogon City', 'The Lewis College'),
+(4, 'Sorsogon City', 'SMLCS'),
+(5, 'Sorsogon City', 'SSU'),
+(6, 'Sorsogon City', 'Annunciation College'),
+(7, 'Barcelona', 'Barcelona National Comprehensive School');
 
 -- --------------------------------------------------------
 
@@ -144,11 +162,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `municipality`, `course`, `textStatus`, `textedDate`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `month`, `year`, `exp_date_at`) VALUES
-(1, 'cgofficer', 'faf0275a4da236e0e82050da7463a9f9', 'cgofficer', 'CgOfficer', '', '', '', '', 0, '2020-07-22', '', '', '', '', '', '', 0, '0', NULL, '', '', NULL),
-(2, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Admin', '', '', '', '', 0, '2020-07-22', '', '', '', NULL, '', NULL, 1, '0', NULL, '', '', NULL),
-(28, 'solomonkenneth0725', '754dc59016774f7d00c509fec9431078', 'Solomon', 'Kenneth', 'Lim', 'Seabreeze', 'Sorsogon City', 'Information Technology', 3, '2020-07-25', 'SNHS', '3333', 'No Response', NULL, '0', NULL, 3, '0', '2020-07-25 00:00:00', 'July', '2020', '2020-08-09 00:00:00'),
-(29, 'janabanjayjames0725', '334933b712445a46bcc597bfdbe33c3b', 'Janaban', 'Jayjames', 'Laguna', 'Seabreeze', 'Sorsogon City', 'Information Technology', 3, '2020-07-25', 'SNHS', '111111', 'No Response', NULL, '0', NULL, 3, '0', '2020-07-25 00:00:00', 'July', '2020', '2020-08-09 00:00:00'),
-(30, 'solomonken0725', 'a2dec0027b0a0c5e488d3648bdb6db30', 'Solomon', 'Ken', 'Lim', 'Seabreeze', 'Sorsogon City', 'Information Technology', 2, '2020-07-28', 'SNHS', '222222', 'Interested', '', '0', '', 3, '', '2020-07-25 00:00:00', 'August', '2020', '2020-08-09 00:00:00');
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Admin', '', '', '', '', 0, '2020-07-22', '', '', '', '', '', '', 0, '0', NULL, '', '', NULL),
+(2, 'cgofficer2', 'faf0275a4da236e0e82050da7463a9f9', 'cgofficer', 'cgofficer', '', '', '', '', 0, '2020-07-22', '', '', '', NULL, '', NULL, 1, '0', NULL, '', '', NULL);
 
 --
 -- Triggers `user`
@@ -177,6 +192,12 @@ ALTER TABLE `content`
   ADD PRIMARY KEY (`contentId`);
 
 --
+-- Indexes for table `course`
+--
+ALTER TABLE `course`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `examquestion`
 --
 ALTER TABLE `examquestion`
@@ -188,6 +209,12 @@ ALTER TABLE `examquestion`
 ALTER TABLE `examresult`
   ADD PRIMARY KEY (`id`),
   ADD KEY `studentId` (`studentId`);
+
+--
+-- Indexes for table `municipality`
+--
+ALTER TABLE `municipality`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
@@ -212,6 +239,12 @@ ALTER TABLE `content`
   MODIFY `contentId` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
+-- AUTO_INCREMENT for table `course`
+--
+ALTER TABLE `course`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
 -- AUTO_INCREMENT for table `examquestion`
 --
 ALTER TABLE `examquestion`
@@ -224,10 +257,16 @@ ALTER TABLE `examresult`
   MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `municipality`
+--
+ALTER TABLE `municipality`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
