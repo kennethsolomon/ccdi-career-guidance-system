@@ -77,7 +77,6 @@ if ($_GET['search'] == 1 && $studentID != '') {
                                         <div class="form-group">
                                             <label for="examScore">Score:</label>
                                             <input type="text" class="form-control" id="examScore" name="examScore" value=' . $score . '>
-                                            <input type="hidden" class="form-control" id="examScore" name="examScore" value=' . $score . '>
                                         </div>
                                     </div>
                                     <div class="col-lg-3">

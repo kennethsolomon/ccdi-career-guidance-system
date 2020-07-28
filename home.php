@@ -368,6 +368,7 @@ include_once './includes/chartMunicipality.php';
                                         <th>Course Intended</th>
                                         <th>Month</th>
                                         <th>Year</th>
+                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>

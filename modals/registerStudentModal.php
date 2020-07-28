@@ -33,18 +33,18 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="form-group">
-                                <label for="firstName">Firstname:</label>
-                                <input required type="text" class="form-control form-control-user" id="firstName"
-                                    name="firstName" placeholder="Firstname">
-                            </div>
-                        </div>
-                        <div class="col-lg-4">
-                            <div class="form-group">
                                 <input required type="hidden" class="form-control form-control-user" id="id" name="id"
                                     value=<?php echo $_GET['id']; ?>>
                                 <label for="lastName">Lastname:</label>
                                 <input required type="text" class="form-control form-control-user" id="lastName"
                                     name="lastName" placeholder="Lastname">
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="firstName">Firstname:</label>
+                                <input required type="text" class="form-control form-control-user" id="firstName"
+                                    name="firstName" placeholder="Firstname">
                             </div>
                         </div>
                         <div class="col-lg-4">
@@ -58,7 +58,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="dropDownCourse">Courses:</label>
+                                <label for="dropDownCourse">Courses Intended:</label>
                                     <?php
                                     $sql = "SELECT * FROM course";
                                     $result = mysqli_query($conn, $sql);
@@ -105,6 +105,24 @@
                                     ?>
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="phoneNumber">School Year Graduated:</label>
+                                <input required type="number" class="form-control form-control-user" id="yearGraduated"
+                                    name="yearGraduated" placeholder="Year Graduated">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="address">Email:</label>
+                                <input required type="email" class="form-control form-control-user" id="email"
+                                    name="email" placeholder="Email">
+                            </div>
+                        </div>
+                        
+
                     </div>
                     <!-- End of Row 2 -->
                     <div class="row">

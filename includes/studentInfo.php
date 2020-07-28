@@ -37,11 +37,11 @@ if (isset($_POST['btnStudentInfoUpdate'])) {
     $phoneNumber = $_POST['phoneNumber'];
     $address = $_POST['address'];
     $status = $_POST['status'];
+    $score = $_POST['examScore'];
     $dateOfExamination = $_POST['dateOfExamination'];
     $lastSchoolAttended = $_POST['lastSchoolAttended'];
     $course = $_POST['course'];
     $suggestedCourse = $_POST['suggestedCourse'];
-    $score = $_POST['examScore'];
     $accountLock = $_POST['accountLock'];
 
     if ($password == '') {

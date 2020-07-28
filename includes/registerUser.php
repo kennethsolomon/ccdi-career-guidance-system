@@ -21,6 +21,8 @@ $username = strtolower($base_username);
 $password = strtolower($base_password);
 $middleName = $_POST['middleName'];
 $address = $_POST['address'];
+$email = $_POST['email'];
+$yearGraduated = $_POST['yearGraduated'];
 $phoneNumber = $_POST['phoneNumber'];
 $selectedCourse = $_POST['selectedCourse'];
 $lastSchoolAttended = $_POST['selectedSchool'];
@@ -56,6 +58,8 @@ if (isset($_POST['btnRegister'])) {
         firstName, 
         middleName, 
         address, 
+        email, 
+        yearGraduated, 
         phoneNumber, 
         lastSchoolAttended,
         course,
@@ -72,6 +76,8 @@ if (isset($_POST['btnRegister'])) {
         '$firstName',
         '$middleName',
         '$address',
+        '$email',
+        '$yearGraduated',
         '$phoneNumber',
         '$school',
         '$selectedCourse',
