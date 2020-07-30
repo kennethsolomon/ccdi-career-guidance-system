@@ -4,23 +4,37 @@ session_start();
 include_once './connection.php';
 
 if (isset($_POST['btnUpdateStatus'])) {
-    $id = $_POST['statusNameList'];
-    $status = $_POST['statusList'];
+	if(isset($_POST['phoneText'])){
+		$checkbox1=$_POST['phoneText'];  
+		$statusList=$_POST['statusList'];  
+		foreach($checkbox1 as $chk1)  
+			{  
+			  //$chk .= $chk1.",";  
+				echo $chk1.',';
 
-    $sql = "UPDATE user SET 
-        status='$status'
-        WHERE 
-        id='$id'";
-    if ($conn->query($sql) === TRUE) {
-        $url = "./../phoneNumbers.php?id=1";
-        $url = str_replace(PHP_EOL, '', $url);
-        header("Location: $url");
-    } else {
-        echo "Error updating record: " . $conn->error;
+			$sql = "UPDATE user SET 
+				status='$statusList' 
+				WHERE 
+				phoneNumber='$chk1'";
+				if ($conn->query($sql) === TRUE) {
+					$_SESSION['message'] = 'Update Status Successfully!';
+
+					$url = "./../phoneNumbers.php?id=1";
+					$url = str_replace(PHP_EOL, '', $url);
+					header("Location: $url");
+				} else {
+					echo "Error updating record: " . $conn->error;
+				}
+			}
+
+    }else {
+
+    $_SESSION['error_message'] = 'Please Select an Action!';
+    $url = "./../phoneNumbers.php?id=1";
+    $url = str_replace(PHP_EOL, '', $url);
+    header("Location: $url");
     }
-
-
-}
+}  
 
 if (isset($_POST['btnViewQuestion'])) {
     $questionNumber = $_POST['questionNumber'];

@@ -42,11 +42,11 @@ if (isset($_POST['btnRegister'])) {
         }
     }
 
-    $sql = "SELECT * FROM user WHERE username='$username'";
+    $sql = "SELECT * FROM user WHERE phoneNumber='$phoneNumber'";
     $result = mysqli_query($conn, $sql);
 
     if (mysqli_num_rows($result) > 0) {
-        $_SESSION['registerStudent'] = 'Username Already Exist!';
+        $_SESSION['registerStudent'] = 'Phone No. Already Exist!';
         $url = "./../home.php?id=$id";
         $url = str_replace(PHP_EOL, '', $url);
         header("Location: $url");
