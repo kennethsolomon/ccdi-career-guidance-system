@@ -143,7 +143,7 @@ $staMagdalena = mysqli_num_rows($rStaMagdalena);
         // Set chart options
         var pie_options = {'title':'Municipality Data',
                        'width':1100,
-                       'height':900};
+                       'height':800};
 
         // Instantiate and draw our chart, passing in some options.
         var piechart = new google.visualization.PieChart(document.getElementById('pie_div'));
@@ -152,7 +152,7 @@ $staMagdalena = mysqli_num_rows($rStaMagdalena);
         // Set chart options
         var bar_options = {'title':'Municipality Data',
                        'width':1100,
-                       'height':900};
+                       'height':800};
 
         // Instantiate and draw our chart, passing in some options.
         var barchart = new google.visualization.BarChart(document.getElementById('bar_div'));
@@ -169,9 +169,7 @@ $staMagdalena = mysqli_num_rows($rStaMagdalena);
             <div id="wrapper">
 
                 <!-- Sidebar -->
-<div class="no-printme">
                 <?php include_once('./sidebar.php') ?>
-</div>
 
                 <!-- Content Wrapper -->
                 <div id="content-wrapper" class="d-flex flex-column">
@@ -216,7 +214,15 @@ $staMagdalena = mysqli_num_rows($rStaMagdalena);
                   <option value=""></option>
                   <option value="bar">Bar Chart</option>
                   <option value="pie">Pie Chart</option>
+<?php
+$chart_type = $_GET['chart_type'];
+$id = $_GET['id'];
+$municipality = $_GET['municipality'];
+?>
                 </select>
+                <input id="select_chart_type" type="hidden" value="<?php echo $chart_type ?>" >
+                <input id="select_id" type="hidden" value="<?php echo $id ?>" >
+                <input id="select_municipality" type="hidden" value="<?php echo $municipality ?>" >
             </div>
         </div>
 
@@ -224,7 +230,10 @@ $staMagdalena = mysqli_num_rows($rStaMagdalena);
 
 function changeCharts(){
     var x = document.getElementById("chartsOption").value;
-    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportm.php?id=1&chart_type='+ x);
+    var y = document.getElementById("select_chart_type").value;
+    var z = document.getElementById("select_id").value;
+    var a = document.getElementById("select_municipality").value;
+    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportm.php?id=1&chart_type='+ x + '&municipality=' + a);
 }
 </script>
 
@@ -253,7 +262,119 @@ echo '
 
 
                             ?>
+</div>
 
+            <div class="container-fluid" id="patientTable">
+                    <div class="row mb-2">
+                        <div class="col-lg-3">
+                            <label for="listOfMunicipality">Municipality</label>
+                            <?php
+                            $chart_type= $_GET['chart_type'];
+                            $id= $_GET['id'];
+                            $municipality= $_GET['municipality'];
+                            $sql = "SELECT * FROM list_municipality";
+                            $result = mysqli_query($conn, $sql);
+                            if (mysqli_num_rows($result) > 0) {
+                            echo '
+                            <form action="" method="GET">
+                            <select onchange="this.form.submit()" name="municipality" value="'.$municipality.'" class="form-control" id="dropDownSchool">
+                            <option value=""></option>
+                            ';
+                            while ($row = mysqli_fetch_assoc($result)) {
+                            $name = $row['name'];
+                            echo '
+                            <option value="'.$name.'">'.$name.'</option>
+                            ';
+
+                            }
+                            echo '
+                            </select>
+<input type="hidden" value="'.$chart_type.'" name="chart_type">
+<input type="hidden" value="'.$id.'" name="id">
+                            </form>
+                            ';
+                            }
+                            ?>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 border border-info">
+                            <div class="table-responsive">
+                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>School</th>
+                                        <th>Municipality</th>
+                                        <th>Month</th>
+                                        <th>Year</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <?php
+                            if(isset($_GET['municipality'])){
+                                $sql = "SELECT * FROM user where userLevel=3 AND municipality='$municipality' ORDER BY id desc";
+                            } else {
+                                $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
+                            }
+                                    $result = mysqli_query($conn, $sql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $id = $row['id'];
+                                            $municipality = $row['municipality'];
+                                            $phoneNumber = $row['phoneNumber'];
+                                            $status = $row['status'];
+                                            $course = $row['course'];
+                                            $lastSchoolAttended = $row['lastSchoolAttended'];
+
+                                            $sql2 = "SELECT * FROM user where id = '$id'";
+                                            $result2 = mysqli_query($conn, $sql2);
+
+                                            if (mysqli_num_rows($result2) > 0) {
+                                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                                                    $lastName = $row2['lastName'];
+                                                    $firstName = $row2['firstName'];
+                                                    $middleName = $row2['middleName'];
+                                                    $month = $row2['month'];
+                                                    $year = $row2['year'];
+                                                    $address = $row2['address'];
+                                                }
+                                            }
+
+                                            echo '
+                                                <tr>
+                                                    <td>' . $lastName . ', ' . $firstName . ' ' . $middleName . '</td>
+                                                    <td>' . $address . '</td>
+                                                    <td>' . $lastSchoolAttended . '</td>
+                                                    <td>' . $municipality . '</td>
+                                                    <td>' . $month . '</td>
+                                                    <td>' . $year . '</td>
+                                                    <td><a type="button" class="btn btn-primary" href="viewStudentInfo.php?id=1&studentId='.$id.'&lastname='.$lastName.'&search=1">Modify</a></td>
+                                                </tr>
+                                                ';
+                                        }
+                                    }
+                                    ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Address</th>
+                                        <th>School</th>
+                                        <th>Municipality</th>
+                                        <th>Month</th>
+                                        <th>Year</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                </div>                            <!-- End Dash Board Row -->
                     </div>
                     <!-- /.container-fluid -->
 

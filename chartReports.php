@@ -114,7 +114,7 @@ $december = mysqli_num_rows($rDecember);
         // Set chart options
         var pie_options = {'title':'Students Data',
                        'width':1100,
-                       'height':900};
+                       'height':800};
 
         // Instantiate and draw our chart, passing in some options.
         var piechart = new google.visualization.PieChart(document.getElementById('pie_div'));
@@ -123,7 +123,7 @@ $december = mysqli_num_rows($rDecember);
         // Set chart options
         var bar_options = {'title':'Students Data',
                        'width':1100,
-                       'height':900};
+                       'height':800};
 
         // Instantiate and draw our chart, passing in some options.
         var barchart = new google.visualization.BarChart(document.getElementById('bar_div'));
@@ -140,9 +140,7 @@ $december = mysqli_num_rows($rDecember);
             <div id="wrapper">
 
                 <!-- Sidebar -->
-<div class="no-printme">
                 <?php include_once('./sidebar.php') ?>
-</div>
 
                 <!-- Content Wrapper -->
                 <div id="content-wrapper" class="d-flex flex-column">
@@ -180,6 +178,9 @@ $december = mysqli_num_rows($rDecember);
 
                         <!-- Begin Page Content -->
                         <div class="container">
+
+
+</br>
         <div class="row no-printme">
             <div class="col-lg-3">
                 <label for="cars">Chart Type: </label>
@@ -209,6 +210,7 @@ function changeCharts(){
                                 unset($_SESSION['registerStudent']);
                             }
 
+
 if($_GET['chart_type']=='bar'){
 echo '
 <div id="bar_div"></div>
@@ -221,20 +223,93 @@ echo '
 <div id="pie_div"></div>
 ';
 }
-
                             ?>
+</div>
+            <div class="container-fluid" id="patientTable">
+                    <div class="row">
+                        <div class="col-md-12 border border-info">
+                            <div class="table-responsive">
+                            <table id="example" class="table table-striped table-bordered" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>School</th>
+                                        <th>Status</th>
+                                        <th>Municipality</th>
+                                        <th>Course Intended</th>
+                                        <th>Month</th>
+                                        <th>Year</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
 
+                                    <?php
+                                    $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
+                                    $result = mysqli_query($conn, $sql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $id = $row['id'];
+                                            $municipality = $row['municipality'];
+                                            $phoneNumber = $row['phoneNumber'];
+                                            $status = $row['status'];
+                                            $course = $row['course'];
+                                            $lastSchoolAttended = $row['lastSchoolAttended'];
+
+                                            $sql2 = "SELECT * FROM user where id = '$id'";
+                                            $result2 = mysqli_query($conn, $sql2);
+
+                                            if (mysqli_num_rows($result2) > 0) {
+                                                while ($row2 = mysqli_fetch_assoc($result2)) {
+                                                    $lastName = $row2['lastName'];
+                                                    $firstName = $row2['firstName'];
+                                                    $middleName = $row2['middleName'];
+                                                    $month = $row2['month'];
+                                                    $year = $row2['year'];
+                                                }
+                                            }
+
+                                            echo '
+                                                <tr>
+                                                    <td>' . $lastName . ', ' . $firstName . ' ' . $middleName . '</td>
+                                                    <td>' . $phoneNumber . '</td>
+                                                    <td>' . $lastSchoolAttended . '</td>
+                                                    <td>' . $status . '</td>
+                                                    <td>' . $municipality . '</td>
+                                                    <td>' . $course . '</td>
+                                                    <td>' . $month . '</td>
+                                                    <td>' . $year . '</td>
+                                                    <td><a type="button" class="btn btn-primary" href="viewStudentInfo.php?id=1&studentId='.$id.'&lastname='.$lastName.'&search=1">Modify</a></td>
+                                                </tr>
+                                                ';
+                                        }
+                                    }
+                                    ?>
+                                </tbody>
+                                <tfoot>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Phone</th>
+                                        <th>School</th>
+                                        <th>Status</th>
+                                        <th>Municipality</th>
+                                        <th>Course Intended</th>
+                                        <th>Month</th>
+                                        <th>Year</th>
+                                        <th>Action</th>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                        </div>
                     </div>
-                    <!-- /.container-fluid -->
-
-                </div>
-                <!-- End of Main Content -->
+                </div>                            <!-- End Dash Board Row -->
 
                 <!-- Footer -->
-                <footer class="sticky-footer bg-white no-printme">
+                <footer class="sticky-footer bg-white">
                     <div class="container my-auto">
                         <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2020</span>
+                            <span>Copyright &copy; Your Website 2019</span>
                         </div>
                     </div>
                 </footer>
@@ -245,6 +320,7 @@ echo '
 
             </div>
             <!-- End of Page Wrapper -->
+
 
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">

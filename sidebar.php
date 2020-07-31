@@ -3,7 +3,7 @@
 if ($_SESSION['userLevel'] == 0) {
 ?>
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav no-printme bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="./home.php?id=<?php echo $_GET['id'] ?>">
@@ -39,7 +39,7 @@ if ($_SESSION['userLevel'] == 0) {
                         Student</a>
                     <a class="collapse-item" data-toggle="modal" data-target="#viewStudentModal" href="#">View Info
                         Student</a>
-                    <a class="collapse-item" href="./phoneNumbers.php?id=<?php echo $_GET['id'] ?>">Text Student</a>
+                    <a class="collapse-item" href="./phoneNumbers.php?id=1&school=&municipality=">Text Student</a>
                 </div>
             </div>
         </li>

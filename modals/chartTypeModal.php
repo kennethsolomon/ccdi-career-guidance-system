@@ -17,6 +17,7 @@
                                     <option value=""></option>
                                     <option value="student">Student</option>
                                     <option value="municipality">Municipality</option>
+                                    <option value="school">School</option>
                                 </select>
                             </div>
                         </div>

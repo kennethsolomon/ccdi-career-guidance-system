@@ -3,6 +3,16 @@ session_start();
 
 include_once './connection.php';
 
+if (isset($_POST['btnTextBy'])) {
+    //$_SESSION['error_message'] = 'Please Select an Action!';
+    $listOfMunicipality = $_POST['listOfMunicipality'];
+    $listOfSchool = $_POST['listOfSchool'];
+	$_SESSION['message'] = 'Category Updated Successfully!';
+    $url = "./../phoneNumbers.php?id=1&municipality=$listOfMunicipality&school=$listOfSchool";
+    $url = str_replace(PHP_EOL, '', $url);
+    header("Location: $url");
+}  
+
 if (isset($_POST['btnUpdateStatus'])) {
 	if(isset($_POST['phoneText'])){
 		$checkbox1=$_POST['phoneText'];  
@@ -19,7 +29,7 @@ if (isset($_POST['btnUpdateStatus'])) {
 				if ($conn->query($sql) === TRUE) {
 					$_SESSION['message'] = 'Update Status Successfully!';
 
-					$url = "./../phoneNumbers.php?id=1";
+					$url = "./../phoneNumbers.php?id=1&school=&municipality=";
 					$url = str_replace(PHP_EOL, '', $url);
 					header("Location: $url");
 				} else {
@@ -29,7 +39,7 @@ if (isset($_POST['btnUpdateStatus'])) {
 
     }else {
 
-    $_SESSION['error_message'] = 'Please Select an Action!';
+    $_SESSION['error_message'] = 'Please Select a Student!';
     $url = "./../phoneNumbers.php?id=1";
     $url = str_replace(PHP_EOL, '', $url);
     header("Location: $url");
