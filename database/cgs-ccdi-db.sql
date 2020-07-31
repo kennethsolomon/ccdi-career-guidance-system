@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 26, 2020 at 03:15 PM
+-- Generation Time: Jul 31, 2020 at 10:38 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -103,6 +103,38 @@ CREATE TABLE `examresult` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `list_municipality`
+--
+
+CREATE TABLE `list_municipality` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `list_municipality`
+--
+
+INSERT INTO `list_municipality` (`id`, `name`) VALUES
+(1, 'Sorsogon City'),
+(2, 'Barcelona'),
+(3, 'Bulan'),
+(4, 'Bulusan'),
+(5, 'Casiguran'),
+(6, 'Castilla'),
+(7, 'Donsol'),
+(8, 'Gubat'),
+(9, 'Irosin'),
+(10, 'Juban'),
+(11, 'Magallanes'),
+(12, 'Matnog'),
+(13, 'Pilar'),
+(14, 'Prieto Diaz'),
+(15, 'Sta. Magdalena');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `municipality`
 --
 
@@ -139,6 +171,8 @@ CREATE TABLE `user` (
   `firstName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `middleName` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `yearGraduated` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `municipality` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `course` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `textStatus` int(12) NOT NULL,
@@ -154,16 +188,19 @@ CREATE TABLE `user` (
   `created_at` datetime DEFAULT NULL,
   `month` varchar(122) COLLATE utf8mb4_unicode_ci NOT NULL,
   `year` varchar(122) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exp_date_at` datetime DEFAULT NULL
+  `exp_date_at` datetime DEFAULT NULL,
+  `count` int(11) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `municipality`, `course`, `textStatus`, `textedDate`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `month`, `year`, `exp_date_at`) VALUES
-(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Admin', '', '', '', '', 0, '2020-07-22', '', '', '', '', '', '', 0, '0', NULL, '', '', NULL),
-(2, 'cgofficer2', 'faf0275a4da236e0e82050da7463a9f9', 'cgofficer', 'cgofficer', '', '', '', '', 0, '2020-07-22', '', '', '', NULL, '', NULL, 1, '0', NULL, '', '', NULL);
+INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `email`, `yearGraduated`, `municipality`, `course`, `textStatus`, `textedDate`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `month`, `year`, `exp_date_at`, `count`) VALUES
+(1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Admin', '', '', '', '', '', '', 0, '2020-07-22', '', '', '', '', '', '', 0, '0', NULL, '', '', NULL, 1),
+(2, 'cgofficer2', 'faf0275a4da236e0e82050da7463a9f9', 'cgofficer', 'cgofficer', '', '', '', '', '', '', 0, '2020-07-22', '', '', '', NULL, '', NULL, 1, '0', NULL, '', '', NULL, 1),
+(39, 'solomonkenneth0728', 'ace53c995135dd6a5c384f07bdbea83e', 'Solomon', 'Kenneth', 'Lim', 'Seabreeze', '', '', 'Sorsogon City', 'Information Technology', 1, '2020-07-19', 'Sorsogon National High School', '09122423923', '', '', '7', '', 3, '', '2020-07-28 00:00:00', 'July', '2020', '2020-08-12 00:00:00', 1),
+(40, 'solken0728', 'cd26584fd4ae8923a4cd7946d40d60a0', 'Sol', 'Ken', 'Lim', 'Seabreeze', 'synecders@gmail.com', '2020', 'Sorsogon City', 'Information Technology', 1, '2020-07-14', 'SSU', '0923293239', '', '', '0', '', 3, '', '2020-07-28 00:00:00', 'July', '2020', '2020-08-12 00:00:00', 1);
 
 --
 -- Triggers `user`
@@ -209,6 +246,12 @@ ALTER TABLE `examquestion`
 ALTER TABLE `examresult`
   ADD PRIMARY KEY (`id`),
   ADD KEY `studentId` (`studentId`);
+
+--
+-- Indexes for table `list_municipality`
+--
+ALTER TABLE `list_municipality`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `municipality`
@@ -257,6 +300,12 @@ ALTER TABLE `examresult`
   MODIFY `id` int(25) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `list_municipality`
+--
+ALTER TABLE `list_municipality`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
 -- AUTO_INCREMENT for table `municipality`
 --
 ALTER TABLE `municipality`
@@ -266,7 +315,7 @@ ALTER TABLE `municipality`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
