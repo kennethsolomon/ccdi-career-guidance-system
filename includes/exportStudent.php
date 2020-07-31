@@ -13,7 +13,7 @@ header("Content-Type: application/vnd.ms-excel");
 if (isset($_POST['btnExportData'])) {
     $year = $_POST['exportYear'];
     if($year!=''){
-        $sql = "SELECT lastName, firstName, middleName, address, municipality, course, lastSchoolAttended, phoneNumber, status, month, year, created_at FROM user WHERE userLevel != 1 AND userLevel != 0 AND year = '$year'";
+        $sql = "SELECT lastName, firstName, middleName, address, municipality, course, lastSchoolAttended,yearGraduated, phoneNumber, status, month, year, created_at FROM user WHERE userLevel != 1 AND userLevel != 0 AND year = '$year'";
         $result = mysqli_query($conn, $sql);
 
         if (mysqli_num_rows($result) > 0) {
