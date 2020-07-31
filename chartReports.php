@@ -190,6 +190,10 @@ $december = mysqli_num_rows($rDecember);
                   <option value="pie">Pie Chart</option>
                 </select>
             </div>
+<div class="col-lg-2 ml-auto mt-3">
+<button class="btn btn-primary" onclick="window.print()">Print</button>
+<a class="btn btn-info" href="includes/exportData.php?data=student">Export</a>
+</div>
         </div>
 
 <script>
@@ -225,7 +229,7 @@ echo '
 }
                             ?>
 </div>
-            <div class="container-fluid" id="patientTable">
+            <div class="no-printme container-fluid" id="patientTable">
                     <div class="row">
                         <div class="col-md-12 border border-info">
                             <div class="table-responsive">

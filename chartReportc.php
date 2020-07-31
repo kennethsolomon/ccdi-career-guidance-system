@@ -55,22 +55,23 @@ if ($_SESSION['userLevel'] == 0) {
         // Create the data table.
         var data = new google.visualization.DataTable();
         data.addColumn('string', 'Topping');
-        data.addColumn('number', 'School');
+        data.addColumn('number', 'Course');
         data.addRows([
 <?php 
 $year = date("Y");
 
 //$query = "SELECT * FROM municipality";
-$query = "SELECT MIN(id) as id, SUM(`count`) as COUNT, lastSchoolAttended FROM user WHERE userLevel=3 GROUP BY lastSchoolAttended";
+
+$query = "SELECT MIN(id) as id, SUM(`count`) as COUNT, course from user WHERE userLevel=3 GROUP BY course";
 $result = mysqli_query($conn, $query);
 
 $num_row = mysqli_num_rows($result);
 if ($num_row > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
         $count = $row['COUNT'];
-        $school = $row['lastSchoolAttended'];
+        $course = $row['course'];
 
-            echo "['".$school."',".$count."],";
+            echo "['".$course."',".$count."],";
 
 
     }
@@ -81,7 +82,7 @@ if ($num_row > 0) {
 
         ]);
         // Set chart options
-        var pie_options = {'title':'School Data',
+        var pie_options = {'title':'Course Data',
                        'width':1100,
                        'height':800};
 
@@ -90,7 +91,7 @@ if ($num_row > 0) {
         piechart.draw(data, pie_options);
 
         // Set chart options
-        var bar_options = {'title':'School Data',
+        var bar_options = {'title':'Course Data',
                        'width':1100,
                        'height':800};
 
@@ -164,6 +165,10 @@ $municipality = $_GET['municipality'];
                 <input id="select_id" type="hidden" value="<?php echo $id ?>" >
                 <input id="select_municipality" type="hidden" value="<?php echo $municipality ?>" >
             </div>
+<div class="col-lg-2 ml-auto mt-3">
+<button class="btn btn-primary" onclick="window.print()">Print</button>
+<a class="btn btn-info" href="includes/exportData.php?data=course&course=<?php echo $_GET['course'] ?>">Export</a>
+</div>
         </div>
 
 <script>
@@ -173,7 +178,7 @@ function changeCharts(){
     var y = document.getElementById("select_chart_type").value;
     var z = document.getElementById("select_id").value;
     var a = document.getElementById("select_municipality").value;
-    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportsc.php?id=1&chart_type='+ x + '&municipality=' + a);
+    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportc.php?id=1&chart_type='+ x + '&municipality=' + a);
 }
 </script>
 
@@ -204,29 +209,30 @@ echo '
                             ?>
 </div>
 
-            <div class="container-fluid" id="patientTable">
+            <div class="no-printme container-fluid" id="patientTable">
                     <div class="row mb-2">
                         <div class="col-lg-3">
-                            <label for="listOfSchool">School</label>
+                            <label for="listOfSchool">Course</label>
                             <?php
                             $chart_type= $_GET['chart_type'];
                             $id= $_GET['id'];
                             
-                            if (isset($_GET['school'])) {
-                                $school= $_GET['school'];
+                            if (isset($_GET['course'])) {
+                                $course = $_GET['course'];
                             }
-                            $sql = "SELECT * FROM municipality";
+                            $sql = "SELECT * FROM course";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                             echo '
                             <form action="" method="GET">
-                            <select onchange="this.form.submit()" name="school" value="'.$school.'" class="form-control" id="dropDownSchool">
+                            <select onchange="this.form.submit()" name="course" value="" class="form-control" id="dropDownSchool">
+                            <option value="">SELECT COURSE</option>
                             <option value=""></option>
                             ';
                             while ($row = mysqli_fetch_assoc($result)) {
-                            $school = $row['school'];
+                            $course = $row['name'];
                             echo '
-                            <option value="'.$school.'">'.$school.'</option>
+                            <option value="'.$course.'">'.$course.'</option>
                             ';
 
                             }
@@ -249,9 +255,9 @@ echo '
                                     <tr>
                                         <th>Name</th>
                                         <th>Address</th>
+                                        <th>Phone Number</th>
                                         <th>School</th>
-                                        <th>Municipality</th>
-                                        <th>Year Graduated</th>
+                                        <th>Course</th>
                                         <th>Month</th>
                                         <th>Year</th>
                                         <th>Action</th>
@@ -260,9 +266,9 @@ echo '
                                 <tbody>
 
                                     <?php
-                            if(isset($_GET['school'])){
-                                $school = $_GET['school'];
-                                $sql = "SELECT * FROM user where userLevel=3 AND lastSchoolAttended='$school' ORDER BY id desc";
+                            if(isset($_GET['course'])){
+                                $course = $_GET['course'];
+                                $sql = "SELECT * FROM user where userLevel=3 AND course='$course' ORDER BY id desc";
                             } else {
                                 $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
                             }
@@ -295,9 +301,9 @@ echo '
                                                 <tr>
                                                     <td>' . $lastName . ', ' . $firstName . ' ' . $middleName . '</td>
                                                     <td>' . $address . '</td>
+                                                    <td>' . $phoneNumber . '</td>
                                                     <td>' . $lastSchoolAttended . '</td>
-                                                    <td>' . $municipality . '</td>
-                                                    <td>' . $yearGraduated . '</td>
+                                                    <td>' . $course . '</td>
                                                     <td>' . $month . '</td>
                                                     <td>' . $year . '</td>
                                                     <td><a type="button" class="btn btn-primary" href="viewStudentInfo.php?id=1&studentId='.$id.'&lastname='.$lastName.'&search=1">Modify</a></td>
@@ -311,9 +317,9 @@ echo '
                                     <tr>
                                         <th>Name</th>
                                         <th>Address</th>
+                                        <th>Phone Number</th>
                                         <th>School</th>
-                                        <th>Municipality</th>
-                                        <th>Year Graduated</th>
+                                        <th>Course</th>
                                         <th>Month</th>
                                         <th>Year</th>
                                         <th>Action</th>

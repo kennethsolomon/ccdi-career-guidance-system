@@ -224,6 +224,10 @@ $municipality = $_GET['municipality'];
                 <input id="select_id" type="hidden" value="<?php echo $id ?>" >
                 <input id="select_municipality" type="hidden" value="<?php echo $municipality ?>" >
             </div>
+<div class="col-lg-2 ml-auto mt-3">
+<button class="btn btn-primary" onclick="window.print()">Print</button>
+<a class="btn btn-info" href="includes/exportData.php?data=municipality&municipality=<?php echo $_GET['municipality'] ?>">Export</a>
+</div>
         </div>
 
 <script>
@@ -264,20 +268,23 @@ echo '
                             ?>
 </div>
 
-            <div class="container-fluid" id="patientTable">
+            <div class="no-printme container-fluid" id="patientTable">
                     <div class="row mb-2">
                         <div class="col-lg-3">
                             <label for="listOfMunicipality">Municipality</label>
                             <?php
                             $chart_type= $_GET['chart_type'];
                             $id= $_GET['id'];
-                            $municipality= $_GET['municipality'];
+                            if (isset($_GET['municipality'])) {
+                                $municipality= $_GET['municipality'];
+                            }
                             $sql = "SELECT * FROM list_municipality";
                             $result = mysqli_query($conn, $sql);
                             if (mysqli_num_rows($result) > 0) {
                             echo '
                             <form action="" method="GET">
                             <select onchange="this.form.submit()" name="municipality" value="'.$municipality.'" class="form-control" id="dropDownSchool">
+                            <option value="">SELECT MUNICIPALITY</option>
                             <option value=""></option>
                             ';
                             while ($row = mysqli_fetch_assoc($result)) {

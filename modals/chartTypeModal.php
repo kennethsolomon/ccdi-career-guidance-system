@@ -18,6 +18,7 @@
                                     <option value="municipality">Municipality</option>
                                     <option value="school">School</option>
                                     <option value="course">Course</option>
+                                    <option value="status">Status</option>
                                     <option value="student">Student</option>
                                 </select>
                             </div>
