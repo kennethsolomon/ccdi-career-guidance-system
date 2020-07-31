@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2020 at 10:38 AM
+-- Generation Time: Jul 31, 2020 at 06:19 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -199,8 +199,8 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `email`, `yearGraduated`, `municipality`, `course`, `textStatus`, `textedDate`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `month`, `year`, `exp_date_at`, `count`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Admin', '', '', '', '', '', '', 0, '2020-07-22', '', '', '', '', '', '', 0, '0', NULL, '', '', NULL, 1),
 (2, 'cgofficer2', 'faf0275a4da236e0e82050da7463a9f9', 'cgofficer', 'cgofficer', '', '', '', '', '', '', 0, '2020-07-22', '', '', '', NULL, '', NULL, 1, '0', NULL, '', '', NULL, 1),
-(39, 'solomonkenneth0728', 'ace53c995135dd6a5c384f07bdbea83e', 'Solomon', 'Kenneth', 'Lim', 'Seabreeze', '', '', 'Sorsogon City', 'Information Technology', 1, '2020-07-19', 'Sorsogon National High School', '09122423923', '', '', '7', '', 3, '', '2020-07-28 00:00:00', 'July', '2020', '2020-08-12 00:00:00', 1),
-(40, 'solken0728', 'cd26584fd4ae8923a4cd7946d40d60a0', 'Sol', 'Ken', 'Lim', 'Seabreeze', 'synecders@gmail.com', '2020', 'Sorsogon City', 'Information Technology', 1, '2020-07-14', 'SSU', '0923293239', '', '', '0', '', 3, '', '2020-07-28 00:00:00', 'July', '2020', '2020-08-12 00:00:00', 1);
+(39, 'solomonkenneth0728', 'ace53c995135dd6a5c384f07bdbea83e', 'Solomon', 'Kenneth', 'Lim', 'Seabreeze', '', '', 'Sorsogon City', 'Information Technology', 3, '2020-07-31', 'Sorsogon National High School', '09122423923', 'No Response', '', '7', '', 3, '', '2020-07-28 00:00:00', 'July', '2020', '2020-08-12 00:00:00', 1),
+(40, 'solken0728', 'cd26584fd4ae8923a4cd7946d40d60a0', 'Sol', 'Ken', 'Lim', 'Seabreeze', 'synecders@gmail.com', '2020', 'Sorsogon City', 'Information Technology', 2, '2020-07-27', 'SSU', '0923293239', 'Enrolled', '', '0', '', 3, '', '2020-07-28 00:00:00', 'July', '2020', '2020-08-12 00:00:00', 1);
 
 --
 -- Triggers `user`
