@@ -7,8 +7,9 @@ if (isset($_POST['btnTextBy'])) {
     //$_SESSION['error_message'] = 'Please Select an Action!';
     $listOfMunicipality = $_POST['listOfMunicipality'];
     $listOfSchool = $_POST['listOfSchool'];
+    $listOfCourse = $_POST['listOfCourse'];
 	$_SESSION['message'] = 'Category Updated Successfully!';
-    $url = "./../phoneNumbers.php?id=1&municipality=$listOfMunicipality&school=$listOfSchool";
+    $url = "./../phoneNumbers.php?id=1&municipality=$listOfMunicipality&school=$listOfSchool&course=$listOfCourse";
     $url = str_replace(PHP_EOL, '', $url);
     header("Location: $url");
 }  

@@ -3,7 +3,27 @@ session_start();
 include_once('./connection.php');
 
 if (isset($_POST['numberTexted1'])) {
-$sql = "SELECT * FROM user Where userLevel=3 AND textStatus=0 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+$course = $_GET['course'];
+$municipality = $_GET['municipality'];
+$school = $_GET['school'];
+if(!empty($school) && !empty($municipality) && !empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND lastSchoolAttended='$school' AND course='$course'AND textStatus=0 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(empty($school) && empty($municipality) && empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND textStatus=0 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($school) && !empty($municipality)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND lastSchoolAttended='$school' AND textStatus=0 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($school) && !empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND lastSchoolAttended='$school' AND course='$course' AND textStatus=0 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($municipality) && !empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND course='$course' AND textStatus=0 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($school)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND lastSchoolAttended='$school' AND textStatus=0 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if (!empty($municipality)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND textStatus=0 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if (!empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND course='$course' AND textStatus=0 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+}
+
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -26,7 +46,7 @@ if (mysqli_num_rows($result) > 0) {
 
                 if ($conn->query($sql) === TRUE) {
                     $_SESSION['message'] = 'Texted Successfully!';
-                    $url = "./../phoneNumbers.php?id=1&school=&municipality=";
+                    $url = "./../phoneNumbers.php?id=1&school=$school&municipality=$municipality&course=$course";
                     $url = str_replace(PHP_EOL, '', $url);
                     header("Location: $url");
                         
@@ -43,7 +63,27 @@ if (mysqli_num_rows($result) > 0) {
 }
 }
 if (isset($_POST['numberTexted2'])) {
-$sql = "SELECT * FROM user Where userLevel=3 AND textStatus=1 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+$course = $_GET['course'];
+$municipality = $_GET['municipality'];
+$school = $_GET['school'];
+if(!empty($school) && !empty($municipality) && !empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND lastSchoolAttended='$school' AND course='$course'AND textStatus=1 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(empty($school) && empty($municipality) && empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND textStatus=1 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($school) && !empty($municipality)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND lastSchoolAttended='$school' AND textStatus=1 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($school) && !empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND lastSchoolAttended='$school' AND course='$course' AND textStatus=1 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($municipality) && !empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND course='$course' AND textStatus=1 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($school)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND lastSchoolAttended='$school' AND textStatus=1 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if (!empty($municipality)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND textStatus=1 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if (!empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND course='$course' AND textStatus=1 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+}
+
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -66,7 +106,7 @@ if (mysqli_num_rows($result) > 0) {
 
                 if ($conn->query($sql) === TRUE) {
                     $_SESSION['message'] = 'Texted Successfully!';
-                    $url = "./../phoneNumbers.php?id=1&school=&municipality=";
+                    $url = "./../phoneNumbers.php?id=1&school=$school&municipality=$municipality&course=$course";
                     $url = str_replace(PHP_EOL, '', $url);
                     header("Location: $url");
                         
@@ -83,7 +123,27 @@ if (mysqli_num_rows($result) > 0) {
 }
 }
 if (isset($_POST['numberTexted3'])) {
-$sql = "SELECT * FROM user Where userLevel=3 AND textStatus=2 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+$course = $_GET['course'];
+$municipality = $_GET['municipality'];
+$school = $_GET['school'];
+if(!empty($school) && !empty($municipality) && !empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND lastSchoolAttended='$school' AND course='$course'AND textStatus=2 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(empty($school) && empty($municipality) && empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND textStatus=2 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($school) && !empty($municipality)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND lastSchoolAttended='$school' AND textStatus=2 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($school) && !empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND lastSchoolAttended='$school' AND course='$course' AND textStatus=2 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($municipality) && !empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND course='$course' AND textStatus=2 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if(!empty($school)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND lastSchoolAttended='$school' AND textStatus=2 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if (!empty($municipality)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND municipality='$municipality' AND textStatus=2 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+} else if (!empty($course)){
+    $sql = "SELECT * FROM user Where userLevel=3 AND course='$course' AND textStatus=2 AND status!= 'Interested' AND status!='Enrolled' AND status !='No Response' ORDER BY id desc";
+}
+
 $result = mysqli_query($conn, $sql);
 if (mysqli_num_rows($result) > 0) {
     while ($row = mysqli_fetch_assoc($result)) {
@@ -106,7 +166,7 @@ if (mysqli_num_rows($result) > 0) {
 
                 if ($conn->query($sql) === TRUE) {
                     $_SESSION['message'] = 'Texted Successfully!';
-                    $url = "./../phoneNumbers.php?id=1&school=&municipality=";
+                    $url = "./../phoneNumbers.php?id=1&school=$school&municipality=$municipality&course=$course";
                     $url = str_replace(PHP_EOL, '', $url);
                     header("Location: $url");
                         

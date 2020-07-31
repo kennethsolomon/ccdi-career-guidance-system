@@ -187,12 +187,26 @@
                                                 if (isset($_GET['municipality'])) {
                                                     $municipality = $_GET['municipality'];
                                                 }
-                                                if(!empty($school) && !empty($municipality)){
+                                                if (isset($_GET['course'])) {
+                                                    $course = $_GET['course'];
+                                                }
+
+                                                if(!empty($school) && !empty($municipality) && !empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=0 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' AND municipality='$municipality' AND course='$course' ORDER BY id desc";
+                                                } else if(empty($school) && empty($municipality) && empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=0 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' ORDER BY id desc";
+                                                } else if(!empty($school) && !empty($municipality)){
                                                     $sql = "SELECT * FROM user where userLevel=3 AND textStatus=0 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' AND municipality='$municipality' ORDER BY id desc";
+                                                } else if(!empty($school) && !empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=0 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' AND course='$course' ORDER BY id desc";
+                                                } else if(!empty($municipality) && !empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=0 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND municipality='$municipality' AND course='$course' ORDER BY id desc";
                                                 } else if(!empty($school)){
                                                     $sql = "SELECT * FROM user where userLevel=3 AND textStatus=0 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' ORDER BY id desc";
                                                 } else if (!empty($municipality)){
                                                     $sql = "SELECT * FROM user where userLevel=3 AND textStatus=0 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND municipality='$municipality' ORDER BY id desc";
+                                                } else if (!empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=0 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND course='$course' ORDER BY id desc";
                                                 }
                                                 $result = mysqli_query($conn, $sql);
 
@@ -209,10 +223,10 @@
                                                     echo '
                                                     <input type="text" value="'.$phoneNumbers.'" id="listOfPhoneNumbers">
                                                     <button onclick="copyPhoneNumbers()" class="btn btn-success ">Copy</button>
-                                                                 <form method="post" action="./includes/texted.php">
-                                                                     <button class="btn btn-info " name="numberTexted1"
-                                                                         type="submit">Texted</button>
-                                                                 </form>
+                                                     <form method="post" action="./includes/texted.php?municipality='.$_GET['municipality'].'&course='.$_GET['course'].'&school='.$_GET['school'].'">
+                                                         <button class="btn btn-info " name="numberTexted1"
+                                                             type="submit">Texted</button>
+                                                     </form>
                                                     ';
                                                 } else {
                                                     echo "0 results";
@@ -233,12 +247,26 @@
                                                 if (isset($_GET['municipality'])) {
                                                     $municipality = $_GET['municipality'];
                                                 }
-                                                if(!empty($school) && !empty($municipality)){
+                                                if (isset($_GET['course'])) {
+                                                    $course = $_GET['course'];
+                                                }
+
+                                                if(!empty($school) && !empty($municipality) && !empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=1 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' AND municipality='$municipality' AND course='$course' ORDER BY id desc";
+                                                } else if(empty($school) && empty($municipality) && empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=1 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' ORDER BY id desc";
+                                                } else if(!empty($school) && !empty($municipality)){
                                                     $sql = "SELECT * FROM user where userLevel=3 AND textStatus=1 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' AND municipality='$municipality' ORDER BY id desc";
+                                                } else if(!empty($school) && !empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=1 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' AND course='$course' ORDER BY id desc";
+                                                } else if(!empty($municipality) && !empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=1 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND municipality='$municipality' AND course='$course' ORDER BY id desc";
                                                 } else if(!empty($school)){
                                                     $sql = "SELECT * FROM user where userLevel=3 AND textStatus=1 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' ORDER BY id desc";
                                                 } else if (!empty($municipality)){
                                                     $sql = "SELECT * FROM user where userLevel=3 AND textStatus=1 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND municipality='$municipality' ORDER BY id desc";
+                                                } else if (!empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=1 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND course='$course' ORDER BY id desc";
                                                 }
                                                 $result = mysqli_query($conn, $sql);
 
@@ -255,10 +283,10 @@
                                                     echo '
                                                     <input type="text" value="'.$phoneNumbers.'" id="listOfPhoneNumbers">
                                                     <button onclick="copyPhoneNumbers()" class="btn btn-success ">Copy</button>
-                                                                 <form method="post" action="./includes/texted.php">
-                                                                     <button class="btn btn-info " name="numberTexted2"
-                                                                         type="submit">Texted</button>
-                                                                 </form>
+                                                     <form method="post" action="./includes/texted.php?municipality='.$_GET['municipality'].'&course='.$_GET['course'].'&school='.$_GET['school'].'">
+                                                         <button class="btn btn-info " name="numberTexted2"
+                                                             type="submit">Texted</button>
+                                                     </form>
                                                     ';
                                                 } else {
                                                     echo "0 results";
@@ -279,12 +307,26 @@
                                                 if (isset($_GET['municipality'])) {
                                                     $municipality = $_GET['municipality'];
                                                 }
-                                                if(!empty($school) && !empty($municipality)){
+                                                if (isset($_GET['course'])) {
+                                                    $course = $_GET['course'];
+                                                }
+
+                                                if(!empty($school) && !empty($municipality) && !empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=2 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' AND municipality='$municipality' AND course='$course' ORDER BY id desc";
+                                                } else if(empty($school) && empty($municipality) && empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=2 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' ORDER BY id desc";
+                                                } else if(!empty($school) && !empty($municipality)){
                                                     $sql = "SELECT * FROM user where userLevel=3 AND textStatus=2 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' AND municipality='$municipality' ORDER BY id desc";
+                                                } else if(!empty($school) && !empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=2 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' AND course='$course' ORDER BY id desc";
+                                                } else if(!empty($municipality) && !empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=2 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND municipality='$municipality' AND course='$course' ORDER BY id desc";
                                                 } else if(!empty($school)){
                                                     $sql = "SELECT * FROM user where userLevel=3 AND textStatus=2 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND lastSchoolAttended='$school' ORDER BY id desc";
                                                 } else if (!empty($municipality)){
                                                     $sql = "SELECT * FROM user where userLevel=3 AND textStatus=2 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND municipality='$municipality' ORDER BY id desc";
+                                                } else if (!empty($course)){
+                                                    $sql = "SELECT * FROM user where userLevel=3 AND textStatus=2 AND textedDate!='$getCurrentDate' AND status !='Enrolled' AND status !='Interested' AND course='$course' ORDER BY id desc";
                                                 }
                                                 $result = mysqli_query($conn, $sql);
 
@@ -299,10 +341,10 @@
                                                     echo '
                                                     <input type="text" value="'.$phoneNumbers.'" id="listOfPhoneNumbers">
                                                     <button onclick="copyPhoneNumbers()" class="btn btn-success ">Copy</button>
-                                                                 <form method="post" action="./includes/texted.php">
-                                                                     <button class="btn btn-info " name="numberTexted3"
-                                                                         type="submit">Texted</button>
-                                                                 </form>
+                                                     <form method="post" action="./includes/texted.php?municipality='.$_GET['municipality'].'&course='.$_GET['course'].'&school='.$_GET['school'].'">
+                                                         <button class="btn btn-info " name="numberTexted3"
+                                                             type="submit">Texted</button>
+                                                     </form>
                                                     ';
                                                 } else {
                                                     echo "0 results";

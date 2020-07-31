@@ -15,7 +15,7 @@
         <form action="./includes/questionInfo.php" method="POST">
             <div class="container-fluid" id="patientTable">
                     <div class="row">
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                             <label for="listofSchool">School</label>
                                     <?php
                                     $sql = "SELECT * FROM municipality ORDER BY id desc";
@@ -40,7 +40,7 @@
                                     ?>
 
                             </div>
-                            <div class="col-lg-6">
+                            <div class="col-lg-4">
                             <label for="listOfMunicipality">Municipality</label>
                                     <?php
                                     $sql = "SELECT * FROM list_municipality";
@@ -48,6 +48,30 @@
                                     if (mysqli_num_rows($result) > 0) {
                                         echo '
                                             <select name="listOfMunicipality" class="form-control" id="dropDownSchool">
+                                                <option value=""></option>
+                                        ';
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $name = $row['name'];
+                                            echo '
+                                                <option value="'.$name.'">'.$name.'</option>
+                                            ';
+
+                                        }
+                                            echo '
+                                                </select>
+                                                ';
+                                    }
+                                    ?>
+
+                            </div>
+                            <div class="col-lg-4">
+                            <label for="listOfMunicipality">Course</label>
+                                    <?php
+                                    $sql = "SELECT * FROM course";
+                                    $result = mysqli_query($conn, $sql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        echo '
+                                            <select name="listOfCourse" class="form-control" id="dropDownSchool">
                                                 <option value=""></option>
                                         ';
                                         while ($row = mysqli_fetch_assoc($result)) {

@@ -39,7 +39,7 @@ if ($_SESSION['userLevel'] == 0) {
                         Student</a>
                     <a class="collapse-item" data-toggle="modal" data-target="#viewStudentModal" href="#">View Info
                         Student</a>
-                    <a class="collapse-item" href="./phoneNumbers.php?id=1&school=&municipality=">Text Student</a>
+                    <a class="collapse-item" href="./phoneNumbers.php?id=1&school=&municipality=&course=">Text Student</a>
                 </div>
             </div>
         </li>

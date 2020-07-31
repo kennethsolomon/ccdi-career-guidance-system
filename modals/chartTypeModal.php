@@ -15,9 +15,10 @@
                             <div class="form-group">
                                 <select id="" class="form-control" name="chartDataType">
                                     <option value=""></option>
-                                    <option value="student">Student</option>
                                     <option value="municipality">Municipality</option>
                                     <option value="school">School</option>
+                                    <option value="course">Course</option>
+                                    <option value="student">Student</option>
                                 </select>
                             </div>
                         </div>
