@@ -58,7 +58,8 @@ if ($_SESSION['userLevel'] == 0) {
         data.addColumn('number', 'Municipality');
         data.addRows([
 <?php 
-$year = date("Y");
+//$year = date("Y");
+$year = $_GET['year'];
 
 $sSorsogon = "SELECT * FROM user where municipality='Sorsogon City' and year=$year";
 $rSorsogon = mysqli_query($conn, $sSorsogon);
@@ -237,7 +238,7 @@ function changeCharts(){
     var y = document.getElementById("select_chart_type").value;
     var z = document.getElementById("select_id").value;
     var a = document.getElementById("select_municipality").value;
-    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportm.php?id=1&chart_type='+ x + '&municipality=' + a);
+    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportm.php?id=1&chart_type='+ x + '&municipality=' + a +'&year=<?php echo $_GET['year'] ?>');
 }
 </script>
 
@@ -298,6 +299,7 @@ echo '
                             </select>
 <input type="hidden" value="'.$chart_type.'" name="chart_type">
 <input type="hidden" value="'.$id.'" name="id">
+<input type="hidden" value="'.$_GET['year'].'" name="year">
                             </form>
                             ';
                             }
@@ -323,8 +325,9 @@ echo '
                                 <tbody>
 
                                     <?php
+                           $selectedYear = $_GET['year'];
                             if(isset($_GET['municipality'])){
-                                $sql = "SELECT * FROM user where userLevel=3 AND municipality='$municipality' ORDER BY id desc";
+                                $sql = "SELECT * FROM user where userLevel=3 AND year='$selectedYear' AND municipality='$municipality' ORDER BY id desc";
                             } else {
                                 $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
                             }

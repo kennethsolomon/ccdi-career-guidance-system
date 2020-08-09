@@ -58,31 +58,7 @@
                     <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
-                                <label for="dropDownCourse">Courses Intended:</label>
-                                    <?php
-                                    $sql = "SELECT * FROM course";
-                                    $result = mysqli_query($conn, $sql);
-                                    if (mysqli_num_rows($result) > 0) {
-                                        echo '
-                                            <select required name="selectedCourse" class="form-control" id="dropDownCourse">
-                                            <option></option>
-                                            ';
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            $name = $row['name'];
-                                            echo '
-                                                <option value="'.$name.'">'.$name.'</option>
-                                                ';
-                                        }
-                                        echo '
-                                            </select>
-                                            ';
-                                    }
-                                    ?>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="form-group">
-                                <label for="dropDownCourse">School</label>
+                                <label for="dropDownCourse">Last School Attended</label>
                                     <?php
                                     $sql = "SELECT * FROM municipality";
                                     $result = mysqli_query($conn, $sql);
@@ -105,8 +81,6 @@
                                     ?>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="phoneNumber">School Year Graduated:</label>
@@ -114,6 +88,8 @@
                                     name="yearGraduated" placeholder="Year Graduated">
                             </div>
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label for="address">Email:</label>
@@ -121,7 +97,30 @@
                                     name="email" placeholder="Email">
                             </div>
                         </div>
-                        
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="dropDownCourse">Courses Intended:</label>
+                                    <?php
+                                    $sql = "SELECT * FROM course";
+                                    $result = mysqli_query($conn, $sql);
+                                    if (mysqli_num_rows($result) > 0) {
+                                        echo '
+                                            <select required name="selectedCourse" class="form-control" id="dropDownCourse">
+                                            <option></option>
+                                            ';
+                                        while ($row = mysqli_fetch_assoc($result)) {
+                                            $name = $row['name'];
+                                            echo '
+                                                <option value="'.$name.'">'.$name.'</option>
+                                                ';
+                                        }
+                                        echo '
+                                            </select>
+                                            ';
+                                    }
+                                    ?>
+                            </div>
+                        </div>
 
                     </div>
                     <!-- End of Row 2 -->

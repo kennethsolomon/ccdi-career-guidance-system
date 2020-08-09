@@ -11,8 +11,9 @@
             <div class="modal-body">
                 <form action="./includes/chartDataType.php?<?php echo $_GET['id']; ?>" method="POST">
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-6">
                             <div class="form-group">
+                                <label for="chartDataType">Data of:</label>
                                 <select id="" class="form-control" name="chartDataType">
                                     <option value=""></option>
                                     <option value="municipality">Municipality</option>
@@ -21,6 +22,12 @@
                                     <option value="status">Status</option>
                                     <option value="student">Student</option>
                                 </select>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label for="year">Year</label>
+                                <input class="form-control" type="text" name="year" required>
                             </div>
                         </div>
                     </div>

@@ -58,11 +58,11 @@ if ($_SESSION['userLevel'] == 0) {
         data.addColumn('number', 'Course');
         data.addRows([
 <?php 
-$year = date("Y");
-
+//$year = date("Y");
+$selectedYear = $_GET['year'];
 //$query = "SELECT * FROM municipality";
 
-$query = "SELECT MIN(id) as id, SUM(`count`) as COUNT, course from user WHERE userLevel=3 GROUP BY course";
+$query = "SELECT MIN(id) as id, SUM(`count`) as COUNT, course from user WHERE userLevel=3 AND year='$selectedYear' GROUP BY course";
 $result = mysqli_query($conn, $query);
 
 $num_row = mysqli_num_rows($result);
@@ -148,6 +148,85 @@ if ($num_row > 0) {
 
                         <!-- Begin Page Content -->
                         <div class="container">
+                            <div class="row no-printme">
+                                <!-- IT  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total
+                                                        IT Enrolled</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalIT ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- CS  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total
+                                                        CS Enrolled</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalCS ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- IS  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total
+                                                        IS Enrolled</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalIS ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- ACT  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-success shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total
+                                                        ACT Enrolled</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalACT ?>
+                                                    </div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- End Dash Board Row -->
+
+                            <!-- Dash Board Row -->
+
         <div class="row no-printme">
             <div class="col-lg-3">
                 <label for="cars">Chart Type: </label>
@@ -178,7 +257,7 @@ function changeCharts(){
     var y = document.getElementById("select_chart_type").value;
     var z = document.getElementById("select_id").value;
     var a = document.getElementById("select_municipality").value;
-    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportc.php?id=1&chart_type='+ x + '&municipality=' + a);
+    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportc.php?id=1&chart_type='+ x + '&municipality=' + a + '&year=<?php echo $_GET['year'] ?>');
 }
 </script>
 
@@ -240,6 +319,7 @@ echo '
                             </select>
 <input type="hidden" value="'.$chart_type.'" name="chart_type">
 <input type="hidden" value="'.$id.'" name="id">
+<input type="hidden" value="'.$_GET['year'].'" name="year">
                             </form>
                             ';
                             }
@@ -266,9 +346,10 @@ echo '
                                 <tbody>
 
                                     <?php
+                            $selectedYear = $_GET['year'];
                             if(isset($_GET['course'])){
                                 $course = $_GET['course'];
-                                $sql = "SELECT * FROM user where userLevel=3 AND course='$course' ORDER BY id desc";
+                                $sql = "SELECT * FROM user where userLevel=3 AND course='$course' AND year='$selectedYear' ORDER BY id desc";
                             } else {
                                 $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
                             }

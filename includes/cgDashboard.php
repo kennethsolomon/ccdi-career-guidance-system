@@ -1,5 +1,16 @@
 <?php
 $year = date("Y");
+
+// Total Prospect Student
+$sqlProspectStudent = "SELECT * FROM user WHERE userLevel = '3' AND year='$year' ";
+$resultProspectStudent = mysqli_query($conn, $sqlProspectStudent);
+
+if (mysqli_num_rows($resultProspectStudent) > 0) {
+    $totalProspectStudent = mysqli_num_rows($resultProspectStudent);
+} else {
+    $totalProspectStudent = 0;
+}
+
 // Total Enrolled
 $sqlEnrolled = "SELECT * FROM user WHERE userLevel = '3' && status = 'Enrolled' AND year='$year' ";
 $resultEnrolled = mysqli_query($conn, $sqlEnrolled);

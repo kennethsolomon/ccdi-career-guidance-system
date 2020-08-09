@@ -72,7 +72,7 @@ $december = mysqli_num_rows($rDecember);
         ]);
 
         // Set chart options
-        var bar_options = {'title':'Students Data',
+        var bar_options = {'title':'Monthly Data',
                        'width':800,
                        'height':500};
 

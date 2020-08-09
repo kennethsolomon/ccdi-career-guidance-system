@@ -41,7 +41,7 @@ if ($_SESSION['userLevel'] == 0) {
 
 <?php
 include_once './includes/chartStudent.php';
-include_once './includes/chartMunicipality.php';
+include_once './includes/chartYearly.php';
 ?>
 
         </head>
@@ -122,16 +122,14 @@ include_once './includes/chartMunicipality.php';
 
                             <!-- Dash Board Row -->
                             <div class="row">
-
-                                <!-- IT  -->
+                                <!-- Prospect Student  -->
                                 <div class="col-xl-3 col-md-6 mb-4">
                                     <div class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total
-                                                        IT Enrolled</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalIT ?>
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Prospect Student</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalProspectStudent ?>
                                                     </div>
                                                 </div>
                                                 <div class="col-auto">
@@ -141,51 +139,14 @@ include_once './includes/chartMunicipality.php';
                                         </div>
                                     </div>
                                 </div>
-                                <!-- CS  -->
+                                <!-- Prospect Enrolled  -->
                                 <div class="col-xl-3 col-md-6 mb-4">
                                     <div class="card border-left-success shadow h-100 py-2">
                                         <div class="card-body">
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total
-                                                        CS Enrolled</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalCS ?>
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- IS  -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-success shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total
-                                                        IS Enrolled</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalIS ?>
-                                                    </div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-user-graduate fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- ACT  -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-success shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total
-                                                        ACT Enrolled</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalACT ?>
+                                                    <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Enrolled Student</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $totalStudent ?>
                                                     </div>
                                                 </div>
                                                 <div class="col-auto">
@@ -196,81 +157,6 @@ include_once './includes/chartMunicipality.php';
                                     </div>
                                 </div>
 
-                            </div>
-                            <!-- End Dash Board Row -->
-
-                            <!-- Dash Board Row -->
-                            <div class="row">
-
-                                <!-- Total Enrolled  -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-primary shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
-                                                        Enrolled Student</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <?php echo $totalStudent ?></div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-school fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Interested  -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-primary shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Student Interested</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <?php echo $totalInterested ?></div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-book-open fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- Not Interested  -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-primary shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Student Not Interested</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <?php echo $totalNotInterested ?></div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-book-open fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- No Response  -->
-                                <div class="col-xl-3 col-md-6 mb-4">
-                                    <div class="card border-left-danger shadow h-100 py-2">
-                                        <div class="card-body">
-                                            <div class="row no-gutters align-items-center">
-                                                <div class="col mr-2">
-                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">No Response</div>
-                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                                        <?php echo $totalNoResponse ?></div>
-                                                </div>
-                                                <div class="col-auto">
-                                                    <i class="fas fa-book-open fa-2x text-gray-300"></i>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
 
                             </div>
 
@@ -287,9 +173,9 @@ include_once './includes/chartMunicipality.php';
 
     <div class="col-lg-6">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Prospect Student Per Municipality</h1>
+                <h1 class="h3 mb-0 text-gray-800">Number of Prospect Student (Yearly)</h1>
             </div>
-        <div id="pie_div"></div>
+        <div id="bar_div2"></div>
     </div>
 </div>
 

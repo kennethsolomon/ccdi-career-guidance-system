@@ -59,9 +59,10 @@ if ($_SESSION['userLevel'] == 0) {
         data.addRows([
 <?php 
 $year = date("Y");
+$selectedYear = $_GET['year'];
 
 //$query = "SELECT * FROM municipality";
-$query = "SELECT MIN(id) as id, SUM(`count`) as COUNT, lastSchoolAttended FROM user WHERE userLevel=3 GROUP BY lastSchoolAttended";
+$query = "SELECT MIN(id) as id, SUM(`count`) as COUNT, lastSchoolAttended FROM user WHERE userLevel=3 and year='$selectedYear' GROUP BY lastSchoolAttended";
 $result = mysqli_query($conn, $query);
 
 $num_row = mysqli_num_rows($result);
@@ -177,7 +178,7 @@ function changeCharts(){
     var y = document.getElementById("select_chart_type").value;
     var z = document.getElementById("select_id").value;
     var a = document.getElementById("select_municipality").value;
-    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportsc.php?id=1&chart_type='+ x + '&municipality=' + a);
+    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportsc.php?id=1&chart_type='+ x + '&school=' + a +'&year=<?php echo $_GET['year']?>');
 }
 </script>
 
@@ -239,6 +240,7 @@ echo '
                             </select>
 <input type="hidden" value="'.$chart_type.'" name="chart_type">
 <input type="hidden" value="'.$id.'" name="id">
+<input type="hidden" value="'.$_GET['year'].'" name="year">
                             </form>
                             ';
                             }
@@ -265,9 +267,10 @@ echo '
                                 <tbody>
 
                                     <?php
+                            $yearSelected = $_GET['year'];
                             if(isset($_GET['school'])){
                                 $school = $_GET['school'];
-                                $sql = "SELECT * FROM user where userLevel=3 AND lastSchoolAttended='$school' ORDER BY id desc";
+                                $sql = "SELECT * FROM user where userLevel=3 AND lastSchoolAttended='$school' AND year='$selectedYear' ORDER BY id desc";
                             } else {
                                 $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
                             }

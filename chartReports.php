@@ -58,7 +58,8 @@ if ($_SESSION['userLevel'] == 0) {
         data.addColumn('number', 'Students');
         data.addRows([
 <?php 
-$year = date("Y");
+//$year = date("Y");
+$year = $_GET['year'];
 
 $sJanruary = "SELECT * FROM user where month='Janruary' and year=$year";
 $rJanruary = mysqli_query($conn, $sJanruary);
@@ -182,6 +183,7 @@ $december = mysqli_num_rows($rDecember);
 
 </br>
         <div class="row no-printme">
+
             <div class="col-lg-3">
                 <label for="cars">Chart Type: </label>
                 <select name="chartsOption" class="form-control" id="chartsOption" onchange="changeCharts()">
@@ -200,7 +202,7 @@ $december = mysqli_num_rows($rDecember);
 
 function changeCharts(){
     var x = document.getElementById("chartsOption").value;
-    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReports.php?id=1&chart_type='+ x);
+    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReports.php?id=1&chart_type='+ x +'&year=<?php echo $_GET['year'] ?>');
 }
 </script>
 
@@ -250,7 +252,8 @@ echo '
                                 <tbody>
 
                                     <?php
-                                    $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
+                                    $selectedYear = $_GET['year'];
+                                    $sql = "SELECT * FROM user where userLevel=3 AND year='$selectedYear' ORDER BY id desc";
                                     $result = mysqli_query($conn, $sql);
                                     if (mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_assoc($result)) {

@@ -58,11 +58,12 @@ if ($_SESSION['userLevel'] == 0) {
         data.addColumn('number', 'Status');
         data.addRows([
 <?php 
-$year = date("Y");
+//$year = date("Y");
+$selectedYear = $_GET['year'];
 
 //$query = "SELECT * FROM municipality";
 
-$query = "SELECT MIN(id) as id, SUM(`count`) as COUNT, status from user WHERE userLevel=3 GROUP BY status";
+$query = "SELECT MIN(id) as id, SUM(`count`) as COUNT, status from user WHERE userLevel=3 AND year='$selectedYear' GROUP BY status";
 $result = mysqli_query($conn, $query);
 
 $num_row = mysqli_num_rows($result);
@@ -148,6 +149,78 @@ if ($num_row > 0) {
 
                         <!-- Begin Page Content -->
                         <div class="container">
+                            <div class="row no-printme">
+
+                                <!-- Total Enrolled  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total
+                                                        Enrolled Student</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                        <?php echo $totalStudent ?></div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-school fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Interested  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Student Interested</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                        <?php echo $totalInterested ?></div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-book-open fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Not Interested  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-primary shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Student Not Interested</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                        <?php echo $totalNotInterested ?></div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-book-open fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- No Response  -->
+                                <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="card border-left-danger shadow h-100 py-2">
+                                        <div class="card-body">
+                                            <div class="row no-gutters align-items-center">
+                                                <div class="col mr-2">
+                                                    <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">No Response</div>
+                                                    <div class="h5 mb-0 font-weight-bold text-gray-800">
+                                                        <?php echo $totalNoResponse ?></div>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <i class="fas fa-book-open fa-2x text-gray-300"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
         <div class="row no-printme">
             <div class="col-lg-3">
                 <label for="cars">Chart Type: </label>
@@ -178,7 +251,7 @@ function changeCharts(){
     var y = document.getElementById("select_chart_type").value;
     var z = document.getElementById("select_id").value;
     var a = document.getElementById("select_municipality").value;
-    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportr.php?id=1&chart_type='+ x);
+    window.location.replace('http://localhost/ccdi-career-guidance-system/chartReportr.php?id=1&chart_type='+ x + '&year=<?php echo $_GET['year'] ?>');
 }
 </script>
 
@@ -231,6 +304,7 @@ echo '
                             echo '
     <input type="hidden" value="'.$chart_type.'" name="chart_type">
     <input type="hidden" value="'.$id.'" name="id">
+    <input type="hidden" value="'.$_GET['year'].'" name="year">
                             ';
                             ?>
                             </select>
@@ -256,9 +330,10 @@ echo '
                                 <tbody>
 
                                     <?php
+                            $selectedYear = $_GET['year'];
                             if(isset($_GET['status'])){
                                 $getStatus = $_GET['status'];
-                                $sql = "SELECT * FROM user where userLevel=3 AND status='$getStatus' ORDER BY id desc";
+                                $sql = "SELECT * FROM user where userLevel=3 AND status='$getStatus' AND year='$selectedYear' ORDER BY id desc";
                             } else {
                                 $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
                             }
