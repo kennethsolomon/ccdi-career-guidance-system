@@ -48,13 +48,57 @@
 <p>
   <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Update Status</button>
   <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#updateStatusModal">Select Category</a>
-  <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">Hello</button>
+  <button style="margin-left:500px" class="btn btn-success" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">Instructions</button>
 </p>
 
 
 <div class="collapse" id="collapseExample2">
     <div class="card card-body">
-        <p>Hello</p>
+<p>
+<h4>Instructions:</h4>
+</p>
+<p>
+<h5>How to send a message:</h5>
+</p>
+<p>
+Step 1: Select the template you're going to use by clicking the right template button below. After you click the template button, all the phone numbers that should receive the message will all display above.
+</p>
+<p>
+Step 2: Click the circle with " + " sign which will bring you to a blank message box. And then click "Ctrl+V" to paste the message template.
+</p>
+<p>
+Step 3: Copy all the numbers displayed above by clicking the "COPY" button then, select the blank box above your message and click "Ctrl+V" to paste all the phone numbers.
+</p>
+<p>
+Step 4: Send.
+</p>
+<p>
+<h5>How to send by category:
+</h5>
+</p>
+<p>
+Step 1: Click "Select Category" button above. Select only 1 category. Example: School - SSU.
+</p>
+<p>
+Step 2: Repeat the instructions above from step 1 to step 4 .
+</p>
+<p>
+<h5>How to update student status:</h5>
+</p>
+<p>
+Step 1: Search student
+</p>
+<p>
+Step 2: Click the check-box beside the students data
+</p>
+<p>
+Step 3: Select the status by clicking the blank drop-down button below the table.
+</p>
+<p>
+
+Step 4: Click the "UPDATE" button.
+</p>
+
     </div>
 </div>
 
@@ -136,6 +180,7 @@
     <div class="row">
 
         <div class="col-lg-6">
+            Select Status:
             <select style="margin-top:10px" name="statusList" class="form-control" id="dropDownSchool">
             <option value=""></option>
             <option value='Interested'>Interested</option>
