@@ -1,51 +1,44 @@
 <script type="text/javascript">
+google.charts.load('current', {'packages':['bar']});
+      google.charts.setOnLoadCallback(drawStuff);
 
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Student');
-        data.addRows([
-
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ['Student', 'Enrolled', 'Prospect'],
 <?php 
-$curretnYear = date("Y");
-
+//$year = date("Y");
 //$query = "SELECT * FROM municipality";
 
 $query = "SELECT MIN(id) as id, SUM(`count`) as COUNT, year from user WHERE userLevel=3 GROUP BY year";
 $result = mysqli_query($conn, $query);
-
 $num_row = mysqli_num_rows($result);
+
+
+
 if ($num_row > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-        $count = $row['COUNT'];
-        $year = $row['year'];
-
-            echo "['".$year."',".$count."],";
-
-
+        while ($row = mysqli_fetch_assoc($result)) {
+            $count = $row['COUNT'];
+            $year = $row['year'];
+$query2 = "SELECT * from user WHERE userLevel=3 AND status='Enrolled' and year='$year'";
+$result2 = mysqli_query($conn, $query2);
+$enrolled = mysqli_num_rows($result2);
+            echo "['".$year."',".$enrolled.",".$count."],";
     }
 }
 
+
+
+
 ?>
         ]);
-        // Set chart options
-        var bar_options2 = {'title':'Yearly Data',
-                       'width':800,
-                       'height':500};
 
-        // Instantiate and draw our chart, passing in some options.
-        var barchart2 = new google.visualization.BarChart(document.getElementById('bar_div2'));
-        barchart2.draw(data, bar_options2);
-      }
+        var options = {
+          width: 800,
+		  height: 500,
+          bars: 'horizontal', // Required for Material Bar Charts.
+        };
+
+      var chart = new google.charts.Bar(document.getElementById('bar_div2'));
+      chart.draw(data, options);
+    };
 </script>

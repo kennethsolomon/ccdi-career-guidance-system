@@ -48,7 +48,23 @@
 <p>
   <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Update Status</button>
   <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#updateStatusModal">Select Category</a>
+  <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#collapseExample2" aria-expanded="false" aria-controls="collapseExample2">Hello</button>
 </p>
+
+
+<div class="collapse" id="collapseExample2">
+    <div class="card card-body">
+        <p>Hello</p>
+    </div>
+</div>
+
+
+
+
+
+
+
+
 <div class="collapse" id="collapseExample">
   <div class="card card-body">
         <form action="./includes/questionInfo.php" method="POST">
