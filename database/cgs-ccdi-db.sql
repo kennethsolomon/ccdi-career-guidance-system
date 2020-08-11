@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 31, 2020 at 06:19 PM
+-- Generation Time: Aug 11, 2020 at 03:07 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.2.28
 
@@ -199,8 +199,17 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id`, `username`, `password`, `lastName`, `firstName`, `middleName`, `address`, `email`, `yearGraduated`, `municipality`, `course`, `textStatus`, `textedDate`, `lastSchoolAttended`, `phoneNumber`, `status`, `dateOfExamination`, `score`, `suggestedCourse`, `userLevel`, `takeExam`, `created_at`, `month`, `year`, `exp_date_at`, `count`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 'admin', 'Admin', '', '', '', '', '', '', 0, '2020-07-22', '', '', '', '', '', '', 0, '0', NULL, '', '', NULL, 1),
 (2, 'cgofficer2', 'faf0275a4da236e0e82050da7463a9f9', 'cgofficer', 'cgofficer', '', '', '', '', '', '', 0, '2020-07-22', '', '', '', NULL, '', NULL, 1, '0', NULL, '', '', NULL, 1),
-(39, 'solomonkenneth0728', 'ace53c995135dd6a5c384f07bdbea83e', 'Solomon', 'Kenneth', 'Lim', 'Seabreeze', '', '', 'Sorsogon City', 'Information Technology', 3, '2020-07-31', 'Sorsogon National High School', '09122423923', 'No Response', '', '7', '', 3, '', '2020-07-28 00:00:00', 'July', '2020', '2020-08-12 00:00:00', 1),
-(40, 'solken0728', 'cd26584fd4ae8923a4cd7946d40d60a0', 'Sol', 'Ken', 'Lim', 'Seabreeze', 'synecders@gmail.com', '2020', 'Sorsogon City', 'Information Technology', 2, '2020-07-27', 'SSU', '0923293239', 'Enrolled', '', '0', '', 3, '', '2020-07-28 00:00:00', 'July', '2020', '2020-08-12 00:00:00', 1);
+(43, 'puraangelica0810', 'f5867d319a30ee3ff7ca135d19d63e00', 'Pura', 'Angelica', 'Cantor', 'Talisay Sorsogon City', 'anglica29@yahoo.com', '2012', 'Sorsogon City', 'Associate in Computer Technology', 0, '0000-00-00', 'The Lewis College', '09081911068', 'Enrolled', NULL, '0', NULL, 3, '0', '2020-08-10 00:00:00', 'August', '2022', '2020-08-25 00:00:00', 1),
+(46, 'puraangelica0810', 'f5867d319a30ee3ff7ca135d19d63e00', 'Pura', 'Angelica', 'Cantor', 'Talisay Sorsogon City', 'anglica29@yahoo.com', '2012', 'Sorsogon City', 'Associate in Computer Technology', 0, '0000-00-00', 'The Lewis College', '09081911068', 'Enrolled', NULL, '0', NULL, 3, '0', '2020-08-10 00:00:00', 'August', '2023', '2020-08-25 00:00:00', 1),
+(47, 'puraangelica0810', 'f5867d319a30ee3ff7ca135d19d63e00', 'Pura', 'Angelica', 'Cantor', 'Talisay Sorsogon City', 'anglica29@yahoo.com', '2012', 'Sorsogon City', 'Associate in Computer Technology', 0, '0000-00-00', 'The Lewis College', '09081911068', 'Enrolled', NULL, '0', NULL, 3, '0', '2020-08-10 00:00:00', 'August', '2024', '2020-08-25 00:00:00', 1),
+(48, 'kurosakiichigo0811', '6626c5f48bb4f4885810a5bcd7f4e238', 'kurosaki', 'ichigo', 'laguna', 'cabid-an sorsogon city', 'kennethsolomon@protonmail.com', '2019', 'Sorsogon City', 'Associate in Computer Technology', 0, '0000-00-00', 'SSU', '09467487859', 'Enrolled', NULL, '0', NULL, 3, '0', '2020-08-11 00:00:00', 'August', '2024', '2020-08-26 00:00:00', 1),
+(49, 'uzumakinaruto0811', '8df6d20b712bbf11d42b754b78fd40cf', 'uzumaki', 'naruto', 'laguna', 'salog sorsogon city', 'synecderz@gmail.com', '2017', 'Sorsogon City', 'BSIS', 0, '0000-00-00', 'SSU', '09081625263', '', NULL, '0', NULL, 3, '0', '2020-08-11 00:00:00', 'August', '2021', '2020-08-26 00:00:00', 1),
+(50, 'kiseryota0811', 'c43d16324ecc72e8ee262235ffc5c281', 'kise', 'ryota', 'janaban', 'pang-pang sorsogon city', 'kennethsolomon@protonmail.com', '2016', 'Barcelona', 'Computer Science', 0, '0000-00-00', 'Barcelona National Comprehensive School', '09762628396', 'Enrolled', NULL, '0', NULL, 3, '0', '2020-08-11 00:00:00', 'August', '2025', '2020-08-26 00:00:00', 1),
+(51, 'balastaedgar0811', 'ba73b8db38db90fd38dcda7ff872f926', 'balasta', 'edgar', 'laguna', 'Seabreeze Cabid-an Sorsogon City', 'synecderz@gmail.com', '2015', 'Sorsogon City', 'Associate in Computer Technology', 0, '0000-00-00', 'Annunciation College', '09454296723', 'Enrolled', NULL, '0', NULL, 3, '0', '2020-08-11 00:00:00', 'August', '2020', '2020-08-26 00:00:00', 1),
+(52, 'reyesedwar0811', '1c8f6779a7dcb708d66c288e6be01f1d', 'reyes', 'edwar', 'janaban', 'Sirangan Sorsogon City', 'synecderz@gmail.com', '2015', 'Sorsogon City', 'Associate in Computer Technology', 0, '0000-00-00', 'Annunciation College', '09376457687', '', NULL, '0', NULL, 3, '0', '2020-08-11 00:00:00', 'August', '2020', '2020-08-26 00:00:00', 1),
+(53, 'ramosaaron paul0811', 'f2ad66674d4fc969f12d04806e9ad977', 'ramos', 'aaron paul', 'ledesma', 'Seabreeze Cabid-an Sorsogon City', 'kennethsolomon@protonmail.com', '2014', 'Sorsogon City', 'Associate in Computer Technology', 0, '0000-00-00', 'Aemillianum College Inc.', '097383638738', '', NULL, '0', NULL, 3, '0', '2020-08-11 00:00:00', 'August', '2022', '2020-08-26 00:00:00', 1),
+(54, 'fangmirana0811', 'a2833f703ed9d89aedbf2fa180dce5bb', 'fang', 'mirana', 'moon', 'Seabreeze Cabid-an Sorsogon City', 'synecderz@gmail.com', '2018', 'Sorsogon City', 'Associate in Computer Technology', 0, '0000-00-00', 'SMLCS', '09087567568', 'Enrolled', NULL, '0', NULL, 3, '0', '2020-08-11 00:00:00', 'August', '2020', '2020-08-26 00:00:00', 1),
+(55, 'asdgijhasdas0811', 'a5f806b6ef0cb8b84d8a19dd3e60a4df', 'asdgijh', 'asdas', 'asdas', 'Seabreeze Cabid-an Sorsogon City', 'synecderz@gmail.com', '2017', 'Sorsogon City', 'Information Technology', 0, '0000-00-00', 'SMLCS', '09877887876', 'Enrolled', NULL, '0', NULL, 3, '0', '2020-08-11 00:00:00', 'August', '2020', '2020-08-26 00:00:00', 1);
 
 --
 -- Triggers `user`
@@ -315,7 +324,7 @@ ALTER TABLE `municipality`
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
+  MODIFY `id` int(12) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
