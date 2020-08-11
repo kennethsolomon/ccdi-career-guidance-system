@@ -88,7 +88,7 @@ if (mysqli_num_rows($resultCS) > 0) {
     $totalCS = 0;
 }
 // Total ACT
-$sqlACT = "SELECT * FROM user WHERE userLevel = '3' && status = 'Enrolled' AND course ='ACT'AND year='$year'";
+$sqlACT = "SELECT * FROM user WHERE userLevel = '3' && status = 'Enrolled' AND course ='Associate in Computer Technology'AND year='$year'";
 $resultACT = mysqli_query($conn, $sqlACT);
 
 if (mysqli_num_rows($resultACT) > 0) {
