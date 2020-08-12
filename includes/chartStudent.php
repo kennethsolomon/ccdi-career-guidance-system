@@ -71,14 +71,23 @@ $december = mysqli_num_rows($rDecember);
           ['December', <?php echo $december ?>]
         ]);
 
-        // Set chart options
+         //Set chart options
         var bar_options = {'title':'Monthly Data',
                        'width':800,
                        'height':500};
 
         // Instantiate and draw our chart, passing in some options.
-        var barchart = new google.visualization.BarChart(document.getElementById('bar_div'));
-        barchart.draw(data, bar_options);
+        //var barchart = new google.visualization.BarChart(document.getElementById('bar_div'));
+        //barchart.draw(data, bar_options);
+        
+        // Set chart options
+        //var pie_options = {'title':'Municipality Data',
+                       //'width':1100,
+                       //'height':800};
+
+        // Instantiate and draw our chart, passing in some options.
+        var piechart = new google.visualization.PieChart(document.getElementById('bar_div'));
+        piechart.draw(data, bar_options);
 
       }
 </script>

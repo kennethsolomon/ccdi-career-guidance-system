@@ -166,21 +166,21 @@ include_once './includes/chartYearly.php';
 <div class="row">
     <div class="col-lg-6">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Number of Prospect Student (Monthly)</h1>
+                <h1 class="h3 mb-0 text-gray-800">Prospect Student Per Month</h1>
             </div>
         <div id="bar_div"></div>
     </div>
 
     <div class="col-lg-6">
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Number of Prospect Student (Yearly)</h1>
+                <h1 class="h3 mb-0 text-gray-800">Prospect Student Per Year</h1>
             </div>
         <div id="bar_div2"></div>
     </div>
 </div>
-
+<hr>
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Student Info Table</h1>
+                <h1 class="h3 mb-0 text-gray-800">Overall Data Table</h1>
             </div>
             <div class="container-fluid" id="patientTable">
                     <div class="row">
