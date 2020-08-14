@@ -1,15 +1,22 @@
- <?php
-    //Start session
-    session_start();
-    // Connect to database
-    include_once('./includes/connection.php');
+<?php
+//start session
+session_start();
 
-    // $id = $_POST['id'];
-    ?>
- <!DOCTYPE html>
- <html lang="en">
+//database connection
+include_once './includes/connection.php';
+include_once './includes/cgDashboard.php';
 
- <head>
+?>
+
+<?php
+if ($_SESSION['userLevel'] == 0) {
+    if (isset($_SESSION['loggedin'])) {
+?>
+
+        <!DOCTYPE html>
+        <html lang="en">
+
+        <head>
 
             <meta charset="utf-8">
             <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -29,10 +36,70 @@
 
             <link href="css/style.css" rel="stylesheet">
 
- </head>
 
- <body class="bg-gradient-primary">
+<script type="text/javascript" src="js/loader.js"></script>
 
+<?php
+include_once './includes/chartStudent.php';
+include_once './includes/chartYearly.php';
+?>
+
+        </head>
+
+        <body id="page-top">
+
+            <!-- Page Wrapper -->
+            <div id="wrapper">
+
+                <!-- Sidebar -->
+                <?php include_once('./sidebar.php') ?>
+
+                <!-- Content Wrapper -->
+                <div id="content-wrapper" class="d-flex flex-column">
+
+                    <!-- Main Content -->
+                    <div id="content">
+
+                        <!-- Topbar -->
+                        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+
+                            <!-- Topbar Navbar -->
+                            <ul class="navbar-nav ml-auto">
+
+                                <div class="topbar-divider d-none d-sm-block"></div>
+
+                                <!-- Nav Item - User Information -->
+                                <li class="nav-item dropdown no-arrow">
+                                    <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['firstName']; ?></span>
+                                        <img class="img-profile rounded-circle" src="css/image/ccdiLogo.png">
+                                    </a>
+                                    <!-- Dropdown - User Information -->
+                                    <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                                        <a class="dropdown-item" href="./includes/logout.php">
+                                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Logout
+                                        </a>
+                                    </div>
+                                </li>
+
+                            </ul>
+
+                        </nav>
+                        <!-- End of Topbar -->
+
+                        <!-- Begin Page Content -->
+                        <div class="container-fluid">
+                            <?php
+                            if (isset($_SESSION['registerStudent'])) {
+                            ?>
+                                <div id="alert-timer" class="alert alert-info text-center">
+                                    <?php echo $_SESSION['registerStudent']; ?>
+                                </div>
+                            <?php
+                                unset($_SESSION['registerStudent']);
+                            }
+                            ?>
      <div class="container">
 
          <!-- Outer Row -->
@@ -58,23 +125,22 @@
 <h4>Instructions:</h4>
 </p>
 <p>
-<h5>How to send a message:</h5>
+<h5>HOW TO SEND A MESSAGE:</h5>
 </p>
 <p>
-Step 1: Select the template you're going to use by clicking the right template button below. After you click the template button, all the phone numbers that should receive the message will all display above.
+Step 1: Select the template you're going to use by clicking the right template in the drop-down button below. After that, click "COPY" button to copy the text template automatically at the same time, all the phone numbers that should receive the message will all display above.
 </p>
 <p>
 Step 2: Click the circle with " + " sign which will bring you to a blank message box. And then click "Ctrl+V" to paste the message template.
 </p>
 <p>
-Step 3: Copy all the numbers displayed above by clicking the "COPY" button then, select the blank box above your message and click "Ctrl+V" to paste all the phone numbers.
+Step 3: Copy all the numbers displayed above by clicking the "COPY" button next to it then select the blank box above your message and click "Ctrl+V" to paste all the phone numbers.
 </p>
 <p>
 Step 4: Send.
 </p>
 <p>
-<h5>How to send by category:
-</h5>
+<h5>HOW TO SEND MESSAGE BY CATEGORY:</h5>
 </p>
 <p>
 Step 1: Click "Select Category" button above. Select only 1 category. Example: School - SSU.
@@ -83,10 +149,10 @@ Step 1: Click "Select Category" button above. Select only 1 category. Example: S
 Step 2: Repeat the instructions above from step 1 to step 4 .
 </p>
 <p>
-<h5>How to update student status:</h5>
+<h5>HOW TO UPDATE STATUS:</h5>
 </p>
 <p>
-Step 1: Search student
+Step 1: Click "UPDATE STATUS" button, and search student
 </p>
 <p>
 Step 2: Click the check-box beside the students data
@@ -234,7 +300,11 @@ Step 4: Click the "UPDATE" button.
                                          <h1 class="h4 text-gray-900 mb-2">List of Contact Number:</h1>
                                          <!-- Query to get all the phone numbers -->
                                          <?php
-                                            if (isset($_POST['btnTakedExamPhoneNumber1'])) {
+                                            if (isset($_GET['selectedTemplate'])) {
+                                                $templateSelected = $_GET['selectedTemplate'];
+
+
+                                                if($templateSelected=="Template1"){
 
                                                 // Get Date and Time
                                                 date_default_timezone_set("Asia/Manila");
@@ -293,9 +363,7 @@ Step 4: Click the "UPDATE" button.
                                                     echo "0 results";
                                                 }
 
-                                            }
-                                            if (isset($_POST['btnTakedExamPhoneNumber2'])) {
-
+                                                }else if($templateSelected=="Template2"){
                                                 // Get Date and Time
                                                 date_default_timezone_set("Asia/Manila");
                                                 //Test Trigger if Working
@@ -353,9 +421,7 @@ Step 4: Click the "UPDATE" button.
                                                     echo "0 results";
                                                 }
 
-                                            }
-                                            if (isset($_POST['btnTakedExamPhoneNumber3'])) {
-
+                                                }else if($templateSelected=="Template3"){
                                                 // Get Date and Time
                                                 date_default_timezone_set("Asia/Manila");
                                                 //Test Trigger if Working
@@ -411,37 +477,36 @@ Step 4: Click the "UPDATE" button.
                                                     echo "0 results";
                                                 }
 
+                                                }
+
                                             }
                                             ?>
                                      </div>
                                       <iframe src="https://pulsesms.app/" width="800px" height="600px" frameborder="0" class="mt-2"></iframe>
                                      <hr>
                                      <div class="row">
-                                         <div class="col-lg-7 p-2">
+                                         <div class="col-lg-6 p-2">
                                              <div class="text-center">
-                                                 <form method="post">
-                                                     <button onclick="template1()" class="btn btn-success " name="btnTakedExamPhoneNumber1"
-                                                         type="submit">Template 1</button>
-                                                     <button onclick="template2()" class="btn btn-success " name="btnTakedExamPhoneNumber2"
-                                                         type="submit">Template 2</button>
-                                                     <button onclick="template3()" class="btn btn-success " name="btnTakedExamPhoneNumber3"
-                                                         type="submit">Template 3</button>
-                                                 </form>
+                                                 <form method="GET" action="phoneNumbers.php">
+                                                    <select onchange="templateClick()" name="selectedTemplate" value="" class="form-control" id="selectedTemplate">
+                                                    <option value="">Select Template</option>
+                                                    <option value=""></option>
+                                                    <option value="Template1">Template 1</option>
+                                                    <option value="Template2">Template 2</option>
+                                                    <option value="Template3">Template 3</option>
+                                                    </select>
+                                                    <input type="hidden" name="school" value="<?php echo $_GET['school'] ?>">
+                                                    <input type="hidden" name="municipality" value="<?php echo $_GET['municipality'] ?>">
+                                                    <input type="hidden" name="course" value="<?php echo $_GET['course'] ?>">
+                                                    <input type="hidden" name="id" value="1">
                                              </div>
                                          </div>
-                                         <div class="col-lg-5 p-2">
-                                                <!-- <a class="btn btn-primary" href="#" role="button" data-toggle="modal" data-target="#updateStatusModal">Update Status</a> -->
-                                             <div class="text-center">
-                                                 <a href="./home.php?id=<?php echo $_GET['id']; ?>"
-                                                     class="btn btn-info btn-icon-split">
-                                                     <span class="icon text-white-50">
-                                                         <i class="fas fa-info"></i>
-                                                     </span>
-                                                     <span class="text">Back to CG Panel</span>
-                                                 </a>
-                                             </div>
+                                         <div class="col-lg-6 p-2">
+                                             <button class="btn btn-success " name="templateBtn"
+                                                 type="submit">Copy</button>
                                          </div>
                                      </div>
+                                         </form>
                              </div>
                          </div>
                      </div>
@@ -460,7 +525,7 @@ Congrats in your graduation! Secure your future, enroll now at CCDI Sorsogon!
 </textarea>
 <textarea style="opacity: .01;" id="template2" name="" cols="30" rows="5">
 CCDI ADVISORY:
-Congrats in your graduation! Secure your future, enroll now at CCDI Sorsogon!
+Enrollment starts today, until July 31, 2020 only. Please avoid the rush, enroll now!
 </textarea>
 <textarea style="opacity: .01;" id="template3" name="" cols="30" rows="5">
 CCDI ADVISORY:
@@ -471,11 +536,27 @@ Enrollment is still going on! What are you waiting for? take the entrance exam a
 
 
 
+                    </div>
+                    <!-- /.container-fluid -->
 
+                </div>
+                <!-- End of Main Content -->
 
+                <!-- Footer -->
+                <footer class="sticky-footer bg-white">
+                    <div class="container my-auto">
+                        <div class="copyright text-center my-auto">
+                            <span>Copyright &copy; Your Website 2019</span>
+                        </div>
+                    </div>
+                </footer>
+                <!-- End of Footer -->
 
+            </div>
+            <!-- End of Content Wrapper -->
 
-
+            </div>
+            <!-- End of Page Wrapper -->
 
             <!-- Scroll to Top Button-->
             <a class="scroll-to-top rounded" href="#page-top">
@@ -518,6 +599,16 @@ Enrollment is still going on! What are you waiting for? take the entrance exam a
 			 $(document).ready(function() {
 			 $('#example').DataTable();
 			 });
+function templateClick(){
+  var selectedTemplate = document.getElementById("selectedTemplate");
+  if(selectedTemplate.value === "Template1"){
+    template1();
+  }else if(selectedTemplate.value === "Template2"){
+    template2();
+  }else if(selectedTemplate.value === "Template3"){
+    template3();
+  }
+}
 
 function template1() {
   /* Get the text field */
@@ -531,7 +622,7 @@ function template1() {
   document.execCommand("copy");
 
   /* Alert the copied text */
-  alert("Copied the text: " + copyText.value);
+  //alert("Copied the text: " + copyText.value);
 }
 function template2() {
   /* Get the text field */
@@ -545,7 +636,7 @@ function template2() {
   document.execCommand("copy");
 
   /* Alert the copied text */
-  alert("Copied the text: " + copyText.value);
+  //alert("Copied the text: " + copyText.value);
 }
 function template3() {
   /* Get the text field */
@@ -559,7 +650,7 @@ function template3() {
   document.execCommand("copy");
 
   /* Alert the copied text */
-  alert("Copied the text: " + copyText.value);
+  //alert("Copied the text: " + copyText.value);
 }
 
 function copyPhoneNumbers() {
@@ -577,7 +668,20 @@ function copyPhoneNumbers() {
   alert("Copied the text: " + copyText.value);
 }
 			</script>
+        </body>
 
- </body>
+        </html>
 
- </html>
+<?php
+    } else {
+        $url = "./index.php";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("Location: $url");
+    }
+} else {
+    $url = "./index.php";
+    $url = str_replace(PHP_EOL, '', $url);
+    header("Location: $url");
+}
+mysqli_close($conn);
+?>

@@ -22,7 +22,12 @@ if ($_SESSION['userLevel'] == 0) {
                 <i class="fas fa-fw fa-tachometer-alt"></i>
                 <span>Dashboard</span></a>
         </li>
-
+        <!-- Nav Item - Student Data -->
+        <li class="nav-item active"style="margin-top:-20px">
+            <a class="nav-link" href="./overallData.php?id=<?php echo $_GET['id'] ?>">
+                <i class="fas fa-fw fa-user-alt"></i>
+                <span>Overall Student Data</span></a>
+        </li>
         <div class="sidebar-heading">
             Student Info
         </div>

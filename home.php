@@ -76,19 +76,6 @@ include_once './includes/chartYearly.php';
                                     </a>
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                        <!-- <a class="dropdown-item" href="#">
-                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Profile
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Settings
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Activity Log
-                    </a>
-                    <div class="dropdown-divider"></div> -->
                                         <a class="dropdown-item" href="./includes/logout.php">
                                             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Logout
@@ -179,88 +166,6 @@ include_once './includes/chartYearly.php';
     </div>
 </div>
 <hr>
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Overall Data Table</h1>
-            </div>
-            <div class="container-fluid" id="patientTable">
-                    <div class="row">
-                        <div class="col-md-12 border border-info">
-                            <div class="table-responsive">
-                            <table id="example" class="table table-striped table-bordered" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Phone</th>
-                                        <th>School</th>
-                                        <th>Status</th>
-                                        <th>Municipality</th>
-                                        <th>Course Intended</th>
-                                        <th>Month</th>
-                                        <th>Year</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-
-                                    <?php
-                                    $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
-                                    $result = mysqli_query($conn, $sql);
-                                    if (mysqli_num_rows($result) > 0) {
-                                        while ($row = mysqli_fetch_assoc($result)) {
-                                            $id = $row['id'];
-                                            $municipality = $row['municipality'];
-                                            $phoneNumber = $row['phoneNumber'];
-                                            $status = $row['status'];
-                                            $course = $row['course'];
-                                            $lastSchoolAttended = $row['lastSchoolAttended'];
-
-                                            $sql2 = "SELECT * FROM user where id = '$id'";
-                                            $result2 = mysqli_query($conn, $sql2);
-
-                                            if (mysqli_num_rows($result2) > 0) {
-                                                while ($row2 = mysqli_fetch_assoc($result2)) {
-                                                    $lastName = $row2['lastName'];
-                                                    $firstName = $row2['firstName'];
-                                                    $middleName = $row2['middleName'];
-                                                    $month = $row2['month'];
-                                                    $year = $row2['year'];
-                                                }
-                                            }
-
-                                            echo '
-                                                <tr>
-                                                    <td>' . $lastName . ', ' . $firstName . ' ' . $middleName . '</td>
-                                                    <td>' . $phoneNumber . '</td>
-                                                    <td>' . $lastSchoolAttended . '</td>
-                                                    <td>' . $status . '</td>
-                                                    <td>' . $municipality . '</td>
-                                                    <td>' . $course . '</td>
-                                                    <td>' . $month . '</td>
-                                                    <td>' . $year . '</td>
-                                                    <td><a type="button" class="btn btn-primary" href="viewStudentInfo.php?id=1&studentId='.$id.'&lastname='.$lastName.'&search=1">Modify</a></td>
-                                                </tr>
-                                                ';
-                                        }
-                                    }
-                                    ?>
-                                </tbody>
-                                <tfoot>
-                                    <tr>
-                                        <th>Name</th>
-                                        <th>Phone</th>
-                                        <th>School</th>
-                                        <th>Status</th>
-                                        <th>Municipality</th>
-                                        <th>Course Intended</th>
-                                        <th>Month</th>
-                                        <th>Year</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                        </div>
-                    </div>
-                </div>                            <!-- End Dash Board Row -->
 
                     </div>
                     <!-- /.container-fluid -->
