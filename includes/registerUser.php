@@ -10,6 +10,8 @@ $monthDate = date("md");
 $month = date("F");
 $year = date("Y");
 
+
+if (isset($_POST['btnRegister'])) {
 $id = $_POST['id'];
 //$username = $_POST['username'];
 //$password = $_POST['password'];
@@ -29,8 +31,6 @@ $lastSchoolAttended = $_POST['selectedSchool'];
 $status = $_POST['selectedStatus'];
 //$municipality = $_POST['selectedMunicipality'];
 $created_at = $currentDate;
-
-if (isset($_POST['btnRegister'])) {
 
     $sql = "SELECT * FROM municipality WHERE school='$lastSchoolAttended'";
     $result = mysqli_query($conn, $sql);
@@ -99,4 +99,61 @@ if (isset($_POST['btnRegister'])) {
         }
         $conn->close();
     }
+}
+
+
+if (isset($_POST['btnAddSchool'])) {
+$name = $_POST['selectMunicipality'];
+$school = $_POST['school'];
+        $sql = "INSERT INTO municipality(
+        name,
+        school
+        ) VALUES (
+        '$name',
+        '$school'
+        )";
+
+        if (mysqli_query($conn, $sql)) {
+            $_SESSION['message'] = 'Add School Successfully!';
+            $url = "./../editSchools.php?id=1";
+            $url = str_replace(PHP_EOL, '', $url);
+            header("Location: $url");
+        } else {
+            echo "Error: " . $sql . "" . mysqli_error($conn);
+        }
+        $conn->close();
+}
+if (isset($_POST['btnSchoolUpdate'])) {
+$school_id = $_POST['school_id'];
+$municipality = $_POST['selectMunicipality'];
+$school = $_POST['school'];
+    $sql = "UPDATE municipality SET 
+        name='$municipality', 
+        school='$school' 
+        WHERE 
+        id='$school_id'";
+    if ($conn->query($sql) === TRUE) {
+        $_SESSION['message'] = 'School Update Successfully!';
+
+        $url = "./../editSchools.php?id=1";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("Location: $url");
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
+}
+if (isset($_POST['btnSchoolDelete'])) {
+$school_id = $_POST['school_id'];
+    $sql = "DELETE FROM municipality WHERE id=$school_id";
+
+    if ($conn->query($sql) === TRUE) {
+        $_SESSION['message'] = 'School Deleted Successfully!';
+        $url = "./../editSchools.php?id=1";
+        $url = str_replace(PHP_EOL, '', $url);
+        header("Location: $url");
+    } else {
+        echo "Error deleting record: " . $conn->error;
+    }
+
+    $conn->close();
 }

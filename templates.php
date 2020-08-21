@@ -1,13 +1,40 @@
 
 <textarea style="opacity: .01;" id="template1" name="" cols="30" rows="5">
-CCDI ADVISORY:
-Congrats in your graduation! Secure your future, enroll now at CCDI Sorsogon!
+<?php
+$sql = "SELECT * FROM template where id=1";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $content = $row['content'];
+    }
+}
+echo $content;
+?>
 </textarea>
 <textarea style="opacity: .01;" id="template2" name="" cols="30" rows="5">
-CCDI ADVISORY:
-Enrollment starts today, until July 31, 2020 only. Please avoid the rush, enroll now!
+<?php
+$sql = "SELECT * FROM template where id=2";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $content = $row['content'];
+    }
+}
+echo $content;
+?>
 </textarea>
 <textarea style="opacity: .01;" id="template3" name="" cols="30" rows="5">
-CCDI ADVISORY:
-Enrollment is still going on! What are you waiting for? take the entrance exam an enroll now!
+<?php
+$sql = "SELECT * FROM template where id=3";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $content = $row['content'];
+    }
+}
+echo $content;
+?>
 </textarea>

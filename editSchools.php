@@ -4,8 +4,6 @@ session_start();
 
 //database connection
 include_once './includes/connection.php';
-include_once './includes/cgDashboard.php';
-
 ?>
 
 <?php
@@ -32,17 +30,7 @@ if ($_SESSION['userLevel'] == 0) {
 
             <!-- Custom styles for this template-->
             <link href="css/sb-admin-2.min.css" rel="stylesheet">
-            <link href="css/chat.css" rel="stylesheet">
-
             <link href="css/style.css" rel="stylesheet">
-
-
-<script type="text/javascript" src="js/loader.js"></script>
-
-<?php
-include_once './includes/chartStudent.php';
-include_once './includes/chartYearly.php';
-?>
 
         </head>
 
@@ -77,18 +65,18 @@ include_once './includes/chartYearly.php';
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                                         <!-- <a class="dropdown-item" href="#">
-                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Profile
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Settings
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Activity Log
-                    </a>
-                    <div class="dropdown-divider"></div> -->
+                                            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Profile
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Settings
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                                            Activity Log
+                                        </a>
+                                        <div class="dropdown-divider"></div> -->
                                         <a class="dropdown-item" href="./includes/logout.php">
                                             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Logout
@@ -103,77 +91,90 @@ include_once './includes/chartYearly.php';
 
                         <!-- Begin Page Content -->
                         <div class="container-fluid">
-                            <?php
-                            if (isset($_SESSION['registerStudent'])) {
-                            ?>
-                                <div id="alert-timer" class="alert alert-info text-center">
-                                    <?php echo $_SESSION['registerStudent']; ?>
-                                </div>
-                            <?php
-                                unset($_SESSION['registerStudent']);
-                            }
-                            ?>
-<div class="row">
-            <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Overall Data Table</h1>
-                <a type="button" data-toggle="modal" data-target="#registerStudentModal" class="btn btn-primary" style="margin-left:65vw"href="#">Register Student</a>
-            </div>
-            <div class="container-fluid" id="patientTable">
-                    <div class="row">
+
+                            <!-- Message -->
+                            <div class="text-center">
+                                <?php
+                                if (isset($_SESSION['message'])) {
+                                ?>
+                                    <div class="alert alert-info text-center" id="alert-timer">
+                                        <?php echo $_SESSION['message']; ?>
+                                    </div>
+                                <?php
+                                    unset($_SESSION['message']);
+                                }
+
+                                ?>
+                            </div>
+<div class="container">
+<form action="./includes/registerUser.php" method="POST">
+	<div class="row">
+			<div class="col-lg-4">
+				<div class="form-group">
+					<label for="school">School</label>
+					<input required type="text" class="form-control form-control-user" id="school"
+						name="school" placeholder="School">
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="form-group">
+					<label for="dropDownCourse">Municipality</label>
+						<?php
+						$sql = "SELECT * FROM list_municipality";
+						$result = mysqli_query($conn, $sql);
+						if (mysqli_num_rows($result) > 0) {
+							echo '
+								<select required name="selectMunicipality" class="form-control" id="dropDownCourse">
+								<option></option>
+								';
+							while ($row = mysqli_fetch_assoc($result)) {
+								$name = $row['name'];
+								echo '
+									<option value="'.$name.'">'.$name.'</option>
+									';
+							}
+							echo '
+								</select>
+								';
+						}
+						?>
+				</div>
+			</div>
+			<div class="col-lg-4">
+				<div class="form-group">
+					<label for="btnAdd"></label>
+                    <button type="submit" id="btnAdd" name="btnAddSchool" class="btn btn-primary mt-4">Add</button>
+				</div>
+			</div>
+	</div>
+</form>
+	<div class="row">
                         <div class="col-md-12 border border-info">
                             <div class="table-responsive">
                             <table id="example" class="table table-striped table-bordered" style="width:100%">
                                 <thead>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Phone</th>
                                         <th>School</th>
-                                        <th>Status</th>
                                         <th>Municipality</th>
-                                        <th>Course Intended</th>
-                                        <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
                                     <?php
-                                    $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
+                                $sql = "SELECT * FROM municipality";
                                     $result = mysqli_query($conn, $sql);
                                     if (mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_assoc($result)) {
                                             $id = $row['id'];
-                                            $municipality = $row['municipality'];
-                                            $phoneNumber = $row['phoneNumber'];
-                                            $status = $row['status'];
-                                            $course = $row['course'];
-                                            $lastSchoolAttended = $row['lastSchoolAttended'];
-
-                                            $sql2 = "SELECT * FROM user where id = '$id'";
-                                            $result2 = mysqli_query($conn, $sql2);
-
-                                            if (mysqli_num_rows($result2) > 0) {
-                                                while ($row2 = mysqli_fetch_assoc($result2)) {
-                                                    $lastName = $row2['lastName'];
-                                                    $firstName = $row2['firstName'];
-                                                    $middleName = $row2['middleName'];
-                                                    $month = $row2['month'];
-                                                    $created_at = $row2['created_at'];
-                                                    $year = $row2['year'];
-                                                    $monthdate = substr("$created_at", 8, -9);
-                                                }
-                                            }
+                                            $municipality = $row['name'];
+                                            $school = $row['school'];
 
                                             echo '
                                                 <tr>
-                                                    <td>' . $lastName . ', ' . $firstName . ' ' . $middleName . '</td>
-                                                    <td>' . $phoneNumber . '</td>
-                                                    <td>' . $lastSchoolAttended . '</td>
-                                                    <td>' . $status . '</td>
+                                                    <td>' . $school . '</td>
                                                     <td>' . $municipality . '</td>
-                                                    <td>' . $course . '</td>
-                                                    <td>' . $month . '/'. $monthdate .'/'.$year.'</td>
-                                                    <td><a type="button" class="btn btn-primary" href="viewStudentInfo.php?id=1&studentId='.$id.'&lastname='.$lastName.'&search=1">Modify</a></td>
+                                                    <td><a type="button" class="btn btn-primary" href="modifySchools.php?id=1&school_id='.$id.'&municipality='.$municipality.'&school='.$school.'">Modify</a></td>
                                                 </tr>
                                                 ';
                                         }
@@ -182,39 +183,38 @@ include_once './includes/chartYearly.php';
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                        <th>Name</th>
-                                        <th>Phone</th>
                                         <th>School</th>
-                                        <th>Status</th>
                                         <th>Municipality</th>
-                                        <th>Course Intended</th>
-                                        <th>Date</th>
                                         <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
+
                         </div>
-                    </div>
-                </div>                            <!-- End Dash Board Row -->
+                        </div>
+
+	</div>
+
+</div>
+
+                        </div>
+                        <!-- /.container-fluid -->
 
                     </div>
-                    <!-- /.container-fluid -->
+                    <!-- End of Main Content -->
+
+                    <!-- Footer -->
+                    <footer class="sticky-footer bg-white">
+                        <div class="container my-auto">
+                            <div class="copyright text-center my-auto">
+                                <span>Copyright &copy; Your Website 2019</span>
+                            </div>
+                        </div>
+                    </footer>
+                    <!-- End of Footer -->
 
                 </div>
-                <!-- End of Main Content -->
-
-                <!-- Footer -->
-                <footer class="sticky-footer bg-white">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright &copy; Your Website 2019</span>
-                        </div>
-                    </div>
-                </footer>
-                <!-- End of Footer -->
-
-            </div>
-            <!-- End of Content Wrapper -->
+                <!-- End of Content Wrapper -->
 
             </div>
             <!-- End of Page Wrapper -->
@@ -223,6 +223,7 @@ include_once './includes/chartYearly.php';
             <a class="scroll-to-top rounded" href="#page-top">
                 <i class="fas fa-angle-up"></i>
             </a>
+
 
             <!-- Bootstrap core JavaScript-->
             <script src="vendor/jquery/jquery.min.js"></script>
@@ -244,46 +245,15 @@ include_once './includes/chartYearly.php';
 			<script src="js/jquery.dataTables.min.js"></script>
 			<script src="js/dataTables.bootstrap4.min.js"></script>
 
-			<script type="text/javascript">
-
+            <script language="JavaScript" type="text/javascript">
+                function confirmDelete() {
+                    return confirm('Are you sure you want to delete this data?');
+                }
                                     setTimeout(function(){
                                         $('#alert-timer').fadeOut('slow');
                                     },3000);
+            </script>
 
-				$(document).ready(function() {
-					// Javascript method's body can be found in assets/js/demos.js
-					demo.initDashboardPageCharts();
-
-					// demo.showNotification("Goodshit!");
-				});
-
-				// $(document).ready(function() {
-				//     $('#example').DataTable();
-				// });
-				$(document).ready(function() {
-					// Setup - add a text input to each footer cell
-					$('#example tfoot th').each(function() {
-						var title = $(this).text();
-						$(this).html('<input type="text" placeholder="' + title + '" />');
-					});
-
-					// DataTable
-                    var table = $('#example').DataTable();
-
-					// Apply the search
-					table.columns().every(function() {
-						var that = this;
-
-						$('input', this.footer()).on('keyup change clear', function() {
-							if (that.search() !== this.value) {
-								that
-									.search(this.value)
-									.draw();
-							}
-						});
-					});
-				});
-			</script>
         </body>
 
         </html>
@@ -299,5 +269,4 @@ include_once './includes/chartYearly.php';
     $url = str_replace(PHP_EOL, '', $url);
     header("Location: $url");
 }
-mysqli_close($conn);
 ?>

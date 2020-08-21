@@ -136,6 +136,7 @@ include_once './includes/chartYearly.php';
 
                                         <a class="nav-item nav-link" id="custom-nav-profile-tab" data-toggle="tab" href="#custom-nav-profile" role="tab" aria-controls="custom-nav-profile" aria-selected="false">Update Status</a>
 
+                                        <a class="nav-item nav-link" id="custom-nav-template-tab" data-toggle="tab" href="#custom-nav-template" role="tab" aria-controls="custom-nav-template" aria-selected="false">Template</a>
                                         <a class="nav-item nav-link" id="custom-nav-contact-tab" data-toggle="tab" href="#custom-nav-contact" role="tab" aria-controls="custom-nav-contact" aria-selected="false">Help</a>
                                 
                                     </div>
@@ -227,11 +228,55 @@ include_once './includes/chartYearly.php';
                                             include('instruction.php');
                                         ?>
                                 </div>
+                                <div class="tab-pane fade" id="custom-nav-template" role="tabpanel" aria-labelledby="custom-nav-template-tab">
+
+<h4>Template 1</h4>
+<textarea class="form-control"name="" cols="30" rows="5">
+<?php
+$sql = "SELECT * FROM template where id=1";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $content = $row['content'];
+    }
+}
+echo $content;
+?>
+</textarea>
+<h4>Template 2</h4>
+<textarea class="form-control"name="" cols="30" rows="5">
+<?php
+$sql = "SELECT * FROM template where id=2";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $content = $row['content'];
+    }
+}
+echo $content;
+?>
+</textarea>
+<h4>Template 3</h4>
+<textarea id="template3" class="form-control"name="" cols="30" rows="5">
+<?php
+$sql = "SELECT * FROM template where id=3";
+$result = mysqli_query($conn, $sql);
+if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $content = $row['content'];
+    }
+}
+echo $content;
+?>
+</textarea>
+                        	   </div>
                                 <div class="tab-pane fade" id="custom-nav-profile" role="tabpanel" aria-labelledby="custom-nav-profile-tab">
                                         <?php
                                             include('updatestat.php');
                                         ?>
-
                         	   </div>
                      </div> 
                 </div>                            <!-- End Dash Board Row -->

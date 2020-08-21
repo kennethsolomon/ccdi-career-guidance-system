@@ -165,9 +165,10 @@ $municipality = $_GET['municipality'];
                 <input id="select_id" type="hidden" value="<?php echo $id ?>" >
                 <input id="select_municipality" type="hidden" value="<?php echo $municipality ?>" >
             </div>
-<div class="col-lg-2 ml-auto mt-3">
+<div class="col-lg-4 ml-auto mt-3">
 <button class="btn btn-primary" onclick="window.print()">Print</button>
 <a class="btn btn-info" href="includes/exportData.php?data=school&school=<?php echo $_GET['school'] ?>">Export</a>
+<a class="btn btn-info" href="editSchools.php?id=1">List of Schools</a>
 </div>
         </div>
 

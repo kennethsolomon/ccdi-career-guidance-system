@@ -40,8 +40,8 @@ if ($_SESSION['userLevel'] == 0) {
             <div id="studentAction" class="collapse" aria-labelledby="headingTwo" data-parent="#studentAction">
                 <div class="bg-white py-2 collapse-inner rounded">
                     <h6 class="collapse-header">Student Options:</h6>
-                    <a class="collapse-item" data-toggle="modal" data-target="#registerStudentModal" href="#">Register
-                        Student</a>
+             <!--        <a class="collapse-item" data-toggle="modal" data-target="#registerStudentModal" href="#">Register
+                        Student</a> -->
             <!-- <a class="collapse-item" data-toggle="modal" data-target="#viewStudentModal" href="#">View Info
                         Student</a>-->        
                     <a class="collapse-item" href="./phoneNumbers.php?id=1&school=&municipality=&course=">Text Student</a>
