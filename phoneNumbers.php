@@ -229,9 +229,9 @@ include_once './includes/chartYearly.php';
                                         ?>
                                 </div>
                                 <div class="tab-pane fade" id="custom-nav-template" role="tabpanel" aria-labelledby="custom-nav-template-tab">
-
+<form action="./includes/registerUser.php" method="POST">
 <h4>Template 1</h4>
-<textarea class="form-control"name="" cols="30" rows="5">
+<textarea class="form-control" name="etemplate1" cols="30" rows="5">
 <?php
 $sql = "SELECT * FROM template where id=1";
 $result = mysqli_query($conn, $sql);
@@ -245,7 +245,7 @@ echo $content;
 ?>
 </textarea>
 <h4>Template 2</h4>
-<textarea class="form-control"name="" cols="30" rows="5">
+<textarea class="form-control"name="etemplate2" cols="30" rows="5">
 <?php
 $sql = "SELECT * FROM template where id=2";
 $result = mysqli_query($conn, $sql);
@@ -259,7 +259,7 @@ echo $content;
 ?>
 </textarea>
 <h4>Template 3</h4>
-<textarea id="template3" class="form-control"name="" cols="30" rows="5">
+<textarea class="form-control"name="etemplate3" cols="30" rows="5">
 <?php
 $sql = "SELECT * FROM template where id=3";
 $result = mysqli_query($conn, $sql);
@@ -272,6 +272,9 @@ if (mysqli_num_rows($result) > 0) {
 echo $content;
 ?>
 </textarea>
+
+<button type="submit" name="btnUpdateTemplate" class="btn btn-primary mt-2">Update Template</button>
+</form>
                         	   </div>
                                 <div class="tab-pane fade" id="custom-nav-profile" role="tabpanel" aria-labelledby="custom-nav-profile-tab">
                                         <?php

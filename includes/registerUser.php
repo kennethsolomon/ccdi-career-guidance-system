@@ -157,3 +157,32 @@ $school_id = $_POST['school_id'];
 
     $conn->close();
 }
+if (isset($_POST['btnUpdateTemplate'])) {
+$template1 = $_POST['etemplate1'];
+$template2 = $_POST['etemplate2'];
+$template3 = $_POST['etemplate3'];
+    $sql = "UPDATE template SET 
+        content='$template1' 
+        WHERE 
+        id='1'";
+    if ($conn->query($sql) === TRUE) {
+        $sql2 = "UPDATE template SET 
+            content='$template2' 
+            WHERE 
+            id='2'";
+        if ($conn->query($sql2) === TRUE) {
+            $sql3 = "UPDATE template SET 
+                content='$template3' 
+                WHERE 
+                id='3'";
+            if ($conn->query($sql3) === TRUE) {
+                $_SESSION['message'] = 'Template Updated Successfully!';
+                $url = "./../phoneNumbers.php?id=1&school=&municipality=&course=";
+                $url = str_replace(PHP_EOL, '', $url);
+                header("Location: $url");
+            }
+        }
+    } else {
+        echo "Error updating record: " . $conn->error;
+    }
+}
