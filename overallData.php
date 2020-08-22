@@ -76,19 +76,6 @@ include_once './includes/chartYearly.php';
                                     </a>
                                     <!-- Dropdown - User Information -->
                                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                        <!-- <a class="dropdown-item" href="#">
-                      <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Profile
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Settings
-                    </a>
-                    <a class="dropdown-item" href="#">
-                      <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                      Activity Log
-                    </a>
-                    <div class="dropdown-divider"></div> -->
                                         <a class="dropdown-item" href="./includes/logout.php">
                                             <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                             Logout
@@ -118,7 +105,101 @@ include_once './includes/chartYearly.php';
                 <h1 class="h3 mb-0 text-gray-800">Overall Data Table</h1>
                 <a type="button" data-toggle="modal" data-target="#registerStudentModal" class="btn btn-primary" style="margin-left:65vw"href="#">Register Student</a>
             </div>
-            <div class="container-fluid" id="patientTable">
+<!-- 
+            <form action="" method="GET">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="dropDownCourse">Last School Attended</label>
+                                <?php
+                                $sql = "SELECT * FROM municipality";
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    echo '
+                                        <select name="school" class="form-control" id="dropDownSchool">
+                                        <option></option>
+                                        ';
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $name = $row['name'];
+                                        $school = $row['school'];
+                                        echo '
+                                            <option value="'.$school.'">'.$school.'</option>
+                                            ';
+                                    }
+                                    echo '
+                                        </select>
+                                        ';
+                                }
+                                ?>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="dropDownCourse">Course Intended</label>
+                                <?php
+                                $sql = "SELECT * FROM course";
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    echo '
+                                        <select name="course" class="form-control" id="dropDownSchool">
+                                        <option></option>
+                                        ';
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $name = $row['name'];
+                                        echo '
+                                            <option value="'.$name.'">'.$name.'</option>
+                                            ';
+                                    }
+                                    echo '
+                                        </select>
+                                        ';
+                                }
+                                ?>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label for="dropDownCourse">Municipality</label>
+                                <?php
+                                $sql = "SELECT * FROM list_municipality";
+                                $result = mysqli_query($conn, $sql);
+                                if (mysqli_num_rows($result) > 0) {
+                                    echo '
+                                        <select name="municipality" class="form-control" id="dropDownSchool">
+                                        <option></option>
+                                        ';
+                                    while ($row = mysqli_fetch_assoc($result)) {
+                                        $name = $row['name'];
+                                        echo '
+                                            <option value="'.$name.'">'.$name.'</option>
+                                            ';
+                                    }
+                                    echo '
+                                        </select>
+                                        ';
+                                }
+                                ?>
+                        </div>
+                    </div>
+                    <div class="col-lg-2">
+                        <div class="form-group">
+                            <label for="dropDownCourse">Status</label>
+                                <select name="status" class="form-control" id="dropDownSchool">
+                                <option value=""></option>
+                                <option value='Interested'>Interested</option>
+                                <option value='Not Interested'>Not Interested</option>
+                                <option value='No Response'>No Response</option>
+                                <option value='Enrolled'>Enrolled</option>
+                                </select>
+                        </div>
+                    </div>
+                    <div class="col-lg-1">
+                        <button type="submit"class="btn btn-primary mt-4">Search</button>
+                    </div>
+                </div>
+
+            </form> --> 
+		      <div class="container-fluid" id="patientTable">
                     <div class="row">
                         <div class="col-md-12 border border-info">
                             <div class="table-responsive">
@@ -189,7 +270,6 @@ include_once './includes/chartYearly.php';
                                         <th>Municipality</th>
                                         <th>Course Intended</th>
                                         <th>Date</th>
-                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -260,29 +340,30 @@ include_once './includes/chartYearly.php';
 				// $(document).ready(function() {
 				//     $('#example').DataTable();
 				// });
-				$(document).ready(function() {
-					// Setup - add a text input to each footer cell
-					$('#example tfoot th').each(function() {
-						var title = $(this).text();
-						$(this).html('<input type="text" placeholder="' + title + '" />');
-					});
-
-					// DataTable
-                    var table = $('#example').DataTable();
-
-					// Apply the search
-					table.columns().every(function() {
-						var that = this;
-
-						$('input', this.footer()).on('keyup change clear', function() {
-							if (that.search() !== this.value) {
-								that
-									.search(this.value)
-									.draw();
-							}
-						});
-					});
-				});
+                                    $(document).ready(function() {
+    $('#example').DataTable( {
+        initComplete: function () {
+            this.api().columns().every( function () {
+                var column = this;
+                var select = $('<select class="form-control"><option value=""></option></select>')
+                    .appendTo( $(column.footer()).empty() )
+                    .on( 'change', function () {
+                        var val = $.fn.dataTable.util.escapeRegex(
+                            $(this).val()
+                        );
+ 
+                        column
+                            .search( val ? '^'+val+'$' : '', true, false )
+                            .draw();
+                    } );
+ 
+                column.data().unique().sort().each( function ( d, j ) {
+                    select.append( '<option value="'+d+'">'+d+'</option>' )
+                } );
+            } );
+        }
+    } );
+} );
 			</script>
         </body>
 

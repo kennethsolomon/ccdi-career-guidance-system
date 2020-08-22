@@ -24,7 +24,10 @@ if ($_SESSION['userLevel'] == 0) {
         </li>
         <!-- Nav Item - Student Data -->
         <li class="nav-item active"style="margin-top:-20px">
-            <a class="nav-link" href="./overallData.php?id=<?php echo $_GET['id'] ?>">
+            <!--<a class="nav-link" href="./overallData.php?id=1&school=&course=&municipality=&status">
+                <i class="fas fa-fw fa-user-alt"></i>
+                <span>Overall Student Data</span></a>-->
+            <a class="nav-link" href="./overallData.php?id=1">
                 <i class="fas fa-fw fa-user-alt"></i>
                 <span>Overall Student Data</span></a>
         </li>

@@ -289,44 +289,6 @@ echo '
 </div>
 
             <div class="no-printme container-fluid" id="patientTable">
-                    <div class="row mb-2">
-                        <div class="col-lg-3">
-                            <label for="listOfSchool">Course</label>
-                            <?php
-                            $chart_type= $_GET['chart_type'];
-                            $id= $_GET['id'];
-                            
-                            if (isset($_GET['course'])) {
-                                $course = $_GET['course'];
-                            }
-                            $sql = "SELECT * FROM course";
-                            $result = mysqli_query($conn, $sql);
-                            if (mysqli_num_rows($result) > 0) {
-                            echo '
-                            <form action="" method="GET">
-                            <select onchange="this.form.submit()" name="course" value="" class="form-control" id="dropDownSchool">
-                            <option value="">SELECT COURSE</option>
-                            <option value=""></option>
-                            ';
-                            while ($row = mysqli_fetch_assoc($result)) {
-                            $course = $row['name'];
-                            echo '
-                            <option value="'.$course.'">'.$course.'</option>
-                            ';
-
-                            }
-                            echo '
-                            </select>
-<input type="hidden" value="'.$chart_type.'" name="chart_type">
-<input type="hidden" value="'.$id.'" name="id">
-<input type="hidden" value="'.$_GET['year'].'" name="year">
-                            </form>
-                            ';
-                            }
-                            ?>
-
-                        </div>
-                    </div>
                     <div class="row">
                         <div class="col-md-12 border border-info">
                             <div class="table-responsive">
@@ -346,13 +308,7 @@ echo '
                                 <tbody>
 
                                     <?php
-                            $selectedYear = $_GET['year'];
-                            if(isset($_GET['course'])){
-                                $course = $_GET['course'];
-                                $sql = "SELECT * FROM user where userLevel=3 AND course='$course' AND year='$selectedYear' ORDER BY id desc";
-                            } else {
                                 $sql = "SELECT * FROM user where userLevel=3 ORDER BY id desc";
-                            }
                                     $result = mysqli_query($conn, $sql);
                                     if (mysqli_num_rows($result) > 0) {
                                         while ($row = mysqli_fetch_assoc($result)) {
@@ -403,7 +359,6 @@ echo '
                                         <th>Course</th>
                                         <th>Month</th>
                                         <th>Year</th>
-                                        <th>Action</th>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -468,30 +423,30 @@ echo '
 				// $(document).ready(function() {
 				//     $('#example').DataTable();
 				// });
-				$(document).ready(function() {
-					// Setup - add a text input to each footer cell
-					$('#example tfoot th').each(function() {
-						var title = $(this).text();
-						$(this).html('<input type="text" placeholder="' + title + '" />');
-					});
-
-					// DataTable
-					var table = $('#example').DataTable();
-
-					// Apply the search
-					table.columns().every(function() {
-						var that = this;
-
-						$('input', this.footer()).on('keyup change clear', function() {
-							if (that.search() !== this.value) {
-								that
-									.search(this.value)
-									.draw();
-							}
-						});
-					});
-				});
-
+                    $(document).ready(function() {
+                        $('#example').DataTable( {
+                            initComplete: function () {
+                                this.api().columns().every( function () {
+                                    var column = this;
+                                    var select = $('<select class="form-control"><option value=""></option></select>')
+                                        .appendTo( $(column.footer()).empty() )
+                                        .on( 'change', function () {
+                                            var val = $.fn.dataTable.util.escapeRegex(
+                                                $(this).val()
+                                            );
+                     
+                                            column
+                                                .search( val ? '^'+val+'$' : '', true, false )
+                                                .draw();
+                                        } );
+                     
+                                    column.data().unique().sort().each( function ( d, j ) {
+                                        select.append( '<option value="'+d+'">'+d+'</option>' )
+                                    } );
+                                } );
+                            }
+                        } );
+                    } );
 
 
 			</script>
